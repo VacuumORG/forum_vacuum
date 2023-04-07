@@ -1,6 +1,7 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+  projectId: "i7b9k1",
   watchForFileChanges: true,
 
   component: {
