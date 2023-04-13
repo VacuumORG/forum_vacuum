@@ -1,16 +1,16 @@
-const { defineConfig } = require("cypress");
+const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
-  projectId: "i7b9k1",
+  projectId: 'i7b9k1',
   watchForFileChanges: true,
 
   component: {
     devServer: {
-      framework: "next",
-      bundler: "webpack",
+      framework: 'next',
+      bundler: 'webpack',
     },
     supportFile: false,
-    specPattern: "cypress/components/*.spec.{js,jsx,ts,tsx}",
+    specPattern: 'cypress/components/*.spec.{js,jsx,ts,tsx}',
   },
 
   e2e: {
@@ -18,4 +18,4 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
   },
-});
+})
