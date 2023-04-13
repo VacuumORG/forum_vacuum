@@ -1,4 +1,4 @@
-# Forum Vacuun
+# Forum Vacuum
 
 > Frontend do projeto
 
@@ -27,31 +27,33 @@ Comando para iniciar o projeto
 yarn dev
 ```
 
+---
+
+## Pontos para ter atenção
+
 Antes de enviar uma branch nova para o projeto, garanta a funcionalidade dele e sem warnings rodando o seguinte comando
 
 1. Confira se os testes estão passando
 
-    ```bash
-        yarn cy:run
-    ```
+   ```bash
+       yarn cy:run
+   ```
 
 2. Confira a formatação dos arquivo se estão seguindo os padrões sugeridos
 
-    ```bash
-        yarn fmt
-    ```
+   ```bash
+       yarn fmt
+   ```
 
-    > Caso não passe rode
+   > Caso não passe rode
 
-    ```bash
-        yarn fmt:fix
-    ```
-
-```bash
-yarn build
-```
+   ```bash
+       yarn fmt:fix
+   ```
 
 O nome das branchs deve seguir o nome abaixo
 
 `feat/<nova funcionalidade>`
+`fix/<problema a resolver>`
 
+[Padrões de commit](https://github.com/iuricode/padroes-de-commits)
