@@ -1,0 +1,29 @@
+import Image from 'next/image'
+import { forwardRef } from 'react'
+
+interface ModalProps {
+  children?: JSX.Element
+}
+
+const Modal = forwardRef<HTMLDialogElement, ModalProps>(function Modal(
+  { children },
+  ref
+) {
+  console.log(ref)
+
+  return (
+    <dialog ref={ref}>
+      <div className="bg-[url('/computer_img.png')] flex items-center theme-modal">
+        <Image
+          width={300}
+          height={300}
+          src="/vaccum_logo.png"
+          alt="vaccum logo"
+        />
+      </div>
+      <section className="p-4">{children}</section>
+    </dialog>
+  )
+})
+
+export default Modal
