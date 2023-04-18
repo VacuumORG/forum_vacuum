@@ -12,10 +12,16 @@ const UserAvatar: FunctionComponent<UserAvatarProps> = ({
   img,
   alf,
   width = 36,
-  height = 36
+  height = 36,
 }: UserAvatarProps) => {
   return (
-    <Image className="rounded-[50%]" width={width} height={height} src={img} alt={alf} />
+    <Image
+      className="rounded-[50%]"
+      width={width}
+      height={height}
+      src={img}
+      alt={alf}
+    />
   )
 }
 
