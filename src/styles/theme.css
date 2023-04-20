@@ -22,3 +22,13 @@
   --red: #e25757;
   --warning: #e7b431;
 }
+body {
+  background-color: var(--grey07);
+  color: var(--grey01);
+}
+.theme-modal[open] {
+  background-color: var(--grey06);
+}
+.theme-modal::backdrop {
+  background-color: #000000bf;
+}
