@@ -5,6 +5,8 @@ interface ButtonProps {
   title?: string
   type?: 'submit' | 'reset' | 'button'
   onClick?: MouseEventHandler<HTMLButtonElement>
+  iconLeft?: JSX.Element
+  iconRight?: JSX.Element
 }
 
 const Button: FunctionComponent<ButtonProps> = ({
@@ -12,10 +14,14 @@ const Button: FunctionComponent<ButtonProps> = ({
   title,
   type = 'button',
   onClick,
+  iconLeft,
+  iconRight,
 }: ButtonProps) => {
   return (
     <button type={type} className={className} onClick={onClick}>
+      {iconRight}
       {title}
+      {iconLeft}
     </button>
   )
 }
