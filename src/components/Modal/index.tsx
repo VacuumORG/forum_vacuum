@@ -9,8 +9,6 @@ const Modal = forwardRef<HTMLDialogElement, ModalProps>(function Modal(
   { children },
   ref
 ) {
-  console.log(ref)
-
   return (
     <dialog
       ref={ref}
