@@ -4,6 +4,7 @@ interface EventWarningProps {
   day: number
   title: string
   description: string
+  datetime: string
 }
 
 const EventWarning = ({
@@ -12,21 +13,27 @@ const EventWarning = ({
   day,
   title,
   description,
+  datetime,
 }: EventWarningProps) => {
   return (
-    <div className="flex items-center justify-center gap-4 event-warning w-70 h-32 p-2">
-      <div className="text-xl theme-date flex flex-col items-center p-3 rounded-md">
-        <h1 className="mb-2 theme-event-warning-title-and-date font-bold h-full">
+    <div className="flex items-center justify-center gap-4 w-70 h-32 p-2 event-warning">
+      <div className="text-xl flex flex-col items-center p-3 rounded-md theme-date">
+        <time
+          dateTime={datetime}
+          className="mb-2 font-bold h-full theme-event-warning-title-and-date"
+        >
           {month}
-        </h1>
-        <h2 className="text-3xl font-bold theme-author">{day}</h2>
+        </time>
+        <time dateTime={datetime} className="text-3xl font-bold theme-author">
+          {day}
+        </time>
       </div>
 
       <div>
-        <h1 className="theme-event-warning-title-and-date font-bold text-xl">
+        <h1 className="font-bold text-xl theme-event-warning-title-and-date">
           {title}
         </h1>
-        <p className="text-xs theme-description mb-4">{description}</p>
+        <p className="text-xs mb-4 theme-description">{description}</p>
 
         <span className="text-xs theme-description">
           by <strong className="theme-author">{author}</strong>{' '}
