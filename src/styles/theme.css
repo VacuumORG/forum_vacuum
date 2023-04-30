@@ -52,3 +52,18 @@ body {
   background-color: var(--default);
   color: var(--whiteOnPrimary);
 }
+.theme-event-warning {
+  background-color: var(--grey06);
+}
+.theme-event-warning-title-and-date {
+  color: var(--grey01);
+}
+.theme-author {
+  color: var(--default);
+}
+.theme-description {
+  color: var(--grey09);
+}
+.theme-date {
+  background-color: var(--grey08);
+}
