@@ -21,7 +21,7 @@ const TextField: FunctionComponent<TextFieldProps> = ({
 }: TextFieldProps) => {
   const [border, setBorder] = useState('1px solid transparent')
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full">
       <label htmlFor={id} className="font-bold text-xs theme-text mb-1">
         {label}
       </label>

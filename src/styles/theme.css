@@ -51,6 +51,7 @@ body {
 .theme-btn {
   background-color: var(--default);
   color: var(--whiteOnPrimary);
+  border: solid 1px var(--default);
 }
 .theme-event-warning {
   background-color: var(--grey06);
@@ -66,4 +67,13 @@ body {
 }
 .theme-date {
   background-color: var(--grey08);
+}
+.theme-component {
+  background-color: var(--grey06);
+}
+.theme-secondary-btn {
+  background: transparent;
+  border: solid 1px var(--default);
+  color: var(--default);
+  box-sizing: border-box;
 }
