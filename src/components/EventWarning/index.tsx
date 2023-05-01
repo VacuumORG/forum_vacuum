@@ -1,3 +1,5 @@
+import { FunctionComponent } from 'react'
+
 interface EventWarningProps {
   author: string
   month: string | number
@@ -7,7 +9,7 @@ interface EventWarningProps {
   datetime: string
 }
 
-const EventWarning = ({
+const EventWarning: FunctionComponent<EventWarningProps> = ({
   author,
   month,
   day,
