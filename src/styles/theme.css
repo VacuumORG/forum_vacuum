@@ -69,7 +69,7 @@ body {
 }
 .theme-menu {
   background-color: var(--grey06);
-} 
+}
 .theme-event-warning:hover {
   background: var(--grey08);
 }
