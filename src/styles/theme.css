@@ -58,15 +58,18 @@ body {
 .theme-event-warning-title-and-date {
   color: var(--grey01);
 }
-.theme-author {
+.theme-event-warning-author {
   color: var(--default);
 }
-.theme-description {
+.theme-event-warning-description {
   color: var(--grey09);
 }
-.theme-date {
+.theme-event-warning-date {
   background-color: var(--grey08);
 }
 .theme-menu {
   background-color: var(--grey06);
+} 
+.theme-event-warning:hover {
+  background: var(--grey08);
 }
