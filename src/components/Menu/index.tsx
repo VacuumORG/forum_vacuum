@@ -8,9 +8,7 @@ interface MenuProps {}
 
 const Menu: FunctionComponent<MenuProps> = () => {
   return (
-    <header
-      className="flex items-center justify-between flex-wrap px-20 theme-menu"
-    >
+    <header className="flex items-center justify-between flex-wrap px-20 theme-menu">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
         <Image width={90} height={90} src="/vacuum_logo.png" alt="" />
         <span className="font-montserrat font-bold text-2xl leading-10">
