@@ -70,3 +70,12 @@ body {
 .theme-event-warning:hover {
   background: var(--grey08);
 }
+.theme-topic-container {
+  background-color: var(--grey06);
+}
+.theme-topic-datetime {
+  color: var(--grey09);
+}
+.theme-topic-tips {
+  background-color: var(--grey08);
+}
