@@ -1,59 +1,49 @@
 # Forum Vacuum
 
-> Frontend do projeto
+## Descrição do projeto
 
-## Tecnologias
+> Alguém com mais experiência no projeto, edite esse tópico por favor.
 
-- Next Framework - v13.2.4
-- Nodejs - v19.8.1
+## Informações técnicas
 
-## Como rodar o projeto no ambiente de desenvolvimento
+### Tecnologias em uso
 
-Clone o projeto
+- NodeJS v19.8.1
+- React v18.2.0
+- NextJS v13.2.4
+- Supabase v2.21.0
 
-```bash
-git clone git@github.com:VacuumORG/forum_vacuun_front.git
-```
+### Como executar o projeto
 
-Baixe as dependencias do projeto
+Extras:
+- Instale o Yarn: `npm install -g yarn`
 
-```bash
-yarn
-```
+Projeto:
+1. Clone o projeto: `git clone git@github.com:VacuumORG/forum_vacuun_front.git`
+2. Acesse a pasta do projeto: `cd forum_vacuun_front`
+3. Instale as dependências do projeto: `yarn install` 
+4. Rode o projeto: `yarn dev`
 
-Comando para iniciar o projeto
+## Informações para os contribuidores
 
-```bash
-yarn dev
-```
+### Normas para PR
 
----
+Antes de enviar um Pull Request (PR) para o projeto, por favor, execute os seguintes verificadores:
 
-## Pontos para ter atenção
+- Excutando os Testes: `yarn cy:run`
+  - Caso algum teste quebre, corriga antes de enviar o PR.
+- Executando a Formatação de código: `yarn fmt`
+  - Caso esteja com erro na formatação, tente corrigir com: `yarn fmt:fix`
 
-Antes de enviar uma branch nova para o projeto, garanta a funcionalidade dele e sem warnings rodando o seguinte comando
+### Normas de nomeclaturas
 
-1. Confira se os testes estão passando
+- Branchs: O nome das branchs deve seguir o nome abaixo
 
-   ```bash
-       yarn cy:run
-   ```
+Os nomes das branchs devem seguir o seguinte padrão:
 
-2. Confira a formatação dos arquivo se estão seguindo os padrões sugeridos
+- Nova funcionalidade: `feat/<nova funcionalidade>`
+- Correção de problemas: `fix/<problema a resolver>`
 
-   ```bash
-       yarn fmt
-   ```
+Os textos dos commits devem seguir os seguintes padrões:
 
-   > Caso não passe rode
-
-   ```bash
-       yarn fmt:fix
-   ```
-
-O nome das branchs deve seguir o nome abaixo
-
-`feat/<nova funcionalidade>`
-`fix/<problema a resolver>`
-
-[Padrões de commit](https://github.com/iuricode/padroes-de-commits)
+- [Padrões de commit](https://github.com/iuricode/padroes-de-commits)
