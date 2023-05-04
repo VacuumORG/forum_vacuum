@@ -1,5 +1,5 @@
 import { NextApiResponse, NextApiRequest } from 'next'
-import { supabase } from '../../db'
+import { supabase } from '../../../../lib/connection'
 
 type LoginBody = {
   email: string
