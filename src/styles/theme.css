@@ -51,9 +51,13 @@ body {
 .theme-btn {
   background-color: var(--default);
   color: var(--whiteOnPrimary);
+  border: solid 1px var(--default);
 }
 .theme-event-warning {
   background-color: var(--grey06);
+}
+.theme-event-warning:hover {
+  background: var(--grey08);
 }
 .theme-event-warning-title-and-date {
   color: var(--grey01);
@@ -96,3 +100,13 @@ body {
 .theme-color-length-post-Tag-tags-in-high {
   color: var(--grey09);
 }
+.theme-component {
+  background-color: var(--grey06);
+}
+.theme-secondary-btn {
+  background: transparent;
+  border: solid 1px var(--default);
+  color: var(--default);
+  box-sizing: border-box;
+  }
+
