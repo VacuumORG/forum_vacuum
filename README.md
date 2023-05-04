@@ -16,12 +16,14 @@
 ### Como executar o projeto
 
 Extras:
+
 - Instale o Yarn: `npm install -g yarn`
 
 Projeto:
+
 1. Clone o projeto: `git clone git@github.com:VacuumORG/forum_vacuun_front.git`
 2. Acesse a pasta do projeto: `cd forum_vacuun_front`
-3. Instale as dependências do projeto: `yarn install` 
+3. Instale as dependências do projeto: `yarn install`
 4. Rode o projeto: `yarn dev`
 
 ## Informações para os contribuidores
