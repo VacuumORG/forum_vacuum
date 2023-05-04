@@ -1,15 +1,15 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '~/lib/connection'
 
-export default async function handle(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { data: users, error } = await supabase.from('users').select('*')
+  const { data: topics, error } = await supabase.from('topics').select('*')
 
   if (error) {
-    res.json(error)
+    return res.json(error)
   }
 
-  return res.json(users)
+  return res.json(topics)
 }
