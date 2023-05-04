@@ -82,3 +82,17 @@ body {
 .theme-topic-tips {
   background-color: var(--grey08);
 }
+.theme-selected-title-tags-in-high {
+  color: var(--default);
+  fill: var(--default);
+}
+.theme-icon-and-container-selected-tags-in-high {
+  background-color: var(--grey08);
+  fill: var(--whiteOnPrimary);
+}
+.theme-color-title-tags-in-high {
+  color: var(--whiteOnPrimary);
+}
+.theme-color-length-post-Tag-tags-in-high {
+  color: var(--grey09);
+}
