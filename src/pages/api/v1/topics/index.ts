@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '~/lib/connection'
+import { CodeClientError, CodeServerError, CodeSuccess } from '~/lib/statusCode'
 import { TopicModel } from '~/models/topics/TopicModel'
 
 export default async function handler(
