@@ -9,7 +9,7 @@ interface MenuProps {}
 const Menu: FunctionComponent<MenuProps> = () => {
   return (
     <header className="flex items-center justify-between flex-wrap px-20 theme-menu">
-      <div className="flex items-center flex-shrink-0 text-white mr-6">
+      <div className="flex items-center flex-shrink-0 mr-6">
         <Image width={90} height={90} src="/vacuum_logo.png" alt="" />
         <span className="font-montserrat font-bold text-2xl leading-10">
           VACUUM
@@ -28,9 +28,7 @@ const Menu: FunctionComponent<MenuProps> = () => {
         </div>
         <div className="ml-3 font-bold flex flex-col">
           Bem vindo,
-          <span className="text-gray-400 text-sm theme-text-purple">
-            offKevyn
-          </span>
+          <span className="text-sm theme-text-purple">offKevyn</span>
         </div>
       </div>
     </header>
