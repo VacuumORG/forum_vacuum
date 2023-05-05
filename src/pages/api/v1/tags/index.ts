@@ -7,9 +7,11 @@ export default async function handle(
 ) {
   let { data: tags, error } = await supabase.from('tags').select('id, name')
 
-  if (error) {
-    return res.json(error)
+  if (req.method !== 'GET') {
+    return res.status(405).json({ message: 'Method not allowed' })
   }
-
-  return res.json(tags)
+  if (error) {
+    return res.status(404).json(error)
+  }
+  return res.status(200).json(tags)
 }
