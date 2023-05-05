@@ -1,6 +1,8 @@
+import ForgotPassword from '@/components/ForgotPassword'
 import Login from '@/components/Login'
 import Menu from '@/components/Menu'
 import Modal from '@/components/Modal'
+import SignUp from '@/components/SignUp'
 import TagsInHigh from '@/components/TagsInHigh'
 import Topic from '@/components/Topic'
 import Head from 'next/head'
@@ -16,7 +18,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Menu />
-      <main className="flex my-8 justify-evenly">
+      <main className="flex my-8 gap-5 justify-center">
         <section className="flex flex-col gap-12">
           <ul className="flex flex-col py-3 px-2 gap-5 rounded-md  theme-bg-content-grey-08">
             <li>
@@ -119,7 +121,7 @@ export default function Home() {
         </section>
       </main>
       <Modal ref={modelRef}>
-        <Login />
+        <ForgotPassword />
       </Modal>
     </>
   )
