@@ -13,7 +13,9 @@ export default async function handler(
   } = _req.query as TopicModel
 
   if (_req.method != 'GET') {
-    return res.status(CodeClientError.MethodNotAllowed).json({ message: 'Method is not allowed' })
+    return res
+      .status(CodeClientError.MethodNotAllowed)
+      .json({ message: 'Method is not allowed' })
   }
   const { data: topics, error } = await supabase
     .from('topics')
