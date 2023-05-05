@@ -22,8 +22,8 @@ export default async function handler(
     .range(startTopic, startTopic + qtdTopics - 1)
 
   if (error) {
-    return res.json(error)
+    return res.status(CodeClientError.BadRequest).json(error)
   }
 
-  return res.json(topics)
+  return res.status(CodeSuccess.OK).json(topics)
 }
