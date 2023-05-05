@@ -2,7 +2,11 @@
 
 ## Descrição do projeto
 
-> Alguém com mais experiência no projeto, edite esse tópico por favor.
+Desenvolvimento do Site da Vacuum na modalidade Fórum.
+
+Desenvolvido de ponta a ponta por membros da comunidade, com 3 grandes áreas, Frontend, Backend e Design (UI/UX), além de Gestão de Projetos.
+
+O objetivo é disponibilizar todas as funcionalidades e ferramentas que temos na comunidade do Discord para pessoas que não estão inseridas dentro da comunidade, ampliando seu alcance, gerando novas oportunidades de networking, desenvolvimento profissional e pessoal.
 
 ## Informações técnicas
 
