@@ -1,4 +1,9 @@
-import { FunctionComponent, HTMLInputTypeAttribute, useState } from 'react'
+import {
+  FocusEventHandler,
+  FunctionComponent,
+  HTMLInputTypeAttribute,
+  useState,
+} from 'react'
 
 interface TextFieldProps {
   id?: string
@@ -8,6 +13,8 @@ interface TextFieldProps {
   children?: JSX.Element
   type?: HTMLInputTypeAttribute
   required?: boolean
+  onFocusCapture?: FocusEventHandler<HTMLInputElement>
+  onBlurCapture?: FocusEventHandler<HTMLInputElement>
 }
 
 const TextField: FunctionComponent<TextFieldProps> = ({
@@ -18,6 +25,8 @@ const TextField: FunctionComponent<TextFieldProps> = ({
   children,
   type,
   required,
+  onFocusCapture,
+  onBlurCapture,
 }: TextFieldProps) => {
   const [border, setBorder] = useState('1px solid transparent')
   return (
@@ -45,6 +54,8 @@ const TextField: FunctionComponent<TextFieldProps> = ({
           onBlur={() => {
             setBorder('1px solid transparent')
           }}
+          onFocusCapture={onFocusCapture}
+          onBlurCapture={onBlurCapture}
         />
         {children}
       </div>
