@@ -1,10 +1,6 @@
 import { NextApiResponse, NextApiRequest } from 'next'
 import { supabase } from '~/lib/connection'
-
-type LoginBody = {
-  email: string
-  password: string
-}
+import { LoginModel } from '~/models/auth/LoginModel'
 
 export default async function handler(
   req: NextApiRequest,
@@ -14,7 +10,7 @@ export default async function handler(
     return res.status(405).json({ message: 'Method not allowed' })
   }
 
-  const { email, password }: LoginBody = req.body
+  const { email, password }: LoginModel = req.body
   if (!email || !password) {
     return res.status(400).json({
       message: 'Missing email or password',
