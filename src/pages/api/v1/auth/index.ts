@@ -1,5 +1,6 @@
 import { NextApiResponse, NextApiRequest } from 'next'
 import { supabase } from '~/lib/connection'
+import { CodeClientError, CodeServerError, CodeSuccess } from '~/lib/statusCode'
 import { LoginModel } from '~/models/auth/LoginModel'
 
 export default async function handler(
@@ -7,14 +8,17 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' })
+    return res
+      .status(CodeClientError.MethodNotAllowed)
+      .json({ message: 'Method not allowed' })
   }
 
-  const { email, password }: LoginModel = req.body
+  const { email, password } = req.body as LoginModel
+
   if (!email || !password) {
-    return res.status(400).json({
-      message: 'Missing email or password',
-    })
+    return res
+      .status(CodeClientError.BadRequest)
+      .json({ message: 'Bad request' })
   }
 
   const { data, error } = await supabase.auth.signInWithPassword({
@@ -22,12 +26,9 @@ export default async function handler(
     password,
   })
 
-  if (!error) {
-    return res.status(200).json({ data })
+  if (error) {
+    return res.status(CodeServerError.InternalServerError).json(error)
   }
 
-  return res.status(error.status!).json({
-    type: error.name,
-    message: error.message,
-  })
+  return res.status(CodeSuccess.OK).json(data)
 }

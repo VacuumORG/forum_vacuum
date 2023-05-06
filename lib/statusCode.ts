@@ -1,10 +1,10 @@
-enum CodeInformational {
+export enum CodeInformational {
   Continue = 100,
   SwitchingProtocols,
   Processing,
 }
 
-enum CodeSuccess {
+export enum CodeSuccess {
   OK = 200,
   Created,
   Accepted,
@@ -17,7 +17,7 @@ enum CodeSuccess {
   IMUsed = 226,
 }
 
-enum CodeRedirection {
+export enum CodeRedirection {
   MultipleChoices = 300,
   MovedPermanently,
   Found,
@@ -28,7 +28,7 @@ enum CodeRedirection {
   PermanentRedirect,
 }
 
-enum CodeClientError {
+export enum CodeClientError {
   BadRequest = 400,
   Unauthorized,
   PaymentRequired,
@@ -61,7 +61,7 @@ enum CodeClientError {
   ClientClosedRequest = 499,
 }
 
-enum CodeServerError {
+export enum CodeServerError {
   InternalServerError = 500,
   NotImplemented,
   BadGateway,
