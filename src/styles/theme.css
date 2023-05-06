@@ -24,7 +24,15 @@
 }
 body {
   background-color: var(--grey07);
+  outline: none;
   color: var(--grey01);
+}
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 ::placeholder {
   color: var(--grey03);
@@ -37,7 +45,7 @@ body {
 }
 .theme-textfield-icon-box {
   background-color: var(--whiteOnPrimary);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px rgba(221, 206, 206, 0.25);
 }
 .theme-text {
   color: var(--whiteOnPrimary);
@@ -81,4 +89,19 @@ body {
 }
 .theme-topic-tips {
   background-color: var(--grey08);
+}
+.theme-btn-color-code-auth-box {
+  background-color: var(--default);
+}
+.theme-color-email-code-auth-box {
+  color: var(--default);
+}
+.theme-color-title-code-auth-box {
+  color: var(--whiteOnPrimary);
+}
+.theme-color-outline {
+  outline-color: var(--default);
+}
+.theme-color-input {
+  color: black;
 }
