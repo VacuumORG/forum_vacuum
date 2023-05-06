@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from 'react'
+import { FunctionComponent } from 'react'
 import TextField from '../TextField'
 import Image from 'next/image'
 import IconButton from '../IconButton'
