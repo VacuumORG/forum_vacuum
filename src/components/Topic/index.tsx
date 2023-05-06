@@ -23,7 +23,7 @@ const Topic: FunctionComponent<TopicProps> = ({
   return (
     <div className="flex rounded gap-6 max-w-screen-sm py-6 px-5 theme-topic-container">
       <Image
-        src="/vaccum_logo.png"
+        src="/vacuum_logo.png"
         alt="imagem principal do tipico"
         width={100}
         height={100}
@@ -37,7 +37,7 @@ const Topic: FunctionComponent<TopicProps> = ({
         <div className="flex items-center justify-between gap-7">
           <div className="flex gap-3">
             <UserAvatar
-              img="/vaccum_logo.png"
+              img="/vacuum_logo.png"
               alf="componente que representa o avatar do usuário"
             />
             <div className="flex flex-col">

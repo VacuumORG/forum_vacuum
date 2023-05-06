@@ -18,7 +18,7 @@ const Modal = forwardRef<HTMLDialogElement, ModalProps>(function Modal(
         <Image
           width={300}
           height={300}
-          src="/vaccum_logo.png"
+          src="/vacuum_logo.png"
           alt="vaccum logo"
         />
       </div>
