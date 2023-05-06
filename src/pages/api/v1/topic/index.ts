@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '~/lib/connection'
-import { TopicModel } from '~/models/topics/TopicModel'
+import { TopicModel } from '~/models/topic/TopicModel'
 
 export default async function handler(
   _req: NextApiRequest,
