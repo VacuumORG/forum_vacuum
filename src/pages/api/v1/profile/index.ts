@@ -3,7 +3,7 @@ import { supabase } from '~/lib/connection'
 import { CodeClientError, CodeSuccess } from '~/lib/statusCode'
 import { UserProfileModel } from '~/models/profile'
 
-export default async function createUserProfile(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
