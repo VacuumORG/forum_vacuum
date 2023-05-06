@@ -4,10 +4,10 @@ import { CodeClientError, CodeServerError, CodeSuccess } from '~/lib/statusCode'
 import { UserIdModel } from '~/models/profile'
 
 export default async function handler(
-  req: NextApiRequest,
+  _req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method != 'POST') {
+  if (_req.method != 'GET') {
     return res
       .status(CodeClientError.MethodNotAllowed)
       .json({ message: 'Method is not allowed' })
@@ -15,12 +15,12 @@ export default async function handler(
 
   // TODO: implementar a proteção com autenticação
 
-  const { user_id } = req.body as UserIdModel
+  const { id } = _req.query as unknown as UserIdModel
 
   const { data, error } = await supabase
     .from('topics')
     .select('*')
-    .eq('user_id', user_id)
+    .eq('user_id', id)
 
   if (error) {
     return res.status(CodeServerError.InternalServerError).json({

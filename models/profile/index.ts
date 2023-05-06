@@ -8,5 +8,5 @@ export interface UserProfileModel {
 }
 
 export interface UserIdModel {
-  user_id: UUID
+  id: UUID
 }
