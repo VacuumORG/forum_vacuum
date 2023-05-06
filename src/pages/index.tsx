@@ -1,15 +1,16 @@
-import ForgotPassword from '@/components/ForgotPassword'
 import Login from '@/components/Login'
 import Menu from '@/components/Menu'
 import Modal from '@/components/Modal'
 import SignUp from '@/components/SignUp'
 import TagsInHigh from '@/components/TagsInHigh'
 import Topic from '@/components/Topic'
+import UserArea from '@/components/UserArea'
 import Head from 'next/head'
 import { useRef } from 'react'
 
 export default function Home() {
-  const modelRef = useRef<HTMLDialogElement>(null)
+  const loginRef = useRef<HTMLDialogElement>(null)
+  const signUpRef = useRef<HTMLDialogElement>(null)
   return (
     <>
       <Head>
@@ -17,7 +18,12 @@ export default function Home() {
         <meta name="description" content="Comunidade de desenvolvimento" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Menu />
+      <Menu className="flex items-center justify-between flex-wrap px-20 theme-menu">
+        <UserArea
+          onClickEventOne={() => loginRef.current?.showModal()}
+          onClickEventTwo={() => signUpRef.current?.showModal()}
+        />
+      </Menu>
       <main className="flex my-8 gap-5 justify-center">
         <section className="flex flex-col gap-12">
           <ul className="flex flex-col py-3 px-2 gap-5 rounded-md  theme-bg-content-grey-08">
@@ -68,7 +74,7 @@ export default function Home() {
             <h1 className="text-2xl font-bold">Assuntos do Momento</h1>
             <span>
               <b
-                onClick={() => modelRef.current?.showModal()}
+                onClick={() => signUpRef.current?.showModal()}
                 className="text-[var(--default)] cursor-pointer"
               >
                 Cadastre-se
@@ -120,8 +126,11 @@ export default function Home() {
           </ul>
         </section>
       </main>
-      <Modal ref={modelRef}>
-        <ForgotPassword />
+      <Modal ref={loginRef}>
+        <Login />
+      </Modal>
+      <Modal ref={signUpRef}>
+        <SignUp />
       </Modal>
     </>
   )
