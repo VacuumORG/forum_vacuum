@@ -1,4 +1,4 @@
-import { FunctionComponent, useRef, useState } from 'react'
+import { FunctionComponent, useRef, useState, ChangeEvent } from 'react'
 import { CaretLeft } from '@phosphor-icons/react'
 import Button from '../Button'
 
@@ -7,10 +7,15 @@ interface CodeAuthBoxProps {
   required?: boolean
 }
 
+interface InputProps {
+  numberInput: number;
+};
+
 const CodeAuthBox: FunctionComponent<CodeAuthBoxProps> = ({
   emailUser,
   required,
 }: CodeAuthBoxProps) => {
+
   const [numbers, setNumbers] = useState<Array<string>>([
     '',
     '',
@@ -19,10 +24,23 @@ const CodeAuthBox: FunctionComponent<CodeAuthBoxProps> = ({
     '',
     '',
   ])
+  
+  const ArrayInput: InputProps[] = [
+      {numberInput: 0,},
+      {numberInput: 1,},
+      {numberInput: 2,},
+      {numberInput: 3,},
+      {numberInput: 4,},
+      {numberInput: 5,},
+  ]
+
+  const firstPart = ArrayInput.slice(0, 3);
+  const secondPart = ArrayInput.slice(3, 6);
+
   const inputs = useRef<Array<HTMLInputElement | null>>([])
 
   const handleNumberChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: ChangeEvent<HTMLInputElement>,
     index: number
   ) => {
     const inputNumber = event.target.value
@@ -43,8 +61,6 @@ const CodeAuthBox: FunctionComponent<CodeAuthBoxProps> = ({
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    console.log(numbers)
-    // Faça aqui a lógica para enviar os números para o backend
   }
 
   return (
@@ -63,7 +79,7 @@ const CodeAuthBox: FunctionComponent<CodeAuthBoxProps> = ({
           <a className="theme-text text-xs cursor-pointer">voltar</a>
         </div>
 
-        <p className="theme-text text-xs">Etapa 1 de 3</p>
+        <p className="theme-text text-xs">Etapa 2 de 3</p>
       </div>
 
       <div className="flex flex-col w-full theme-color-title-code-auth-box">
@@ -81,59 +97,41 @@ const CodeAuthBox: FunctionComponent<CodeAuthBoxProps> = ({
 
         <div className="flex gap-10 mb-8 theme-color-input">
           <div className="flex gap-4">
-            <input
-              value={numbers[0]}
-              onChange={(e) => handleNumberChange(e, 0)}
-              ref={(input) => (inputs.current[0] = input)}
-              className="flex items-center p-4 w-20 h-20 text-7xl rounded-lg theme-color-outline"
-              required={required}
-              type="number"
-            />
-            <input
-              value={numbers[1]}
-              onChange={(e) => handleNumberChange(e, 1)}
-              ref={(input) => (inputs.current[1] = input)}
-              className="flex items-center p-4 w-20 h-20 text-7xl items-center justify-normal rounded-lg theme-color-outline"
-              required={required}
-              type="number"
-            />
-            <input
-              value={numbers[2]}
-              onChange={(e) => handleNumberChange(e, 2)}
-              ref={(input) => (inputs.current[2] = input)}
-              className="flex items-center p-4 w-20 h-20 text-7xl items-center justify-normal rounded-lg theme-color-outline"
-              required={required}
-              type="number"
-            />
+            {firstPart.map((number) => {
+              return(
+              <input
+                key={number.numberInput}
+                value={numbers[number.numberInput]}
+                onChange={(e) => handleNumberChange(e, number.numberInput)}
+                ref={(input) => (inputs.current[number.numberInput] = input)}
+                className="flex items-center p-4 w-20 h-20 text-7xl rounded-lg theme-color-outline"
+                required={required}
+                type="number"
+                min="0" 
+                max="9" 
+              />
+              )
+            })}
           </div>
+          
           <div className="flex gap-4">
-            <input
-              value={numbers[3]}
-              onChange={(e) => handleNumberChange(e, 3)}
-              ref={(input) => (inputs.current[3] = input)}
-              className="flex items-center p-4 w-20 h-20 text-7xl items-center justify-center rounded-lg theme-color-outline"
-              required={required}
-              type="number"
-            />
-            <input
-              value={numbers[4]}
-              onChange={(e) => handleNumberChange(e, 4)}
-              ref={(input) => (inputs.current[4] = input)}
-              className="flex items-center p-4 w-20 h-20 text-7xl items-center justify-normal rounded-lg theme-color-outline"
-              required={required}
-              type="number"
-            />
-            <input
-              value={numbers[5]}
-              onChange={(e) => handleNumberChange(e, 5)}
-              ref={(input) => (inputs.current[5] = input)}
-              className="flex items-center p-4 w-20 h-20 text-7xl items-center justify-normal rounded-lg theme-color-outline"
-              required={required}
-              type="number"
-            />
+            {secondPart.map((number) => {
+              return(
+              <input
+                key={number.numberInput}
+                value={numbers[number.numberInput]}
+                onChange={(e) => handleNumberChange(e, number.numberInput)}
+                ref={(input) => (inputs.current[number.numberInput] = input)}
+                className="flex items-center p-4 w-20 h-20 text-7xl rounded-lg theme-color-outline"
+                required={required}
+                type="number"
+                min="0" 
+                max="9"
+              />
+              )
+            })}
           </div>
         </div>
-
         <Button
           type="submit"
           title="Verificar"
