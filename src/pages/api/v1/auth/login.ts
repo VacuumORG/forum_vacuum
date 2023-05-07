@@ -1,7 +1,7 @@
-import { NextApiResponse, NextApiRequest } from 'next'
+import { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '~/lib/connection'
 import { CodeClientError, CodeServerError, CodeSuccess } from '~/lib/statusCode'
-import { LoginModel } from '~/models/auth/LoginModel'
+import { LoginModel } from '~/models/auth'
 
 export default async function handler(
   req: NextApiRequest,
