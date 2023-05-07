@@ -4,16 +4,16 @@ import { CodeClientError, CodeServerError, CodeSuccess } from '~/lib/statusCode'
 import { LoginModel } from '~/models/auth'
 
 export default async function handler(
-  req: NextApiRequest,
+  _req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method !== 'POST') {
+  if (_req.method !== 'POST') {
     return res
       .status(CodeClientError.MethodNotAllowed)
       .json({ message: 'Method not allowed' })
   }
 
-  const { email, password } = req.body as LoginModel
+  const { email, password } = _req.body as LoginModel
 
   if (!email || !password) {
     return res
