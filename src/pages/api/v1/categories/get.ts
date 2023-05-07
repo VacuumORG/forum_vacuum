@@ -3,10 +3,10 @@ import { supabase } from '~/lib/connection'
 import { CodeClientError, CodeServerError, CodeSuccess } from '~/lib/statusCode'
 
 export default async function handler(
-  req: NextApiRequest,
+  _req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method !== 'GET') {
+  if (_req.method !== 'GET') {
     return res
       .status(CodeClientError.MethodNotAllowed)
       .json({ message: 'Method not allowed' })
