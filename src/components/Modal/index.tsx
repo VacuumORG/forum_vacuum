@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { forwardRef } from 'react'
 
 interface ModalProps {
-  children?: JSX.Element
+  children?: JSX.Element | JSX.Element[]
 }
 
 const Modal = forwardRef<HTMLDialogElement, ModalProps>(function Modal(
@@ -19,7 +19,7 @@ const Modal = forwardRef<HTMLDialogElement, ModalProps>(function Modal(
           width={300}
           height={300}
           src="/vacuum_logo.png"
-          alt="vaccum logo"
+          alt="vacuum logo"
         />
       </div>
       <section className="p-4 w-full">{children}</section>
