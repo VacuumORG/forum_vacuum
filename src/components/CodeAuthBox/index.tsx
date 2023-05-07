@@ -1,4 +1,10 @@
-import { FunctionComponent, useRef, useState, ChangeEvent } from 'react'
+import {
+  FunctionComponent,
+  useRef,
+  useState,
+  ChangeEvent,
+  FormEvent,
+} from 'react'
 import { CaretLeft } from '@phosphor-icons/react'
 import Button from '../Button'
 
@@ -8,14 +14,13 @@ interface CodeAuthBoxProps {
 }
 
 interface InputProps {
-  numberInput: number;
-};
+  numberInput: number
+}
 
 const CodeAuthBox: FunctionComponent<CodeAuthBoxProps> = ({
   emailUser,
   required,
 }: CodeAuthBoxProps) => {
-
   const [numbers, setNumbers] = useState<Array<string>>([
     '',
     '',
@@ -24,18 +29,18 @@ const CodeAuthBox: FunctionComponent<CodeAuthBoxProps> = ({
     '',
     '',
   ])
-  
+
   const ArrayInput: InputProps[] = [
-      {numberInput: 0,},
-      {numberInput: 1,},
-      {numberInput: 2,},
-      {numberInput: 3,},
-      {numberInput: 4,},
-      {numberInput: 5,},
+    { numberInput: 0 },
+    { numberInput: 1 },
+    { numberInput: 2 },
+    { numberInput: 3 },
+    { numberInput: 4 },
+    { numberInput: 5 },
   ]
 
-  const firstPart = ArrayInput.slice(0, 3);
-  const secondPart = ArrayInput.slice(3, 6);
+  const firstPart = ArrayInput.slice(0, 3)
+  const secondPart = ArrayInput.slice(3, 6)
 
   const inputs = useRef<Array<HTMLInputElement | null>>([])
 
@@ -59,7 +64,7 @@ const CodeAuthBox: FunctionComponent<CodeAuthBoxProps> = ({
     }
   }
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
   }
 
@@ -98,36 +103,36 @@ const CodeAuthBox: FunctionComponent<CodeAuthBoxProps> = ({
         <div className="flex gap-10 mb-8 theme-color-input">
           <div className="flex gap-4">
             {firstPart.map((number) => {
-              return(
-              <input
-                key={number.numberInput}
-                value={numbers[number.numberInput]}
-                onChange={(e) => handleNumberChange(e, number.numberInput)}
-                ref={(input) => (inputs.current[number.numberInput] = input)}
-                className="flex items-center p-4 w-20 h-20 text-7xl rounded-lg theme-color-outline"
-                required={required}
-                type="number"
-                min="0" 
-                max="9" 
-              />
+              return (
+                <input
+                  key={number.numberInput}
+                  value={numbers[number.numberInput]}
+                  onChange={(e) => handleNumberChange(e, number.numberInput)}
+                  ref={(input) => (inputs.current[number.numberInput] = input)}
+                  className="flex items-center p-4 w-20 h-20 text-7xl rounded-lg theme-color-outline"
+                  required={required}
+                  type="number"
+                  min="0"
+                  max="9"
+                />
               )
             })}
           </div>
-          
+
           <div className="flex gap-4">
             {secondPart.map((number) => {
-              return(
-              <input
-                key={number.numberInput}
-                value={numbers[number.numberInput]}
-                onChange={(e) => handleNumberChange(e, number.numberInput)}
-                ref={(input) => (inputs.current[number.numberInput] = input)}
-                className="flex items-center p-4 w-20 h-20 text-7xl rounded-lg theme-color-outline"
-                required={required}
-                type="number"
-                min="0" 
-                max="9"
-              />
+              return (
+                <input
+                  key={number.numberInput}
+                  value={numbers[number.numberInput]}
+                  onChange={(e) => handleNumberChange(e, number.numberInput)}
+                  ref={(input) => (inputs.current[number.numberInput] = input)}
+                  className="flex items-center p-4 w-20 h-20 text-7xl rounded-lg theme-color-outline"
+                  required={required}
+                  type="number"
+                  min="0"
+                  max="9"
+                />
               )
             })}
           </div>

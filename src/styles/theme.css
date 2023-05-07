@@ -24,7 +24,6 @@
 }
 body {
   background-color: var(--grey07);
-  outline: none;
   color: var(--grey01);
 }
 input[type='number']::-webkit-inner-spin-button {
