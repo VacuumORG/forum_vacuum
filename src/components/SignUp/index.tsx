@@ -51,7 +51,7 @@ const SignUp: FunctionComponent<SignUpProps> = () => {
         completar seu Cadastro.
       </p>
       <form onSubmit={handlerSignUp} className="flex flex-col gap-4 mt-8">
-        <div className="flex justify-between">
+        <div className="flex justify-between gap-4">
           <TextField
             id="name"
             type="text"
@@ -61,9 +61,9 @@ const SignUp: FunctionComponent<SignUpProps> = () => {
           />
           <TextField
             id="phone"
-            type="number"
+            type="tel"
             label="telefone"
-            placeholder="+123 456 78901-2345"
+            placeholder="+55 71 99999-9999"
             required
           />
         </div>

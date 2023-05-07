@@ -1,0 +1,77 @@
+export enum CodeInformational {
+  Continue = 100,
+  SwitchingProtocols,
+  Processing,
+}
+
+export enum CodeSuccess {
+  OK = 200,
+  Created,
+  Accepted,
+  NonAuthoritativeInformation,
+  NoContent,
+  ResetContent,
+  PartialContent,
+  MultiStatus,
+  AlreadyReported,
+  IMUsed = 226,
+}
+
+export enum CodeRedirection {
+  MultipleChoices = 300,
+  MovedPermanently,
+  Found,
+  SeeOther,
+  NotModified,
+  UseProxy,
+  TemporaryRedirect,
+  PermanentRedirect,
+}
+
+export enum CodeClientError {
+  BadRequest = 400,
+  Unauthorized,
+  PaymentRequired,
+  Forbidden,
+  NotFound,
+  MethodNotAllowed,
+  NotAcceptable,
+  ProxyAuthenticationRequired,
+  RequestTimeout,
+  Conflict,
+  Gone,
+  LengthRequired,
+  PreconditionFailed,
+  PayloadTooLarge,
+  RequestURITooLong,
+  UnsupportedMediaType,
+  RequestedRangeNotSatisfiable,
+  ExpectationFailed,
+  ImTeapot,
+  MisdirectedRequest = 421,
+  UnprocessableEntity,
+  Locked,
+  FailedDependency,
+  UpgradeRequired = 426,
+  PreconditionRequired = 428,
+  TooManyRequests,
+  RequestHeaderFieldsTooLarge = 431,
+  ConnectionClosedWithoutResponse = 444,
+  UnavailableForLegalReasons = 451,
+  ClientClosedRequest = 499,
+}
+
+export enum CodeServerError {
+  InternalServerError = 500,
+  NotImplemented,
+  BadGateway,
+  ServiceUnavailable,
+  GatewayTimeout,
+  HTTPVersionNotSupported,
+  VariantAlsoNegociates,
+  InsufficientStorage,
+  LoopDetected,
+  NotExtended = 510,
+  NetworkAuthenticationRequired,
+  NetworkConnectionTimeoutError = 599,
+}
