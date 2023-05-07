@@ -1,4 +1,9 @@
-import { FunctionComponent, HTMLInputTypeAttribute, useState } from 'react'
+import {
+  FocusEventHandler,
+  FunctionComponent,
+  HTMLInputTypeAttribute,
+  useState,
+} from 'react'
 
 interface TextFieldProps {
   id?: string
@@ -8,6 +13,9 @@ interface TextFieldProps {
   children?: JSX.Element
   type?: HTMLInputTypeAttribute
   required?: boolean
+  onFocusCapture?: FocusEventHandler<HTMLInputElement>
+  onBlurCapture?: FocusEventHandler<HTMLInputElement>
+  className?: string
 }
 
 const TextField: FunctionComponent<TextFieldProps> = ({
@@ -18,15 +26,18 @@ const TextField: FunctionComponent<TextFieldProps> = ({
   children,
   type,
   required,
+  onFocusCapture,
+  onBlurCapture,
+  className,
 }: TextFieldProps) => {
   const [border, setBorder] = useState('1px solid transparent')
   return (
-    <div className="flex flex-col">
-      <label htmlFor={id} className="font-bold text-xs theme-text mb-1">
+    <div className={className}>
+      <label htmlFor={id} className="font-bold text-xs mb-1 theme-text">
         {label}
       </label>
       <div
-        className="flex p-1 theme-textfield-icon-box visited:bg-slate-950 rounded"
+        className="flex p-1 rounded theme-textfield-icon-box"
         style={{
           border: border,
         }}
@@ -36,7 +47,7 @@ const TextField: FunctionComponent<TextFieldProps> = ({
           type={type}
           name="input"
           id={id}
-          className="focus:outline-none items-stretch w-full px-2 text-xs"
+          className="focus:outline-none items-stretch w-full h-full px-2 text-[100%]"
           placeholder={placeholder}
           required={required}
           onFocus={() => {
@@ -45,6 +56,8 @@ const TextField: FunctionComponent<TextFieldProps> = ({
           onBlur={() => {
             setBorder('1px solid transparent')
           }}
+          onFocusCapture={onFocusCapture}
+          onBlurCapture={onBlurCapture}
         />
         {children}
       </div>
