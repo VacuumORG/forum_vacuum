@@ -1,7 +1,5 @@
-import Image from 'next/image'
 import Button from '../Button'
-import pictureIcon from '#/public/picture.svg'
-import anexoIcon from '#/public/anexo.svg'
+import { ImageSquare, Paperclip } from '@phosphor-icons/react'
 import TextField from '@/components/TextField'
 import { useState } from 'react'
 
@@ -32,13 +30,13 @@ const NewPostForm = () => {
       />
       <div className="flex flex-row justify-between">
         <div className="flex flex-row gap-2 ml-1">
-          <Image
-            src={pictureIcon}
+          <ImageSquare
             height={24}
             width={24}
-            alt={'picture icon'}
+            color="white"
+            alt="Image Square"
           />
-          <Image src={anexoIcon} height={24} width={24} alt={'anexo icon'} />
+          <Paperclip height={24} width={24} color="white" alt="Paperclip" />
         </div>
         <div className="flex justify-end mt-4">
           <Button
