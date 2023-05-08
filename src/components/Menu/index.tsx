@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react'
 import TextField from '../TextField'
 import Image from 'next/image'
-import IconButton from '../IconButton'
+import { MagnifyingGlass } from '@phosphor-icons/react'
 
 interface MenuProps {
   children?: JSX.Element | JSX.Element[]
@@ -20,7 +20,13 @@ const Menu: FunctionComponent<MenuProps> = ({ className, children }) => {
 
       <form className="w-1/2 flex flex-col gap-4">
         <TextField id="search" type={'text'} placeholder="Search" required>
-          <IconButton icon={'/icon_search.svg'} w={24} h={24} />
+          <MagnifyingGlass
+            width={24}
+            height={24}
+            weight="bold"
+            color="black"
+            alt="Magnifying Glass"
+          />
         </TextField>
       </form>
 
