@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from './connection'
-import { httpVerb, httpVerbGuard } from './httpVerbGuard'
+import { guard, httpVerb } from './httpVerbGuard'
 import { CodeClientError } from './statusCode'
 
 export async function auth(
@@ -8,7 +8,7 @@ export async function auth(
   res: NextApiResponse,
   ...httpVerbs: httpVerb[]
 ) {
-  const released = httpVerbGuard(req, res, ...httpVerbs)
+  const released = guard(req, res, ...httpVerbs)
   if (!released) return
 
   let token = req.body.session as {
