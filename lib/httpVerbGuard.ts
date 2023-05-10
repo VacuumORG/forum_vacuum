@@ -12,7 +12,7 @@ export type httpVerb =
   | 'TRACE'
   | 'PATCH'
 
-export function httpVerbGuard(
+export function guard(
   req: NextApiRequest,
   res: NextApiResponse,
   ...httpVerbs: httpVerb[]
