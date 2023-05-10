@@ -1,25 +1,27 @@
 import { FunctionComponent, useState } from 'react'
 import TextField from '../TextField'
 import Button from '../Button'
-import IconButton from '../IconButton'
-import eyeOpen from '#/eye.svg'
-import eyeClose from '#/eye_off.svg'
-import Image from 'next/image'
-import backIcon from '#/backIcon.svg'
+import {
+  EnvelopeSimple,
+  LockSimple,
+  Eye,
+  EyeSlash,
+  CaretLeft,
+} from '@phosphor-icons/react'
 
 interface SignUpProps {}
 
 const SignUp: FunctionComponent<SignUpProps> = () => {
   const [inputType, setInputType] = useState('password')
-  const [icon, setIcon] = useState(eyeOpen)
+  const [eyeOpen, setEyeOpen] = useState(true)
 
   function changeInputTypeWhenClickBtnAndSwitchIcon() {
     if (inputType == 'password') {
       setInputType('text')
-      setIcon(eyeOpen)
+      setEyeOpen(true)
     } else {
       setInputType('password')
-      setIcon(eyeClose)
+      setEyeOpen(false)
     }
   }
   function handlerSignUp(e: any) {
@@ -30,12 +32,11 @@ const SignUp: FunctionComponent<SignUpProps> = () => {
     <div className="w-full h-full flex flex-col gap-1 py-10 px-20">
       <div className="flex justify-between">
         <div className="flex ">
-          <Image
-            src={backIcon.src}
+          <CaretLeft
             alt="Voltar"
-            width={24}
-            height={24}
-            className="mr-1"
+            width={16}
+            height={16}
+            className="mr-1 fill-white cursor-pointer align-text-top"
           />
           <a className="theme-text text-xs">voltar</a>
         </div>
@@ -70,7 +71,14 @@ const SignUp: FunctionComponent<SignUpProps> = () => {
         <TextField
           id="email"
           type="email"
-          icon={<Image width={24} height={24} src="/mail.svg" alt="" />}
+          icon={
+            <EnvelopeSimple
+              width={24}
+              height={24}
+              weight="bold"
+              alt="Envelope Simple"
+            />
+          }
           label="e-mail"
           placeholder="Seu email"
           required
@@ -78,17 +86,35 @@ const SignUp: FunctionComponent<SignUpProps> = () => {
         <TextField
           id="password"
           type={inputType}
-          icon={<Image width={24} height={24} src="/lock.svg" alt="" />}
+          icon={
+            <LockSimple
+              width={24}
+              height={24}
+              weight="bold"
+              alt="Lock Simple"
+            />
+          }
           label="senha"
           placeholder="Sua senha"
           required
         >
-          <IconButton
-            icon={icon}
-            w={24}
-            h={24}
-            onClick={changeInputTypeWhenClickBtnAndSwitchIcon}
-          />
+          {eyeOpen ? (
+            <Eye
+              width={24}
+              height={24}
+              weight="bold"
+              alt="Eye"
+              onClick={changeInputTypeWhenClickBtnAndSwitchIcon}
+            />
+          ) : (
+            <EyeSlash
+              width={24}
+              height={24}
+              weight="bold"
+              alt="Eye Slash"
+              onClick={changeInputTypeWhenClickBtnAndSwitchIcon}
+            />
+          )}
         </TextField>
 
         <p className="theme-text text-xs mb-3">
