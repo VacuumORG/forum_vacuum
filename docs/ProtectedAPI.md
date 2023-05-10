@@ -13,7 +13,7 @@ import { auth, httpVerb } from './authGuard'
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { token } = await auth(req, res, httpVerb.GET, httpVerb.POST)
   if (!token) return
-  
+
   // Continue com a lógica do seu handler
 }
 ```
@@ -41,7 +41,7 @@ import { httpVerbGuard, httpVerb } from './httpVerbGuard'
 function handler(req: NextApiRequest, res: NextApiResponse) {
   const { released } = httpVerbGuard(req, res, httpVerb.GET, httpVerb.POST)
   if (!released) return
-  
+
   // Continue com a lógica do seu handler
 }
 ```
