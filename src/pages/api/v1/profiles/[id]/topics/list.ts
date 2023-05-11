@@ -1,4 +1,5 @@
-import { NextApiResponse, NextApiRequest } from 'next'
+import { NextApiRequest, NextApiResponse } from 'next'
+import { auth } from '~/lib/authGuard'
 import { supabase } from '~/lib/connection'
 import { CodeClientError, CodeServerError, CodeSuccess } from '~/lib/statusCode'
 import { UserIdModel } from '~/models/profile'
@@ -7,15 +8,14 @@ export default async function handler(
   _req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (_req.method != 'GET') {
-    return res
-      .status(CodeClientError.MethodNotAllowed)
-      .json({ message: 'Method is not allowed' })
-  }
-
-  // TODO: implementar a proteção com autenticação
+  const resolved = await auth(_req, res, 'GET')
+  if (!resolved) return
 
   const { id } = _req.query as unknown as UserIdModel
+  if (!id || id != resolved.user!.id)
+    return res
+      .status(CodeClientError.BadRequest)
+      .json({ message: 'Bad Request' })
 
   const { data, error } = await supabase
     .from('topics')
@@ -28,5 +28,12 @@ export default async function handler(
     })
   }
 
-  return res.status(CodeSuccess.OK).json(data)
+  const response = {
+    token: {
+      user_id: resolved.user!.id,
+      refresh_token: resolved.session!.refresh_token,
+    },
+    data,
+  }
+  return res.status(CodeSuccess.OK).json(response)
 }
