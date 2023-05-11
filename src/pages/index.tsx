@@ -14,11 +14,11 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Forum Vaccun - Home Page</title>
+        <title>Forum Vacuum - Home Page</title>
         <meta name="description" content="Comunidade de desenvolvimento" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Menu className="flex items-center justify-between flex-wrap px-20 theme-menu">
+      <Menu className="flex items-center justify-between flex-wrap px-20 bg-g06">
         <UserArea
           onClickEventOne={() => loginRef.current?.showModal()}
           onClickEventTwo={() => signUpRef.current?.showModal()}
@@ -26,7 +26,7 @@ export default function Home() {
       </Menu>
       <main className="flex my-8 gap-5 justify-center">
         <section className="flex flex-col gap-12">
-          <ul className="flex flex-col py-3 px-2 gap-5 rounded-md  theme-bg-content-grey-08">
+          <ul className="flex flex-col py-3 px-2 gap-5 rounded-md bg-g08">
             <li>
               <TagsInHigh
                 iconSelected
@@ -47,7 +47,7 @@ export default function Home() {
               />
             </li>
           </ul>
-          <ul className="flex flex-col py-3 px-2 gap-5 rounded-md  theme-bg-content-grey-08">
+          <ul className="flex flex-col py-3 px-2 gap-5 rounded-md  bg-g08">
             <h1 className="font-bold">tags populares</h1>
             <li>
               <TagsInHigh
