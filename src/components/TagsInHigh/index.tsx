@@ -1,4 +1,3 @@
-import { Hash } from '@phosphor-icons/react'
 import { FunctionComponent } from 'react'
 
 interface TagsInHighProps {
@@ -15,11 +14,8 @@ interface TagsInHighProps {
 const TagsInHigh: FunctionComponent<TagsInHighProps> = ({
   titleTag,
   descriptionTag,
-  alt,
   iconSelected,
-  width = 60,
-  height = 60,
-  icon = <Hash />,
+  icon,
   followsAmount,
 }: TagsInHighProps) => {
   return (
@@ -32,9 +28,7 @@ const TagsInHigh: FunctionComponent<TagsInHighProps> = ({
             <div className="absolute bottom-3 text-white right-[-20px] text-xs text-center align-middle rounded-[30%] bg-purple-600 w-4 h-4">
               {followsAmount}
             </div>
-          ) : (
-            <></>
-          )}
+          ) : null}
         </span>
         <p>{descriptionTag}</p>
       </div>
