@@ -10,3 +10,9 @@ export interface UserProfileModel {
 export interface UserIdModel {
   id: UUID
 }
+
+export interface UserCreateModel {
+  email: string
+  password: string
+  name: string
+}
