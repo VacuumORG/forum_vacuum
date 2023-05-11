@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '~/lib/connection'
 import { guard } from '~/lib/httpVerbGuard'
 import { CodeClientError, CodeServerError, CodeSuccess } from '~/lib/statusCode'
+import { TokenResponseModel } from '~/models/auth'
 import { UserCreateModel } from '~/models/profile'
 
 export default async function handler(
@@ -38,7 +39,9 @@ export default async function handler(
     token: {
       user_id: data.user!.id,
       refresh_token: data.session!.refresh_token,
+      access_token: data.session!.access_token,
+      token_type: data.session!.token_type,
     },
-  }
+  } as TokenResponseModel
   return res.status(CodeSuccess.OK).json(response)
 }
