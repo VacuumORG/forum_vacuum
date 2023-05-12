@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '~/lib/connection'
 import { CodeClientError, CodeServerError, CodeSuccess } from '~/lib/statusCode'
-import { TopicModel } from '~/models/topics/TopicModel'
+import { ListAllTopicsModel } from '~/models/topic'
 
 export default async function handler(
   _req: NextApiRequest,
@@ -11,7 +11,7 @@ export default async function handler(
     qtdTopics = 20,
     orderBy = 'created_at',
     startTopic = 0,
-  } = _req.query as TopicModel
+  } = _req.query as ListAllTopicsModel
 
   if (_req.method != 'GET') {
     return res

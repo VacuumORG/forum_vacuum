@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react'
 import TextField from '../TextField'
 import Button from '../Button'
-import Image from 'next/image'
+import { EnvelopeSimple } from '@phosphor-icons/react'
 
 interface ForgotPasswordProps {}
 
@@ -27,7 +27,14 @@ const ForgotPassword: FunctionComponent<ForgotPasswordProps> = () => {
         <TextField
           id="email"
           type="email"
-          icon={<Image width={24} height={24} src="/mail.svg" alt="" />}
+          icon={
+            <EnvelopeSimple
+              width={24}
+              height={24}
+              weight="bold"
+              alt="Envelope Simple"
+            />
+          }
           label="e-mail"
           placeholder="Seu email"
           required
