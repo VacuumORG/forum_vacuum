@@ -19,7 +19,9 @@ export default async function handler(
 
   const { data, error } = await supabase
     .from('profiles')
-    .select('id, name, topics (id, title, content, views, likes)')
+    .select(
+      'id, name, topics (id, title, content, views, likes), comments (id, content, likes)'
+    )
     .eq('id', req.query.id)
 
   if (error) {
