@@ -2,14 +2,6 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '~/lib/connection'
 import { CodeClientError, CodeServerError, CodeSuccess } from '~/lib/statusCode'
 
-/**
- * Uma função de manipulador de API que busca informações do banco de dados Supabase para um usuário específico,
- * especificado no parâmetro de consulta. Apenas permite solicitações GET.
- *
- * @param {NextApiRequest} req - A requisição HTTP recebida.
- * @param {NextApiResponse} res - A resposta HTTP.
- * @return {Promise<void>} - Uma Promessa que resolve quando a resposta foi enviada.
- */
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse

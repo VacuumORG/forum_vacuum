@@ -2,14 +2,6 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '~/lib/connection'
 import { CodeClientError, CodeServerError, CodeSuccess } from '~/lib/statusCode'
 
-/**
- * Um manipulador de rota da API que busca informações para um perfil específico
- * identificado pelo parâmetro de consulta id fornecido. Somente solicitações GET são permitidas.
- *
- * @param {NextApiRequest} req - Objeto da solicitação.
- * @param {NextApiResponse} res - Objeto de resposta.
- * @return {Promise<void>} Uma promessa que resolve quando a função termina de executar.
- */
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
