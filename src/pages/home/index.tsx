@@ -1,16 +1,12 @@
-import Login from '@/components/Login'
 import Menu from '@/components/Menu'
-import Modal from '@/components/Modal'
-import SignUp from '@/components/SignUp'
+import NewTopic from '@/components/NewTopic'
 import TagsInHigh from '@/components/TagsInHigh'
 import Topic from '@/components/Topic'
 import UserArea from '@/components/UserArea'
+import UserAvatar from '@/components/UserAvatar'
 import Head from 'next/head'
-import { useRef } from 'react'
 
 export default function Home() {
-  const loginRef = useRef<HTMLDialogElement>(null)
-  const signUpRef = useRef<HTMLDialogElement>(null)
   return (
     <>
       <Head>
@@ -20,13 +16,14 @@ export default function Home() {
       </Head>
       <Menu className="flex items-center justify-between flex-wrap px-20 bg-g06">
         <UserArea
-          onClickEventOne={() => loginRef.current?.showModal()}
-          onClickEventTwo={() => signUpRef.current?.showModal()}
+          icon={<UserAvatar alf="avatar do usuario" img="/user_avatar.png" />}
+          userName="rickchaves29"
+          message="bem vindo,"
         />
       </Menu>
       <main className="flex my-8 gap-5 justify-center">
         <section className="flex flex-col gap-12">
-          <ul className="flex flex-col py-3 px-2 gap-5 rounded-md bg-g08">
+          <ul className="flex flex-col py-3 px-2 gap-5 rounded-md  bg-g08">
             <li>
               <TagsInHigh
                 iconSelected
@@ -69,19 +66,9 @@ export default function Home() {
             </li>
           </ul>
         </section>
+
         <section className="flex flex-col gap-8">
-          <div>
-            <h1 className="text-2xl font-bold">Assuntos do Momento</h1>
-            <span>
-              <b
-                onClick={() => signUpRef.current?.showModal()}
-                className="text-[var(--default)] cursor-pointer"
-              >
-                Cadastre-se
-              </b>{' '}
-              para postar
-            </span>
-          </div>
+          <NewTopic username="rickchaves29" avatar="/user_avatar.png" />
           <ul className="flex flex-col gap-8">
             <li>
               <Topic
@@ -126,12 +113,6 @@ export default function Home() {
           </ul>
         </section>
       </main>
-      <Modal ref={loginRef}>
-        <Login />
-      </Modal>
-      <Modal ref={signUpRef}>
-        <SignUp />
-      </Modal>
     </>
   )
 }
