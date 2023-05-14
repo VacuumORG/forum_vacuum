@@ -15,7 +15,10 @@ export default async function handler(
 
   const { id: tagId } = _req.query as unknown as GetATagModel
 
-  const { data: tags, error } = await supabase.from('tags').select('id, name').eq('id', tagId!)
+  const { data: tags, error } = await supabase
+    .from('tags')
+    .select('id, name')
+    .eq('id', tagId!)
 
   if (error) {
     return res.status(CodeServerError.InternalServerError).json(error)
