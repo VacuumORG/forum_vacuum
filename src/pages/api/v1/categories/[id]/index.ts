@@ -7,8 +7,7 @@ export default async function handler(
   _req: NextApiRequest,
   res: NextApiResponse
 ) {
-
-  const { id } = _req.query as {id: UUID}
+  const { id } = _req.query as { id: UUID }
 
   if (_req.method !== 'GET') {
     return res
@@ -16,7 +15,10 @@ export default async function handler(
       .json({ message: 'Method not allowed' })
   }
 
-  const { data, error } = await supabase.from('categories').select('*').eq('id', id)
+  const { data, error } = await supabase
+    .from('categories')
+    .select('*')
+    .eq('id', id)
 
   if (error) {
     return res.status(CodeServerError.InternalServerError).json(error)
