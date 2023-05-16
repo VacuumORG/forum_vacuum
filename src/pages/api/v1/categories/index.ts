@@ -12,7 +12,7 @@ export default async function handler(
       .json({ message: 'Method not allowed' })
   }
 
-  const { data, error } = await supabase.from('categories').select('*')
+  const { data, error } = await supabase.from('categories').select('id, name')
 
   if (error) {
     return res.status(CodeServerError.InternalServerError).json(error)
