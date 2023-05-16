@@ -1,0 +1,3 @@
+- /api/v1/comments/$id:comment/get
+- /api/v1/comments/$id:comment/edit
+- /api/v1/comments/$id:comment/delete
