@@ -1,19 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next'
+import { TokenResponseModel } from '~/models/auth'
 import { supabase } from './connection'
-import { guard, httpVerb } from './httpVerbGuard'
 import { CodeClientError } from './statusCode'
 
-export async function auth(
-  req: NextApiRequest,
-  res: NextApiResponse,
-  ...httpVerbs: httpVerb[]
-) {
-  const released = guard(req, res, ...httpVerbs)
-  if (!released) return
-
-  let token = req.body.session as {
-    refresh_token: string
-  }
+export async function auth(req: NextApiRequest, res: NextApiResponse) {
+  const token = req.headers.authorization?.split(' ')[1]
 
   if (!token) {
     return res
@@ -24,7 +15,9 @@ export async function auth(
   const {
     data: { user, session },
     error,
-  } = await supabase.auth.refreshSession(token)
+  } = await supabase.auth.refreshSession({
+    refresh_token: token,
+  })
 
   if (error) {
     return res
@@ -32,5 +25,12 @@ export async function auth(
       .json({ message: 'Unauthorized' })
   }
 
-  return { session, user }
+  return {
+    token: {
+      user_id: user!.id,
+      refresh_token: session!.refresh_token,
+      access_token: session!.access_token,
+      token_type: session!.token_type,
+    },
+  } as TokenResponseModel
 }
