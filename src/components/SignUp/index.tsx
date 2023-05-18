@@ -38,7 +38,7 @@ const SignUp: FunctionComponent<SignUpProps> = () => {
             height={16}
             className="mr-1 fill-white cursor-pointer align-text-top"
           />
-          <a className="theme-text text-xs">voltar</a>
+          <a className="theme-text text-xs cursor-pointer">voltar</a>
         </div>
         <p className="theme-text text-xs">Etapa 1 de 3</p>
       </div>
