@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from 'react'
+import { FunctionComponent, RefObject, useState } from 'react'
 import TextField from '../TextField'
 import Button from '../Button'
 import {
@@ -8,7 +8,9 @@ import {
   EyeSlash,
 } from '@phosphor-icons/react'
 
-interface LoginProps {}
+interface LoginProps {
+  modalRef?: RefObject<HTMLDialogElement> 
+}
 
 const Login: FunctionComponent<LoginProps> = () => {
   const [inputType, setInputType] = useState('password')
