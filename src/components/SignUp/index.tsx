@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from 'react'
+import { FunctionComponent, RefObject, useState } from 'react'
 import TextField from '../TextField'
 import Button from '../Button'
 import {
@@ -9,9 +9,12 @@ import {
   CaretLeft,
 } from '@phosphor-icons/react'
 
-interface SignUpProps {}
+interface SignUpProps {
+  modalRef?: RefObject<HTMLDialogElement>
+  nextStep?: () => void
+}
 
-const SignUp: FunctionComponent<SignUpProps> = () => {
+const SignUp: FunctionComponent<SignUpProps> = ({modalRef, nextStep}) => {
   const [inputType, setInputType] = useState('password')
   const [eyeOpen, setEyeOpen] = useState(true)
 
@@ -26,6 +29,7 @@ const SignUp: FunctionComponent<SignUpProps> = () => {
   }
   function handlerSignUp(e: any) {
     e.preventDefault()
+    nextStep!()
   }
 
   return (
@@ -38,7 +42,7 @@ const SignUp: FunctionComponent<SignUpProps> = () => {
             height={16}
             className="mr-1 fill-white cursor-pointer align-text-top"
           />
-          <a className="theme-text text-xs">voltar</a>
+          <a className="theme-text text-xs" onClick={() => modalRef?.current?.close()}>voltar</a>
         </div>
         <p className="theme-text text-xs">Etapa 1 de 3</p>
       </div>
