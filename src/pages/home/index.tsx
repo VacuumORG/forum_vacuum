@@ -5,6 +5,7 @@ import Topic from '@/components/Topic'
 import UserArea from '@/components/UserArea'
 import UserAvatar from '@/components/UserAvatar'
 import Head from 'next/head'
+import { Spinner, Star } from '@phosphor-icons/react'
 
 export default function Home() {
   return (
@@ -27,42 +28,40 @@ export default function Home() {
             <li>
               <TagsInHigh
                 iconSelected
-                width={35}
-                height={35}
-                alt="icones da tag de topics mais recentes"
                 titleTag="mais recentes"
+                descriptionTag="veja as últimas postagens"
+                icon={
+                  <Spinner
+                    width={35}
+                    height={35}
+                    alt="icones da tag de topics mais recentes"
+                  />
+                }
               />
             </li>
             <li>
               <TagsInHigh
                 followsAmount={8}
                 iconSelected
-                width={35}
-                height={35}
-                alt="icones da tag de topics mais recentes"
                 titleTag="populares"
+                descriptionTag="postagens mais acessadas hoje"
+                icon={
+                  <Star
+                    width={35}
+                    height={35}
+                    alt="icones da tag de topics mais recentes"
+                  />
+                }
               />
             </li>
           </ul>
           <ul className="flex flex-col py-3 px-2 gap-5 rounded-md  bg-g08">
             <h1 className="font-bold">tags populares</h1>
             <li>
-              <TagsInHigh
-                iconSelected={false}
-                width={35}
-                height={35}
-                alt="icones da tag de topics mais recentes"
-                titleTag="mais recentes"
-              />
+              <TagsInHigh iconSelected={false} titleTag="mais recentes" />
             </li>
             <li>
-              <TagsInHigh
-                iconSelected
-                width={35}
-                height={35}
-                alt="icones da tag de topics mais recentes"
-                titleTag="populares"
-              />
+              <TagsInHigh iconSelected titleTag="populares" />
             </li>
           </ul>
         </section>
