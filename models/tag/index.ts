@@ -1,5 +1,7 @@
+import { UUID } from 'crypto'
+
 export interface GetATagModel {
-  id: number
+  id: UUID
   name: string
 }
 
