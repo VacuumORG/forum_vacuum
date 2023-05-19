@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { forwardRef } from 'react'
 
 interface ModalProps {
-  children?: React.ReactNode;
+  children?: React.ReactNode
 }
 
 const Modal = forwardRef<HTMLDialogElement, ModalProps>(function Modal(

@@ -8,7 +8,10 @@ interface SignUpAvatarProps {
   backStep?: () => void
 }
 
-const SignUpAvatar: FunctionComponent<SignUpAvatarProps> = ({backStep, modalRef}) => {
+const SignUpAvatar: FunctionComponent<SignUpAvatarProps> = ({
+  backStep,
+  modalRef,
+}) => {
   const [selectedImage, setSelectedImage] = useState('')
   const [selectedFile, setSelectedFile] = useState<File>()
 
@@ -27,7 +30,12 @@ const SignUpAvatar: FunctionComponent<SignUpAvatarProps> = ({backStep, modalRef}
             height={16}
             className="mr-1 fill-white cursor-pointer align-text-top"
           />
-          <a className="theme-text text-xs cursor-pointer" onClick={() => backStep!()}>voltar</a>
+          <a
+            className="theme-text text-xs cursor-pointer"
+            onClick={() => backStep!()}
+          >
+            voltar
+          </a>
         </div>
         <p className="theme-text text-xs">Etapa 3 de 3</p>
       </div>
@@ -79,7 +87,7 @@ const SignUpAvatar: FunctionComponent<SignUpAvatarProps> = ({backStep, modalRef}
       <p
         className="theme-text text-xs mt-2 mb-3 flex 
  justify-center items-center cursor-pointer"
- onClick={() => modalRef?.current?.close()}
+        onClick={() => modalRef?.current?.close()}
       >
         Pular esta etapa
       </p>

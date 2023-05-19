@@ -25,7 +25,7 @@ const CodeAuthBox: FunctionComponent<CodeAuthBoxProps> = ({
   emailUser,
   required,
   nextStep,
-  backStep
+  backStep,
 }: CodeAuthBoxProps) => {
   const [numbers, setNumbers] = useState<Array<string>>([
     '',
@@ -88,7 +88,12 @@ const CodeAuthBox: FunctionComponent<CodeAuthBoxProps> = ({
             height={16}
             className="mr-1 fill-white cursor-pointer align-text-top"
           />
-          <a className="theme-text text-xs cursor-pointer" onClick={() => backStep!()}>voltar</a>
+          <a
+            className="theme-text text-xs cursor-pointer"
+            onClick={() => backStep!()}
+          >
+            voltar
+          </a>
         </div>
 
         <p className="theme-text text-xs">Etapa 2 de 3</p>

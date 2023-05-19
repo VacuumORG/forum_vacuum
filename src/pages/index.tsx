@@ -17,10 +17,10 @@ export default function Home() {
   const [step, setStep] = useState<number>(1)
 
   const nextStep = () => {
-    setStep(c => c === 3 ? 3 : c + 1)
+    setStep((c) => (c === 3 ? 3 : c + 1))
   }
   const backStep = () => {
-    setStep(c => c === 1 ? 1 : c - 1)
+    setStep((c) => (c === 1 ? 1 : c - 1))
   }
   return (
     <>
@@ -142,8 +142,16 @@ export default function Home() {
       </Modal>
       <Modal ref={signUpRef}>
         {step === 1 && <SignUp modalRef={signUpRef} nextStep={nextStep} />}
-        {step === 2 && <CodeAuthBox modalRef={signUpRef} nextStep={nextStep} backStep={backStep} />}
-        {step === 3 && <SignUpAvatar modalRef={signUpRef} backStep={backStep} />}
+        {step === 2 && (
+          <CodeAuthBox
+            modalRef={signUpRef}
+            nextStep={nextStep}
+            backStep={backStep}
+          />
+        )}
+        {step === 3 && (
+          <SignUpAvatar modalRef={signUpRef} backStep={backStep} />
+        )}
       </Modal>
     </>
   )
