@@ -11,7 +11,6 @@ import Head from 'next/head'
 import { Spinner, Star } from '@phosphor-icons/react'
 import { useRef, useState } from 'react'
 
-
 export default function Home() {
   const loginRef = useRef<HTMLDialogElement>(null)
   const signUpRef = useRef<HTMLDialogElement>(null)
