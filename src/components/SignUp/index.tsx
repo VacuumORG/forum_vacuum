@@ -116,21 +116,8 @@ const SignUp: FunctionComponent<SignUpProps> = () => {
             />
           )}
         </TextField>
-
-        <p className="theme-text text-xs mb-3">
-          Ao cadastrar, você concorda com nossos
-          <span className="theme-text-purple font-bold">
-            {' '}
-            Termos & Condições{' '}
-          </span>
-          e as
-          <span className="theme-text-purple font-bold">
-            {' '}
-            Políticas de Privacidade
-          </span>
-        </p>
         <Button
-          className="theme-btn p-1 rounded"
+          className="theme-btn p-1 mt-5 rounded"
           type="submit"
           title="cadastre-se"
         />
