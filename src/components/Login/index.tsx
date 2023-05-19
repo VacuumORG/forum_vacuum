@@ -9,7 +9,7 @@ import {
 } from '@phosphor-icons/react'
 
 interface LoginProps {
-  modalRef?: RefObject<HTMLDialogElement> 
+  modalRef?: RefObject<HTMLDialogElement>
 }
 
 const Login: FunctionComponent<LoginProps> = () => {
