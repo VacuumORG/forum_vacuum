@@ -124,8 +124,6 @@ input[type='number'] {
 .tag > svg {
   fill: var(--whiteOnPrimary);
   background-color: var(--grey08);
-  width: 25px;
-  height: 25px;
   padding: 4px;
 }
 .tag:hover {
@@ -134,8 +132,6 @@ input[type='number'] {
 .tag:hover > svg {
   fill: var(--default);
   background-color: transparent;
-  width: 25px;
-  height: 25px;
   padding: 4px;
 }
 .tag > div > :first-child {
@@ -158,4 +154,7 @@ input[type='number'] {
 }
 .theme-color-input {
   color: black;
+}
+.theme-color-description-tag-high {
+  color: var(--grey09);
 }
