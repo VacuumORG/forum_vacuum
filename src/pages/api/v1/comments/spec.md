@@ -1,3 +1,5 @@
-- /api/v1/comments/$id:comment/get
-- /api/v1/comments/$id:comment/edit
-- /api/v1/comments/$id:comment/delete
+- /api/v1/comments/
+- /api/v1/comments/
+- /api/v1/comments/$id:comment/
+- /api/v1/comments/$id:comment/
+- /api/v1/comments/$id:comment/
