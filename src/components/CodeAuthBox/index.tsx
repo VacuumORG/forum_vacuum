@@ -4,6 +4,7 @@ import {
   useState,
   ChangeEvent,
   FormEvent,
+  RefObject,
 } from 'react'
 import { CaretLeft } from '@phosphor-icons/react'
 import Button from '../Button'
@@ -11,6 +12,9 @@ import Button from '../Button'
 interface CodeAuthBoxProps {
   emailUser?: string
   required?: boolean
+  modalRef?: RefObject<HTMLDialogElement>
+  nextStep?: () => void
+  backStep?: () => void
 }
 
 interface InputProps {
@@ -20,6 +24,8 @@ interface InputProps {
 const CodeAuthBox: FunctionComponent<CodeAuthBoxProps> = ({
   emailUser,
   required,
+  nextStep,
+  backStep,
 }: CodeAuthBoxProps) => {
   const [numbers, setNumbers] = useState<Array<string>>([
     '',
@@ -66,6 +72,7 @@ const CodeAuthBox: FunctionComponent<CodeAuthBoxProps> = ({
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    nextStep!()
   }
 
   return (
@@ -81,7 +88,12 @@ const CodeAuthBox: FunctionComponent<CodeAuthBoxProps> = ({
             height={16}
             className="mr-1 fill-white cursor-pointer align-text-top"
           />
-          <a className="theme-text text-xs cursor-pointer">voltar</a>
+          <a
+            className="theme-text text-xs cursor-pointer"
+            onClick={() => backStep!()}
+          >
+            voltar
+          </a>
         </div>
 
         <p className="theme-text text-xs">Etapa 2 de 3</p>

@@ -1,16 +1,27 @@
+import CodeAuthBox from '@/components/CodeAuthBox'
 import Login from '@/components/Login'
 import Menu from '@/components/Menu'
 import Modal from '@/components/Modal'
 import SignUp from '@/components/SignUp'
+import SignUpAvatar from '@/components/SignUpAvatar'
 import TagsInHigh from '@/components/TagsInHigh'
 import Topic from '@/components/Topic'
 import UserArea from '@/components/UserArea'
 import Head from 'next/head'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 export default function Home() {
   const loginRef = useRef<HTMLDialogElement>(null)
   const signUpRef = useRef<HTMLDialogElement>(null)
+
+  const [step, setStep] = useState<number>(1)
+
+  const nextStep = () => {
+    setStep((c) => (c === 3 ? 3 : c + 1))
+  }
+  const backStep = () => {
+    setStep((c) => (c === 1 ? 1 : c - 1))
+  }
   return (
     <>
       <Head>
@@ -130,7 +141,17 @@ export default function Home() {
         <Login />
       </Modal>
       <Modal ref={signUpRef}>
-        <SignUp />
+        {step === 1 && <SignUp modalRef={signUpRef} nextStep={nextStep} />}
+        {step === 2 && (
+          <CodeAuthBox
+            modalRef={signUpRef}
+            nextStep={nextStep}
+            backStep={backStep}
+          />
+        )}
+        {step === 3 && (
+          <SignUpAvatar modalRef={signUpRef} backStep={backStep} />
+        )}
       </Modal>
     </>
   )
