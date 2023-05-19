@@ -1,16 +1,23 @@
-import { FunctionComponent, useState } from 'react'
+import { FunctionComponent, RefObject, useState } from 'react'
 import Button from '../Button'
 import Image from 'next/image'
 import { User, CaretLeft } from '@phosphor-icons/react'
 
-interface SignUpAvatarProps {}
+interface SignUpAvatarProps {
+  modalRef?: RefObject<HTMLDialogElement>
+  backStep?: () => void
+}
 
-const SignUpAvatar: FunctionComponent<SignUpAvatarProps> = () => {
+const SignUpAvatar: FunctionComponent<SignUpAvatarProps> = ({
+  backStep,
+  modalRef,
+}) => {
   const [selectedImage, setSelectedImage] = useState('')
   const [selectedFile, setSelectedFile] = useState<File>()
 
   function handlerSignUpAvatar(e: any) {
     e.preventDefault()
+    modalRef?.current?.close()
   }
 
   return (
@@ -23,7 +30,12 @@ const SignUpAvatar: FunctionComponent<SignUpAvatarProps> = () => {
             height={16}
             className="mr-1 fill-white cursor-pointer align-text-top"
           />
-          <a className="theme-text text-xs cursor-pointer">voltar</a>
+          <a
+            className="theme-text text-xs cursor-pointer"
+            onClick={() => backStep!()}
+          >
+            voltar
+          </a>
         </div>
         <p className="theme-text text-xs">Etapa 3 de 3</p>
       </div>
@@ -75,6 +87,7 @@ const SignUpAvatar: FunctionComponent<SignUpAvatarProps> = () => {
       <p
         className="theme-text text-xs mt-2 mb-3 flex 
  justify-center items-center cursor-pointer"
+        onClick={() => modalRef?.current?.close()}
       >
         Pular esta etapa
       </p>
