@@ -2,14 +2,14 @@ import { FunctionComponent } from 'react'
 import Tag from '../Tag'
 
 interface TagsListProps {
-  tagsList: string[]
+  list: string[]
 }
 
-const TagList: FunctionComponent<TagsListProps> = ({ tagsList }) => {
+const TagList: FunctionComponent<TagsListProps> = ({ list }) => {
   return (
     <li>
-      {tagsList.map((tag) => (
-        <Tag nameTag={tag} />
+      {list.map((tag) => (
+        <Tag key={tag} nameTag={tag} />
       ))}
     </li>
   )
