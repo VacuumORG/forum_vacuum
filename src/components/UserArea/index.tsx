@@ -20,18 +20,14 @@ const UserArea: FunctionComponent<UserAreaProps> = ({
 }) => {
   return (
     <div className="flex items-center">
-
-      
       <Popover>
-      <Popover.Button>
-        <div className="flex-shrink-0">{icon}</div>
-      </Popover.Button>
-      <Popover.Panel className='absolute'>
-        <UserOptions />
-      </Popover.Panel>
-      
-    </Popover>
-
+        <Popover.Button>
+          <div className="flex-shrink-0">{icon}</div>
+        </Popover.Button>
+        <Popover.Panel className="absolute">
+          <UserOptions />
+        </Popover.Panel>
+      </Popover>
 
       <div className="ml-3 font-bold flex flex-col items-start">
         <button onClick={onClickEventOne} className="text-sm font-bold">

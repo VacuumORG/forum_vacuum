@@ -5,7 +5,7 @@ interface Props {
   userName?: string
 }
 
-const UserOptions: FunctionComponent = ({ userName='UserName' }: Props) => {
+const UserOptions: FunctionComponent = ({ userName = 'UserName' }: Props) => {
   return (
     <div className="bg-g08 flex flex-col rounded w-[180px] pt-[10px] pl-[10px] pb-[15px] gap-[20px]">
       <div className="flex items-center gap-1">
