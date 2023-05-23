@@ -1,5 +1,6 @@
 import { FunctionComponent, RefObject, useState } from 'react'
 import TextField from '../TextField'
+import MaskedTelField from '../TextField/MaskedTelField'
 import Button from '../Button'
 import {
   EnvelopeSimple,
@@ -69,12 +70,13 @@ const SignUp: FunctionComponent<SignUpProps> = ({ modalRef, nextStep }) => {
             placeholder="Seu nome de usuário"
             required
           />
-          <TextField
+          <MaskedTelField
             id="phone"
             type="tel"
             label="telefone"
             placeholder="+55 71 99999-9999"
             required
+            maxLength={19}
           />
         </div>
         <TextField
