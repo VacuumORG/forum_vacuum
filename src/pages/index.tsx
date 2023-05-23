@@ -11,8 +11,6 @@ import Head from 'next/head'
 import { Spinner, Star } from '@phosphor-icons/react'
 import { useRef, useState } from 'react'
 
-import Markdown from '@/components/Markdown'
-
 export default function Home() {
   const loginRef = useRef<HTMLDialogElement>(null)
   const signUpRef = useRef<HTMLDialogElement>(null)
@@ -95,11 +93,6 @@ export default function Home() {
             </span>
           </div>
           <ul className="flex flex-col gap-8">
-            {/* apagar aqui */}
-            <h1>Sera que vai?</h1>
-            <Markdown />
-            {/* apagar aqui */}
-
             <li>
               <Topic
                 autor="henrique"
