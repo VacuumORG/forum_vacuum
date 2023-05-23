@@ -10,6 +10,7 @@ import UserArea from '@/components/UserArea'
 import Head from 'next/head'
 import { Spinner, Star } from '@phosphor-icons/react'
 import { useRef, useState } from 'react'
+import TagList from '@/components/TagsList'
 
 export default function Home() {
   const loginRef = useRef<HTMLDialogElement>(null)
