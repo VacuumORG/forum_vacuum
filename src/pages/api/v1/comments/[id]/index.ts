@@ -39,10 +39,7 @@ export default async function handler(
   return res.status(CodeSuccess.OK).json(data)
 }
 
-async function getCommentInformation(
-  _req: NextApiRequest,
-  id: UUID
-): Promise<{ data: any; error: any }> {
+async function getCommentInformation(_req: NextApiRequest, id: UUID) {
   const { data, error } = await supabase
     .from('comments')
     .select('*')
@@ -55,10 +52,10 @@ async function editComment(
   id: UUID
 ): Promise<{ data: any; error: any }> {
   // TODO: Atualizar essa rota para ter proteção do AuthGuard.
-  const { comment_update } = _req.body
+  const { content } = _req.body
   const { data, error } = await supabase
     .from('comments')
-    .update(comment_update)
+    .update({ content: content })
     .eq('id', id)
 
   return { data, error }
