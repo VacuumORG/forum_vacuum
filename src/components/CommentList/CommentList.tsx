@@ -1,5 +1,6 @@
 import { FunctionComponent } from 'react'
 import CommentsSessions from '../CommentsSessions'
+import { StaticImageData } from 'next/image'
 
 interface CommentData {
   id: string
@@ -7,6 +8,8 @@ interface CommentData {
   hora: string
   content: string
   like: number
+  user: string
+  userImage: StaticImageData
 }
 
 interface CommentListProps {
@@ -36,6 +39,8 @@ const CommentList: FunctionComponent<CommentListProps> = ({ comments }) => {
           hora={comment.hora}
           content={comment.content}
           like={comment.like}
+          user={comment.user}
+          userImage={comment.userImage}
         />
       ))}
     </section>
