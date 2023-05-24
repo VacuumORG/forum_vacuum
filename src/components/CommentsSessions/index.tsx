@@ -25,10 +25,9 @@ const CommentsSessions: FunctionComponent<CommentSessionsProps> = ({
   user,
   userImage,
 }) => {
-
   const [response, setResponse] = useState<boolean>(false)
 
-  const operator = response == true ? "response-active" : "response-disabled"
+  const operator = response == true ? 'response-active' : 'response-disabled'
 
   return (
     <article className="flex flex-col items-start mb-4">
@@ -45,14 +44,18 @@ const CommentsSessions: FunctionComponent<CommentSessionsProps> = ({
           </p>
           <div className="flex items-center">
             <UpvoteDownvote like={like} />
-            <Chat onClick={() => {setResponse(oldRes => !oldRes)}} size={32} className={`${operator} cursor-pointer response-chat`} />
+            <Chat
+              onClick={() => {
+                setResponse((oldRes) => !oldRes)
+              }}
+              size={32}
+              className={`${operator} cursor-pointer response-chat`}
+            />
           </div>
         </div>
-        
       </div>
 
       <Markdown response={response} userAvatar={userImage} userName={user} />
-
     </article>
   )
 }
