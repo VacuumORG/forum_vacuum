@@ -5,7 +5,7 @@ import { CreateTopicModel, ListAllTopicsModel } from '~/models/topic'
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse,
+  res: NextApiResponse
 ) {
   let response
 
@@ -31,7 +31,7 @@ export default async function handler(
   return res.status(CodeSuccess.OK).json(response.data)
 }
 
-async function getTopics(req: NextApiRequest){
+async function getTopics(req: NextApiRequest) {
   const {
     qtdTopics = 20,
     orderBy = 'created_at',
@@ -44,10 +44,10 @@ async function getTopics(req: NextApiRequest){
     .order(`${orderBy}`, { ascending: false })
     .range(startTopic, startTopic + qtdTopics)
 
-  return {data, error}
+  return { data, error }
 }
-async function createTopic(req: NextApiRequest){
-  const { title, content, user_id } = req.body as CreateTopicModel;
+async function createTopic(req: NextApiRequest) {
+  const { title, content, user_id } = req.body as CreateTopicModel
 
   const { data, error } = await supabase.from('topics').insert([
     {
@@ -57,5 +57,5 @@ async function createTopic(req: NextApiRequest){
     },
   ])
 
-  return {data, error}
+  return { data, error }
 }
