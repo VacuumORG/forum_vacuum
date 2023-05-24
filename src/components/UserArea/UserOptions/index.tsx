@@ -1,5 +1,6 @@
 import { FunctionComponent } from 'react'
 import { UserCircle } from '@phosphor-icons/react'
+import Link from 'next/link'
 
 interface Props {
   userName?: string
@@ -14,7 +15,9 @@ const UserOptions: FunctionComponent = ({ userName = 'UserName' }: Props) => {
         </div>
         <span className="block">{userName}</span>
       </div>
-      <span className="hover:text-default cursor-pointer">Configurações</span>
+      <Link href="/user-profile" className="hover:text-default cursor-pointer">
+        Configurações
+      </Link>
     </div>
   )
 }
