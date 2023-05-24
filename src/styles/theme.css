@@ -158,3 +158,15 @@ input[type='number'] {
 .theme-color-description-tag-high {
   color: var(--grey09);
 }
+.response-active {
+  color: var(--default);
+}
+.response-disabled {
+  color: var(--whitePrimary);
+}
+.response-chat:hover {
+  color: var(--default);
+}
+.response-chat {
+  transition: color 0.5s;
+}
