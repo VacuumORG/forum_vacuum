@@ -16,6 +16,7 @@
     "fmt:fix": "prettier --write --ignore-path .gitignore ."
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.14",
     "@phosphor-icons/react": "^2.0.9",
     "@supabase/supabase-js": "^2.21.0",
     "@types/node": "18.15.11",

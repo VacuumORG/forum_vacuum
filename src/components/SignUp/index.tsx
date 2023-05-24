@@ -1,5 +1,6 @@
 import { FunctionComponent, RefObject, useState } from 'react'
 import TextField from '../TextField'
+import MaskedTelField from '../TextField/MaskedTelField'
 import Button from '../Button'
 import {
   EnvelopeSimple,
@@ -69,12 +70,13 @@ const SignUp: FunctionComponent<SignUpProps> = ({ modalRef, nextStep }) => {
             placeholder="Seu nome de usuário"
             required
           />
-          <TextField
+          <MaskedTelField
             id="phone"
             type="tel"
             label="telefone"
             placeholder="+55 71 99999-9999"
             required
+            maxLength={19}
           />
         </div>
         <TextField
@@ -125,21 +127,8 @@ const SignUp: FunctionComponent<SignUpProps> = ({ modalRef, nextStep }) => {
             />
           )}
         </TextField>
-
-        <p className="theme-text text-xs mb-3">
-          Ao cadastrar, você concorda com nossos
-          <span className="theme-text-purple font-bold">
-            {' '}
-            Termos & Condições{' '}
-          </span>
-          e as
-          <span className="theme-text-purple font-bold">
-            {' '}
-            Políticas de Privacidade
-          </span>
-        </p>
         <Button
-          className="theme-btn p-1 rounded"
+          className="theme-btn p-1 mt-5 rounded"
           type="submit"
           title="cadastre-se"
         />
