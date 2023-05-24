@@ -1,31 +1,41 @@
-import {
-  FocusEventHandler,
-  FunctionComponent,
-  InputHTMLAttributes,
-  ReactNode,
+import React, {
   useState,
+  InputHTMLAttributes,
+  FunctionComponent,
+  ChangeEvent,
+  FocusEventHandler,
+  ReactNode,
 } from 'react'
 
-interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
-  id?: string
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
   label?: string
   icon?: JSX.Element
   children?: ReactNode
+  required?: boolean
   onFocusCapture?: FocusEventHandler<HTMLInputElement>
   onBlurCapture?: FocusEventHandler<HTMLInputElement>
-  className?: string
 }
 
-const TextField: FunctionComponent<TextFieldProps> = ({
+const MaskedTelField: FunctionComponent<Props> = ({
   id,
   label,
   icon,
   children,
+  type,
   onFocusCapture,
   onBlurCapture,
   className,
   ...rest
-}: TextFieldProps) => {
+}) => {
+  const [phone, setPhone] = useState<string>('')
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const phoneNumber = event.target.value
+      .replace(/\D/g, '')
+      .replace(/(\d{2})(\d)/, '+$1 $2')
+      .replace(/(\d{2})(\d)/, '($1) $2')
+      .replace(/(\d)(\d{4})$/, '$1-$2')
+    setPhone(phoneNumber)
+  }
   const [border, setBorder] = useState('1px solid transparent')
   return (
     <div className={className}>
@@ -40,8 +50,10 @@ const TextField: FunctionComponent<TextFieldProps> = ({
       >
         {icon}
         <input
+          type="tel"
+          onChange={handleChange}
+          value={phone}
           name="input"
-          id={id}
           className="focus:outline-none items-stretch w-full h-full px-2 text-[100%]"
           onFocus={() => {
             setBorder('1px solid var(--default)')
@@ -60,4 +72,4 @@ const TextField: FunctionComponent<TextFieldProps> = ({
   )
 }
 
-export default TextField
+export default MaskedTelField
