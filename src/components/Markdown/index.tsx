@@ -9,16 +9,17 @@ import {
   CaretDown,
 } from '@phosphor-icons/react'
 import UserAvatar from '../UserAvatar'
-import { StaticImageData } from 'next/image'
 
 interface MarkdownProps {
   userName: string
-  userAvatar: StaticImageData
+  userAvatar: string
+  response: boolean
 }
 
 const Markdown: FunctionComponent<MarkdownProps> = ({
   userName,
   userAvatar,
+  response,
 }) => {
   const [comment, setComment] = useState('')
   const [isBold, setIsBold] = useState<boolean>(false)
@@ -79,8 +80,10 @@ const Markdown: FunctionComponent<MarkdownProps> = ({
     }
   }
 
+  const operator = response == true ? 'block' : 'hidden'
+
   return (
-    <div className="bg-g08 rounded p-3 min-h-96 max-w-xl">
+    <div className={`${operator} bg-g08 rounded p-3 min-h-96 max-w-xl`}>
       <div className="flex gap-2 items-center justify-between mb-2">
         <div className="flex gap-2 items-center">
           <UserAvatar img={userAvatar} alf={userName} />
