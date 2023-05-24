@@ -5,7 +5,8 @@ import { ListAllTopicsModel } from '~/models/topic'
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
+  request: Request
 ) {
   let response
 
@@ -47,4 +48,8 @@ async function getTopics(req: NextApiRequest){
   return {data, error}
 }
 async function createTopic(req: NextApiRequest){
+  const error = undefined
+  const bodyReq = req.body
+  const data = {data: bodyReq}
+  return {data, error}
 }
