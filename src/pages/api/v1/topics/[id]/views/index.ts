@@ -7,8 +7,20 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method !== 'PATCH') {
-    return res
+  let response;
+
+  const { id } = req.query as { id: UUID }
+
+  switch(req.method) {
+    case "PATCH":
+      response = await updateViewsInTopic(id)
+      break
+    case "GET":
+      response = await getCountViewsInTopic(id)
+      break
+
+    default:
+      return res
       .status(CodeClientError.MethodNotAllowed)
       .json({ message: 'Method not allowed' })
   }
@@ -17,19 +29,28 @@ export default async function handler(
   // NOTE: The AuthGuard is broken, so it is not being used.
 
   // TODO: Specify which information to fetch for each post on this route.
-  const { id } = req.query as { id: UUID }
+  
 
+    if (response.error) {
+      return res.status(CodeServerError.InternalServerError).json(response.error)
+    }
+
+    return res.status(CodeSuccess.OK).json(response.data)
+}
+
+async function updateViewsInTopic(id: UUID): Promise<{data: any, error: any}> {
   const { data: topicsN, error: topicsError } = await supabase
     .from('topics')
     .select('views')
     .eq('id', id)
+    .single()
 
   let newNumberViews: number
 
   if (topicsError) {
-    // Tratamento do Erro
-  } else if (topicsN && topicsN.length > 0) {
-    const currentViews = topicsN[0].views
+    return { data:topicsN, error: topicsError  }
+  }
+  const currentViews = topicsN.views
 
     newNumberViews = currentViews + 1
 
@@ -38,10 +59,15 @@ export default async function handler(
       .update({ views: newNumberViews })
       .eq('id', id)
 
-    if (error) {
-      return res.status(CodeServerError.InternalServerError).json(error)
-    }
+    return {data: newNumberViews, error}
+}
 
-    return res.status(CodeSuccess.OK).json(data)
-  }
+async function getCountViewsInTopic(id: UUID) {
+  const { data, error } = await supabase
+    .from('topics')
+    .select('views')
+    .eq('id', id)
+    .single()
+
+  return {data: data?.views, error}
 }
