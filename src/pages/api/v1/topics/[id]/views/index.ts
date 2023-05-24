@@ -7,38 +7,39 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  let response;
+  let response
 
   const { id } = req.query as { id: UUID }
 
-  switch(req.method) {
-    case "PATCH":
+  switch (req.method) {
+    case 'PATCH':
       response = await updateViewsInTopic(id)
       break
-    case "GET":
+    case 'GET':
       response = await getCountViewsInTopic(id)
       break
 
     default:
       return res
-      .status(CodeClientError.MethodNotAllowed)
-      .json({ message: 'Method not allowed' })
+        .status(CodeClientError.MethodNotAllowed)
+        .json({ message: 'Method not allowed' })
   }
 
   // TODO: Check if user is authenticated with AuthGuard from lib/authGuard.ts
   // NOTE: The AuthGuard is broken, so it is not being used.
 
   // TODO: Specify which information to fetch for each post on this route.
-  
 
-    if (response.error) {
-      return res.status(CodeServerError.InternalServerError).json(response.error)
-    }
+  if (response.error) {
+    return res.status(CodeServerError.InternalServerError).json(response.error)
+  }
 
-    return res.status(CodeSuccess.OK).json(response.data)
+  return res.status(CodeSuccess.OK).json(response.data)
 }
 
-async function updateViewsInTopic(id: UUID): Promise<{data: any, error: any}> {
+async function updateViewsInTopic(
+  id: UUID
+): Promise<{ data: any; error: any }> {
   const { data: topicsN, error: topicsError } = await supabase
     .from('topics')
     .select('views')
@@ -48,18 +49,18 @@ async function updateViewsInTopic(id: UUID): Promise<{data: any, error: any}> {
   let newNumberViews: number
 
   if (topicsError) {
-    return { data:topicsN, error: topicsError  }
+    return { data: topicsN, error: topicsError }
   }
   const currentViews = topicsN.views
 
-    newNumberViews = currentViews + 1
+  newNumberViews = currentViews + 1
 
-    const { data, error } = await supabase
-      .from('topics')
-      .update({ views: newNumberViews })
-      .eq('id', id)
+  const { data, error } = await supabase
+    .from('topics')
+    .update({ views: newNumberViews })
+    .eq('id', id)
 
-    return {data: newNumberViews, error}
+  return { data: newNumberViews, error }
 }
 
 async function getCountViewsInTopic(id: UUID) {
@@ -69,5 +70,5 @@ async function getCountViewsInTopic(id: UUID) {
     .eq('id', id)
     .single()
 
-  return {data: data?.views, error}
+  return { data: data?.views, error }
 }
