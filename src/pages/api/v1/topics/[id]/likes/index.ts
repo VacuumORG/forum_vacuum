@@ -17,7 +17,7 @@ export default async function handler(
       response = await updateLikes(id)
       break
     case 'GET':
-      response = await getCountLikes(id);
+      response = await getCountLikes(id)
 
     default:
       return res
@@ -49,10 +49,10 @@ async function updateLikes(id: UUID) {
     .update({ likes: update_likes })
     .eq('id', id)
 
-  return { data: update_likes, error: updateError}
+  return { data: update_likes, error: updateError }
 }
 
-async function getCountLikes(id: UUID){
+async function getCountLikes(id: UUID) {
   const { data, error } = await getTopicById(id)
 
   return { data: data.likes, error }

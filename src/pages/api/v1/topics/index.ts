@@ -1,12 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '~/lib/connection'
 import { CodeClientError, CodeServerError, CodeSuccess } from '~/lib/statusCode'
-import { ListAllTopicsModel } from '~/models/topic'
+import { CreateTopicModel, ListAllTopicsModel } from '~/models/topic'
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-  request: Request
 ) {
   let response
 
@@ -42,14 +41,21 @@ async function getTopics(req: NextApiRequest){
   const { data, error } = await supabase
     .from('topics')
     .select('*')
-    .order(`${orderBy}`, { ascending: true })
-    .range(startTopic, startTopic + qtdTopics - 1)
+    .order(`${orderBy}`, { ascending: false })
+    .range(startTopic, startTopic + qtdTopics)
 
   return {data, error}
 }
 async function createTopic(req: NextApiRequest){
-  const error = undefined
-  const bodyReq = req.body
-  const data = {data: bodyReq}
+  const { title, content, user_id } = req.body as CreateTopicModel;
+
+  const { data, error } = await supabase.from('topics').insert([
+    {
+      title: title,
+      content: content,
+      user_id: user_id,
+    },
+  ])
+
   return {data, error}
 }
