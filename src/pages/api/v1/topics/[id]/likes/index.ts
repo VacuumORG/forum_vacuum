@@ -14,14 +14,22 @@ export default async function handler(
 
   switch (_req.method) {
     case 'PATCH':
-      response = await updateLikes(res, id)
+      response = await updateLikes(id)
       break
+    case 'GET':
+      response = await getCountLikes(id);
 
     default:
       return res
         .status(CodeClientError.MethodNotAllowed)
         .json({ message: 'Method not allowed' })
   }
+
+  if (response.error) {
+    return res.status(CodeServerError.InternalServerError).json(response.error)
+  }
+
+  return res.status(CodeSuccess.OK).json(response.data)
 }
 
 async function getTopicById(id: UUID): Promise<{ data: any; error: any }> {
@@ -33,7 +41,7 @@ async function getTopicById(id: UUID): Promise<{ data: any; error: any }> {
   return { data, error }
 }
 
-async function updateLikes(res: NextApiResponse, id: UUID) {
+async function updateLikes(id: UUID) {
   const { data } = await getTopicById(id)
   const update_likes = data.likes + 1
   const { error: updateError } = await supabase
@@ -41,12 +49,11 @@ async function updateLikes(res: NextApiResponse, id: UUID) {
     .update({ likes: update_likes })
     .eq('id', id)
 
-  if (updateError) {
-    return res.status(CodeServerError.InternalServerError).json(updateError)
-  }
+  return { data: update_likes, error: updateError}
+}
 
-  return res.status(CodeSuccess.OK).json({
-    id: data.id,
-    likes: update_likes,
-  })
+async function getCountLikes(id: UUID){
+  const { data, error } = await getTopicById(id)
+
+  return { data: data.likes, error }
 }
