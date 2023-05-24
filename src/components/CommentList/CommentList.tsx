@@ -1,6 +1,5 @@
 import { FunctionComponent } from 'react'
 import CommentsSessions from '../CommentsSessions'
-import { StaticImageData } from 'next/image'
 
 interface CommentData {
   id: string
@@ -9,7 +8,7 @@ interface CommentData {
   content: string
   like: number
   user: string
-  userImage: StaticImageData
+  userImage: string
 }
 
 interface CommentListProps {
