@@ -13,7 +13,7 @@ interface CommentSessionsProps {
   id: string
   like: number
   user: string
-  userImage: StaticImageData
+  userImage: string
 }
 
 const CommentsSessions: FunctionComponent<CommentSessionsProps> = ({
@@ -49,7 +49,7 @@ const CommentsSessions: FunctionComponent<CommentSessionsProps> = ({
                 setResponse((oldRes) => !oldRes)
               }}
               size={32}
-              className={`${operator} cursor-pointer response-chat`}
+              className={`${operator} cursor-pointer response-chat `}
             />
           </div>
         </div>
