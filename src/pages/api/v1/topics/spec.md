@@ -2,7 +2,7 @@
 
 | Verbos | Protegida | Rota                              | Descrição                                                                        |
 | ------ | --------- | --------------------------------- | -------------------------------------------------------------------------------- |
-| POST   | Não       | /api/v1/topics                    | Esta rota é usada para criar u tópico.                                           |
+| POST   | Não       | /api/v1/topics                    | Esta rota é usada para criar o tópico.                                           |
 | GET    | Não       | /api/v1/topics                    | Esta rota retorna todos os tópicos com parâmetros.                               |
 | GET    | Não       | /api/v1/topics/$id:topic          | Esta rota retorna informações sobre um tópico específico.                        |
 | GET    | Não       | /api/v1/topics/$id:topic/comments | Esta rota retorna uma lista de commentários de acordo com um tópcio específico.  |
