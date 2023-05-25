@@ -9,6 +9,7 @@ import {
   EyeSlash,
   CaretLeft,
 } from '@phosphor-icons/react'
+import { createProfile } from '@/api/services/profileService'
 
 interface SignUpProps {
   modalRef?: RefObject<HTMLDialogElement>
@@ -18,6 +19,9 @@ interface SignUpProps {
 const SignUp: FunctionComponent<SignUpProps> = ({ modalRef, nextStep }) => {
   const [inputType, setInputType] = useState('password')
   const [eyeOpen, setEyeOpen] = useState(true)
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   function changeInputTypeWhenClickBtnAndSwitchIcon() {
     if (inputType == 'password') {
@@ -28,8 +32,15 @@ const SignUp: FunctionComponent<SignUpProps> = ({ modalRef, nextStep }) => {
       setEyeOpen(false)
     }
   }
-  function handlerSignUp(e: any) {
+  async function handlerSignUp(e: any) {
     e.preventDefault()
+    try {
+      await createProfile({
+        email,
+        password,
+        name,
+      })
+    } catch (error) {}
     nextStep!()
   }
 
@@ -69,6 +80,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({ modalRef, nextStep }) => {
             label="nome de usuário"
             placeholder="Seu nome de usuário"
             required
+            onChange={(event) => setName(event.target.value)}
           />
           <MaskedTelField
             id="phone"
@@ -93,6 +105,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({ modalRef, nextStep }) => {
           label="e-mail"
           placeholder="Seu email"
           required
+          onChange={(event) => setEmail(event.target.value)}
         />
         <TextField
           id="password"
@@ -108,6 +121,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({ modalRef, nextStep }) => {
           label="senha"
           placeholder="Sua senha"
           required
+          onChange={(event) => setPassword(event.target.value)}
         >
           {eyeOpen ? (
             <Eye
