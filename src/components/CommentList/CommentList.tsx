@@ -7,6 +7,8 @@ interface CommentData {
   hora: string
   content: string
   like: number
+  user: string
+  userImage: string
 }
 
 interface CommentListProps {
@@ -36,6 +38,8 @@ const CommentList: FunctionComponent<CommentListProps> = ({ comments }) => {
           hora={comment.hora}
           content={comment.content}
           like={comment.like}
+          user={comment.user}
+          userImage={comment.userImage}
         />
       ))}
     </section>
