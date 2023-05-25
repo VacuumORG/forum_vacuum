@@ -1,10 +1,11 @@
+import { FunctionComponent } from 'react'
 import Head from 'next/head'
 import ProfileSettings from '@/components/ProfileSettings'
 import Menu from '@/components/Menu'
-import Banner from '@/components/BannerProfile'
+import Banner from '@/components/ProfileSettings/BannerProfile'
 import UserLogged from '@/components/UserLogged'
 
-export default function UserProfile() {
+const UserProfile: FunctionComponent = () => {
   return (
     <>
       <Head>
@@ -22,3 +23,5 @@ export default function UserProfile() {
     </>
   )
 }
+
+export default UserProfile

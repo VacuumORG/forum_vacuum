@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { FunctionComponent, useState } from 'react'
 import Image from 'next/image'
 
-export default function UploadAvatar() {
+const UploadAvatar: FunctionComponent = () => {
   const [selectedFile, setSelectedFile] = useState<File | undefined>()
   const [checkFile, setCheckFile] = useState(false)
 
@@ -29,7 +29,7 @@ export default function UploadAvatar() {
       />
       <label
         htmlFor="file"
-        className="text-white p-1 justify-center text-center items-center rounded-[0.25rem] bg-gray-900 opacity-50 invisible group-hover:visible transition-all duration-100 ease-in-out"
+        className=" py-1 px-4 text-white font-bold justify-center text-center items-center rounded-[0.25rem] bg-gray-900 opacity-70 invisible group-hover:visible transition-all duration-100 ease-in-out"
       >
         Mudar
       </label>
@@ -51,3 +51,5 @@ export default function UploadAvatar() {
     </div>
   )
 }
+
+export default UploadAvatar

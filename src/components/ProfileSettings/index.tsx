@@ -1,8 +1,8 @@
+import { FunctionComponent } from 'react'
 import Sidebar from './Sidebar'
-import EditUserContainer from './EditUserContainer'
-import UploadAvatar from './Sidebar/UploadAvatar'
+import UploadAvatar from './UploadAvatar'
 
-export default function ProfileSettings() {
+const ProfileSettings: FunctionComponent = () => {
   return (
     <div className="flex flex-col w-full gap-8">
       <div className="flex items-center justify-center gap-6 w-[75%]">
@@ -16,3 +16,5 @@ export default function ProfileSettings() {
     </div>
   )
 }
+
+export default ProfileSettings

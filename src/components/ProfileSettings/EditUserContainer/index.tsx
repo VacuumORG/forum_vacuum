@@ -1,10 +1,9 @@
-import Button from '../../Button'
 import ChangeNameForm from './ChangeNameForm'
 import ChangePasswordForm from './ChangePasswordForm'
 
 const EditUserContainer = () => {
   return (
-    <section className="flex w-[750px] h-[710px] bg-g06 rounded-[3px] justify-center mt-[7.8125rem] pt-[3.375rem]">
+    <section className="flex w-[750px] h-[710px] bg-g06 rounded-[3px] justify-center mt-[2.6875rem] pt-[3.375rem]">
       <div>
         <h2 className="font-bold text-xl text-white">
           Edite suas informações pessoais
