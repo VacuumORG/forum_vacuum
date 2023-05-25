@@ -1,7 +1,8 @@
+import { FunctionComponent } from 'react'
 import Button from '@/components/Button'
 import ProfileSettingsTextField from '@/components/TextField/ProfileSettingsTextField'
 
-export default function ChangeNameForm() {
+const ChangeNameForm: FunctionComponent = () => {
   return (
     <form>
       <div className="flex flex-col gap-6">
@@ -23,3 +24,5 @@ export default function ChangeNameForm() {
     </form>
   )
 }
+
+export default ChangeNameForm

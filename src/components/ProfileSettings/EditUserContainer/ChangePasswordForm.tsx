@@ -1,7 +1,8 @@
+import { FunctionComponent } from 'react'
 import Button from '@/components/Button'
 import ProfileSettingsTextField from '@/components/TextField/ProfileSettingsTextField'
 
-export default function ChangePasswordForm() {
+const ChangePasswordForm: FunctionComponent = () => {
   return (
     <form>
       <div className="flex flex-col gap-6">
@@ -17,3 +18,5 @@ export default function ChangePasswordForm() {
     </form>
   )
 }
+
+export default ChangePasswordForm

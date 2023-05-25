@@ -3,6 +3,7 @@ import { Popover } from '@headlessui/react'
 import Image from 'next/image'
 
 interface UserLoggedProps {
+  avatar?: File
   message?: string
   userName?: string
 }
