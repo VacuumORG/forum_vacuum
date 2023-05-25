@@ -8,7 +8,7 @@ interface UserLoggedProps {
 }
 
 const UserLogged: FunctionComponent<UserLoggedProps> = ({
-  message = 'bem vindo',
+  message = 'bem vindo,',
   userName = 'John Doe',
 }) => {
   return (
