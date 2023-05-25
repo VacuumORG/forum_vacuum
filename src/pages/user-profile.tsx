@@ -1,10 +1,7 @@
-import { useRef } from 'react'
 import Head from 'next/head'
-
+import ProfileSettings from '@/components/ProfileSettings'
 import Menu from '@/components/Menu'
 import Banner from '@/components/BannerProfile'
-import Sidebar from '@/components/ProfileSettings/Sidebar'
-import EditUserContainer from '@/components/ProfileSettings/EditUserContainer'
 import UserLogged from '@/components/UserLogged'
 
 export default function UserProfile() {
@@ -20,8 +17,7 @@ export default function UserProfile() {
       </Menu>
       <Banner />
       <main className="flex gap-5 justify-center">
-        <Sidebar />
-        <EditUserContainer />
+        <ProfileSettings />
       </main>
     </>
   )
