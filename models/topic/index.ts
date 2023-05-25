@@ -10,6 +10,12 @@ export interface GetTopicModel {
   id: UUID
 }
 
+export interface CreateTopicModel {
+  title: string
+  content: string
+  user_id: UUID
+}
+
 export interface TopicModel {
   id: UUID
   title: string
