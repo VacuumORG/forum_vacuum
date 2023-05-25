@@ -1,32 +1,61 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { supabase } from '~/lib/connection'
 import { CodeClientError, CodeServerError, CodeSuccess } from '~/lib/statusCode'
-import { ListAllTopicsModel } from '~/models/topic'
+import { CreateTopicModel, ListAllTopicsModel } from '~/models/topic'
 
 export default async function handler(
-  _req: NextApiRequest,
+  req: NextApiRequest,
   res: NextApiResponse
 ) {
+  let response
+
+  switch (req.method) {
+    case 'GET':
+      response = await getTopics(req)
+      break
+
+    case 'POST':
+      response = await createTopic(req)
+      break
+
+    default:
+      return res
+        .status(CodeClientError.MethodNotAllowed)
+        .json({ message: 'Method not allowed' })
+  }
+
+  if (response.error) {
+    return res.status(CodeServerError.InternalServerError).json(response.error)
+  }
+
+  return res.status(CodeSuccess.OK).json(response.data)
+}
+
+async function getTopics(req: NextApiRequest) {
   const {
     qtdTopics = 20,
     orderBy = 'created_at',
     startTopic = 0,
-  } = _req.query as ListAllTopicsModel
+  } = req.query as ListAllTopicsModel
 
-  if (_req.method != 'GET') {
-    return res
-      .status(CodeClientError.MethodNotAllowed)
-      .json({ message: 'Method is not allowed' })
-  }
-  const { data: topics, error } = await supabase
+  const { data, error } = await supabase
     .from('topics')
     .select('*')
-    .order(`${orderBy}`, { ascending: true })
-    .range(startTopic, startTopic + qtdTopics - 1)
+    .order(`${orderBy}`, { ascending: false })
+    .range(startTopic, startTopic + qtdTopics)
 
-  if (error) {
-    return res.status(CodeServerError.InternalServerError).json(error)
-  }
+  return { data, error }
+}
+async function createTopic(req: NextApiRequest) {
+  const { title, content, user_id } = req.body as CreateTopicModel
 
-  return res.status(CodeSuccess.OK).json(topics)
+  const { data, error } = await supabase.from('topics').insert([
+    {
+      title: title,
+      content: content,
+      user_id: user_id,
+    },
+  ])
+
+  return { data, error }
 }
