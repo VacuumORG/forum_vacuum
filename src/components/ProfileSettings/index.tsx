@@ -3,7 +3,7 @@ import EditUserContainer from './EditUserContainer'
 
 export default function ProfileSettings() {
   return (
-    <div className='flex'>
+    <div className="flex">
       <Sidebar />
       <EditUserContainer />
     </div>

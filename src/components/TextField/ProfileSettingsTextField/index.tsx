@@ -27,7 +27,7 @@ const ProfileSettingsTextField: FunctionComponent<TextFieldProps> = ({
 }: TextFieldProps) => {
   const [border, setBorder] = useState('1px solid transparent')
   return (
-    <div className='flex justify-between items-center'>
+    <div className="flex justify-between items-center">
       <label htmlFor={id} className="text-g09 font-medium text-[0.8125rem]">
         {label}
       </label>
