@@ -3,33 +3,29 @@ import { FunctionComponent } from 'react'
 interface TagsInHighProps {
   titleTag?: string
   descriptionTag?: string
-  iconSelected?: boolean
   icon?: JSX.Element
-  followsAmount?: number
+  lengthPostWithTag?: number
 }
 
 const TagsInHigh: FunctionComponent<TagsInHighProps> = ({
   titleTag,
   descriptionTag,
-  iconSelected,
   icon,
-  followsAmount,
+  lengthPostWithTag,
 }: TagsInHighProps) => {
   return (
-    <div className="flex gap-2 rounded-md p-2 items-center justify-start cursor-pointer tag">
-      {icon}
-      <div>
-        <span className="relative font-bold text-base leading-4">
-          {titleTag}
-          {followsAmount ? (
-            <div className="absolute bottom-3 text-white right-[-20px] text-xs text-center align-middle rounded-[30%] bg-purple-600 w-4 h-4">
-              {followsAmount}
-            </div>
-          ) : null}
-        </span>
-        <p className="font-normal text-xs leading-3 theme-color-description-tag-high">
-          {descriptionTag}
-        </p>
+    <div className="flex gap-2 rounded-md p-2 items-center justify-start cursor-pointer tag theme-icon-and-container-selected-tags-in-high">
+      <div className="flex items-center justify-center gap-5 h-16 mt-10 w-72 cursor-pointer relative font-bold text-base leading-4 theme-icon-and-container-selected-tags-in-high">
+        {icon}
+
+        <div>
+          <h1 className="text-lg"> # {titleTag}</h1>
+
+          <p className="text-sm leading-3 theme-color-description-tag-high">
+            {' '}
+            {lengthPostWithTag} postagens com a tag
+          </p>
+        </div>
       </div>
     </div>
   )
