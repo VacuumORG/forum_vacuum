@@ -138,7 +138,7 @@ export default function Home() {
         </section>
       </main>
       <Modal ref={loginRef}>
-        <Login />
+        <Login modalRef={loginRef} />
       </Modal>
       <Modal ref={signUpRef}>
         {step === 1 && <SignUp modalRef={signUpRef} nextStep={nextStep} />}
