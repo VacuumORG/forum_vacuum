@@ -18,16 +18,16 @@ export default async function handler(
 ) {
   const { id } = _req.query as unknown as GetTopicModel
 
-  let response;
-  switch(_req.method){
-    case "GET":
+  let response
+  switch (_req.method) {
+    case 'GET':
       response = await getTopicById(_req, id)
       break
 
     default:
       return res
-      .status(CodeClientError.MethodNotAllowed)
-      .json({ message: 'Method is not allowed' })
+        .status(CodeClientError.MethodNotAllowed)
+        .json({ message: 'Method is not allowed' })
   }
 
   if (response.error) {
@@ -40,5 +40,5 @@ export default async function handler(
 async function getTopicById(req: NextApiRequest, id: UUID) {
   const { data, error } = await supabase.from('topics').select().eq('id', id)
 
-  return {data, error}
+  return { data, error }
 }
