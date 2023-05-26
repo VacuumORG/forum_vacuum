@@ -6,16 +6,16 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  let response;
-  switch(req.method) {
-    case "GET":
+  let response
+  switch (req.method) {
+    case 'GET':
       response = await getTopicById(req)
-    break
+      break
     default:
       return res
-      .status(CodeClientError.MethodNotAllowed)
-      .json({ message: 'Method not allowed' })
-    break
+        .status(CodeClientError.MethodNotAllowed)
+        .json({ message: 'Method not allowed' })
+      break
   }
 
   // TODO: Check if user is authenticated with AuthGuard from lib/authGuard.ts
@@ -30,7 +30,7 @@ export default async function handler(
   return res.status(CodeSuccess.OK).json(response.data)
 }
 
-async function getTopicById(req: NextApiRequest){
+async function getTopicById(req: NextApiRequest) {
   const { data, error } = await supabase
     .from('profiles')
     .select(
@@ -38,5 +38,5 @@ async function getTopicById(req: NextApiRequest){
     )
     .eq('id', req.query.id)
 
-  return {data, error}
+  return { data, error }
 }
