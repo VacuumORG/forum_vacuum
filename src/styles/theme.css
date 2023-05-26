@@ -99,9 +99,8 @@ input[type='number'] {
   color: var(--default);
   fill: var(--default);
 }
-.theme-icon-and-container-selected-tags-in-high {
+.theme-icon-and-container-selected-tags-in-high:hover {
   background-color: var(--grey08);
-  fill: var(--whiteOnPrimary);
 }
 .theme-color-title-tags-in-high {
   color: var(--whiteOnPrimary);
