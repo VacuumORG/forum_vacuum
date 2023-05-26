@@ -21,7 +21,7 @@ export async function getProfiles() {
 }
 
 export async function getProfileById(id: number) {
-  const response = await api.get(`/profiles/${id}:profile`)
+  const response = await api.get(`/profiles/${id}`)
   return response.data
 }
 
