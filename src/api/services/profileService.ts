@@ -1,12 +1,9 @@
+import { UserCreateModel } from '~/models/profile'
 import api from '../api'
 
-interface Profile {
-  email: string
-  password: string
-  name: string
-}
-
-export const createProfile = async (profile: Profile): Promise<Profile> => {
+export const createProfile = async (
+  profile: UserCreateModel
+): Promise<UserCreateModel> => {
   try {
     const response = await api.post('/profiles', profile)
     return response.data
@@ -21,7 +18,7 @@ export async function getProfiles() {
 }
 
 export async function getProfileById(id: number) {
-  const response = await api.get(`/profiles/${id}:profile`)
+  const response = await api.get(`/profiles/${id}`)
   return response.data
 }
 
