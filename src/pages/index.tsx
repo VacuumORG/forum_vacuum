@@ -4,7 +4,7 @@ import Menu from '@/components/Menu'
 import Modal from '@/components/Modal'
 import SignUp from '@/components/SignUp'
 import SignUpAvatar from '@/components/SignUpAvatar'
-import TagsInHigh from '@/components/TagsInHigh'
+import TagsInHigh from '@/components/TagsList/TagsInHigh'
 import Topic from '@/components/Topic'
 import UserArea from '@/components/UserArea'
 import Head from 'next/head'
@@ -75,9 +75,10 @@ export default function Home() {
             <li>
               <TagsInHigh iconSelected={false} titleTag="mais recentes" />
             </li>
-            <li>
+            <ul>
               <TagsInHigh iconSelected titleTag="populares" />
-            </li>
+              <TagList />
+            </ul>
           </ul>
         </section>
         <section className="flex flex-col gap-8">

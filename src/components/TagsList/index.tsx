@@ -1,15 +1,42 @@
-import { FunctionComponent } from 'react'
-import Tag from '../Tag'
+import { useEffect, useState } from 'react'
+import Tag from './Tag'
+import { axiosClient } from '@/services/axiosClient'
+import { UUID } from 'crypto'
 
 interface TagsListProps {
   list: string[]
 }
 
-const TagList: FunctionComponent<TagsListProps> = ({ list }) => {
+type Tag = {
+  id: UUID
+  name: string
+}
+
+const fetchData = async (): Promise<Tag[]> => {
+  const { data } = await axiosClient.get('/api/v1/tags')
+  return data
+}
+
+const TagList = () => {
+  const [tags, setTags] = useState<Tag[] | null>(null)
+
+  useEffect(() => {
+    const getTags = async () => {
+      try {
+        const result = await fetchData()
+
+        setTags(result)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+
+    getTags()
+  }, [])
   return (
     <li>
-      {list.map((tag) => (
-        <Tag key={tag} nameTag={tag} />
+      {tags?.map((tag: Tag) => (
+        <Tag key={tag.id} nameTag={tag.name} />
       ))}
     </li>
   )
