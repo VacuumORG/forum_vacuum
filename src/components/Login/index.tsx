@@ -1,6 +1,8 @@
 import { FunctionComponent, RefObject, useState } from 'react'
 import TextField from '../TextField'
 import Button from '../Button'
+import { login } from '@/api/services/auth'
+import { setCookie } from 'cookies-next'
 import {
   EnvelopeSimple,
   LockSimple,
@@ -12,9 +14,11 @@ interface LoginProps {
   modalRef?: RefObject<HTMLDialogElement>
 }
 
-const Login: FunctionComponent<LoginProps> = () => {
+const Login: FunctionComponent<LoginProps> = ({ modalRef }) => {
   const [inputType, setInputType] = useState('password')
   const [eyeOpen, setEyeOpen] = useState(true)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   function changeInputTypeWhenClickBtnAndSwitchIcon() {
     if (inputType == 'password') {
@@ -25,8 +29,15 @@ const Login: FunctionComponent<LoginProps> = () => {
       setEyeOpen(false)
     }
   }
-  function handlerLogin(e: any) {
+  async function handlerLogin(e: any) {
     e.preventDefault()
+    try {
+      const token = await login({ email, password })
+      setCookie('token', token)
+    } catch (error) {
+      throw new Error('Usuário ou senha inválidos')
+    }
+    modalRef?.current?.close()
   }
 
   return (
@@ -55,6 +66,7 @@ const Login: FunctionComponent<LoginProps> = () => {
           label="e-mail"
           placeholder="Seu email"
           required
+          onChange={(event) => setEmail(event.target.value)}
         />
         <TextField
           id="password"
@@ -70,6 +82,7 @@ const Login: FunctionComponent<LoginProps> = () => {
           label="senha"
           placeholder="Sua senha"
           required
+          onChange={(event) => setPassword(event.target.value)}
         >
           {eyeOpen ? (
             <Eye
