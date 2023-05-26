@@ -21,3 +21,12 @@ export async function getTopicById(id: number) {
   const response = await api.get(`/topics/${id}`)
   return response.data
 }
+
+export async function deleteTopic(id: number) {
+  try {
+    await api.delete(`/topics/${id}`)
+    return null
+  } catch (error) {
+    throw new Error('Não foi possível deletar o tópico')
+  }
+}
