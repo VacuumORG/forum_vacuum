@@ -6,10 +6,16 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method !== 'GET') {
-    return res
-      .status(CodeClientError.MethodNotAllowed)
-      .json({ message: 'Method not allowed' })
+  let response
+  switch (req.method) {
+    case 'GET':
+      response = await getTopicById(req)
+      break
+    default:
+      return res
+        .status(CodeClientError.MethodNotAllowed)
+        .json({ message: 'Method not allowed' })
+      break
   }
 
   // TODO: Check if user is authenticated with AuthGuard from lib/authGuard.ts
@@ -17,6 +23,14 @@ export default async function handler(
 
   // TODO: Specify which information to fetch for each post on this route.
 
+  if (response.error) {
+    return res.status(CodeServerError.InternalServerError).json(response.error)
+  }
+
+  return res.status(CodeSuccess.OK).json(response.data)
+}
+
+async function getTopicById(req: NextApiRequest) {
   const { data, error } = await supabase
     .from('profiles')
     .select(
@@ -24,9 +38,5 @@ export default async function handler(
     )
     .eq('id', req.query.id)
 
-  if (error) {
-    return res.status(CodeServerError.InternalServerError).json(error)
-  }
-
-  return res.status(CodeSuccess.OK).json(data)
+  return { data, error }
 }
