@@ -12,3 +12,8 @@ export const createTopic = async (
     throw new Error('Não foi possível criar o tópico')
   }
 }
+
+export async function getTopics(startTopic: string) {
+  const response = await api.get(`/topics/?startTopic=${startTopic}`)
+  return response.data
+}
