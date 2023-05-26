@@ -27,7 +27,7 @@ export default function Home() {
           <ul className="flex flex-col py-3 px-2 gap-5 rounded-md  bg-g08">
             <li>
               <TagsInHigh
-                iconSelected
+                lengthPostWithTag={0}
                 titleTag="mais recentes"
                 descriptionTag="veja as últimas postagens"
                 icon={
@@ -41,8 +41,7 @@ export default function Home() {
             </li>
             <li>
               <TagsInHigh
-                followsAmount={8}
-                iconSelected
+                lengthPostWithTag={8}
                 titleTag="populares"
                 descriptionTag="postagens mais acessadas hoje"
                 icon={
@@ -58,10 +57,10 @@ export default function Home() {
           <ul className="flex flex-col py-3 px-2 gap-5 rounded-md  bg-g08">
             <h1 className="font-bold">tags populares</h1>
             <li>
-              <TagsInHigh iconSelected={false} titleTag="mais recentes" />
+              <TagsInHigh titleTag="mais recentes" />
             </li>
             <li>
-              <TagsInHigh iconSelected titleTag="populares" />
+              <TagsInHigh titleTag="populares" />
             </li>
           </ul>
         </section>

@@ -9,8 +9,16 @@ import Topic from '@/components/Topic'
 import UserArea from '@/components/UserArea'
 import Head from 'next/head'
 import { Spinner, Star } from '@phosphor-icons/react'
-import { useRef, useState } from 'react'
-import TagList from '@/components/TagsList'
+import { useEffect, useRef, useState } from 'react'
+import { getAllTags } from '@/api/services/tagsInHighService'
+
+interface TagsInHighProps {
+  id?: string
+  name?: string
+  descriptionTag?: string
+  icon?: JSX.Element
+  lengthPostWithTag?: number
+}
 
 export default function Home() {
   const loginRef = useRef<HTMLDialogElement>(null)
@@ -24,6 +32,18 @@ export default function Home() {
   const backStep = () => {
     setStep((c) => (c === 1 ? 1 : c - 1))
   }
+
+  const [tags, setTags] = useState<TagsInHighProps[]>([])
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getAllTags()
+      setTags(data)
+    }
+
+    fetchData()
+  }, [])
+
   return (
     <>
       <Head>
@@ -42,7 +62,6 @@ export default function Home() {
           <ul className="flex flex-col py-3 px-2 gap-5 rounded-md bg-g08">
             <li>
               <TagsInHigh
-                iconSelected
                 titleTag="mais recentes"
                 descriptionTag="veja as últimas postagens"
                 icon={
@@ -56,8 +75,6 @@ export default function Home() {
             </li>
             <li>
               <TagsInHigh
-                followsAmount={8}
-                iconSelected
                 titleTag="populares"
                 descriptionTag="postagens mais acessadas hoje"
                 icon={
@@ -72,12 +89,13 @@ export default function Home() {
           </ul>
           <ul className="flex flex-col py-3 px-2 gap-5 rounded-md  bg-g08">
             <h1 className="font-bold">tags populares</h1>
-            <li>
-              <TagsInHigh iconSelected={false} titleTag="mais recentes" />
-            </li>
-            <li>
-              <TagsInHigh iconSelected titleTag="populares" />
-            </li>
+            {tags.map((tag) => {
+              return (
+                <li key={tag.id}>
+                  <TagsInHigh titleTag={tag.name} />
+                </li>
+              )
+            })}
           </ul>
         </section>
         <section className="flex flex-col gap-8">
