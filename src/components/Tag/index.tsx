@@ -8,7 +8,7 @@ interface TagProps {
 const Tag: FunctionComponent<TagProps> = ({ nameTag }) => {
   return (
     <>
-      <TagsInHigh iconSelected titleTag={`#${nameTag}`} />
+      <TagsInHigh titleTag={`#${nameTag}`} />
     </>
   )
 }

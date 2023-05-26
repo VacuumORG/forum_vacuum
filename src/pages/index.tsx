@@ -10,13 +10,12 @@ import UserArea from '@/components/UserArea'
 import Head from 'next/head'
 import { Spinner, Star } from '@phosphor-icons/react'
 import { useEffect, useRef, useState } from 'react'
-import { getAllTags } from '@/api/services/tagsInHigh'
+import { getAllTags } from '@/api/services/tagsInHighService'
 
 interface TagsInHighProps {
   id?: string
   name?: string
   descriptionTag?: string
-  iconSelected?: boolean
   icon?: JSX.Element
   lengthPostWithTag?: number
 }
@@ -43,7 +42,7 @@ export default function Home() {
     }
 
     fetchData()
-  },[])
+  }, [])
 
   return (
     <>
