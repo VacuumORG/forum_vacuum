@@ -10,6 +10,7 @@ import {
   CodeSuccess,
 } from '../../../../../../lib/statusCode'
 import { supabase } from '../../../../../../lib/connection'
+import { UUID } from 'crypto'
 
 export default async function handler(
   _req: NextApiRequest,
@@ -17,17 +18,27 @@ export default async function handler(
 ) {
   const { id } = _req.query as unknown as GetTopicModel
 
-  if (_req.method != 'GET') {
-    return res
+  let response;
+  switch(_req.method){
+    case "GET":
+      response = await getTopicById(_req, id)
+      break
+
+    default:
+      return res
       .status(CodeClientError.MethodNotAllowed)
       .json({ message: 'Method is not allowed' })
   }
 
-  const { data, error } = await supabase.from('topics').select().eq('id', id)
-
-  if (error) {
-    return res.status(CodeServerError.InternalServerError).json(error)
+  if (response.error) {
+    return res.status(CodeServerError.InternalServerError).json(response.error)
   }
 
-  return res.status(CodeSuccess.OK).json(data)
+  return res.status(CodeSuccess.OK).json(response.data)
+}
+
+async function getTopicById(req: NextApiRequest, id: UUID) {
+  const { data, error } = await supabase.from('topics').select().eq('id', id)
+
+  return {data, error}
 }
