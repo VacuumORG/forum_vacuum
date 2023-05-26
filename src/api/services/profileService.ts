@@ -25,18 +25,14 @@ export async function getProfileById(id: number) {
   return response.data
 }
 
-
-
-
 //Profile/Comments /Get Post by User Id
-export async function GetPostbyUserId(id:number){
+export async function GetPostbyUserId(id: number) {
   const response = await api.get(`/profiles/${id}/comments`)
   return response.data
 }
 
-
 //Profile/Topics /Get Topics by User Id
-export async function GetTopicsbyUserId(id:number){
+export async function GetTopicsbyUserId(id: number) {
   const response = await api.get(`/profiles/${id}/topics`)
   return response.data
 }
