@@ -1,6 +1,10 @@
-import { FunctionComponent, MouseEventHandler } from 'react'
+import {
+  ButtonHTMLAttributes,
+  FunctionComponent,
+  MouseEventHandler,
+} from 'react'
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string
   title?: string
   type?: 'submit' | 'reset' | 'button'
@@ -16,9 +20,10 @@ const Button: FunctionComponent<ButtonProps> = ({
   onClick,
   iconLeft,
   iconRight,
+  ...rest
 }: ButtonProps) => {
   return (
-    <button type={type} className={className} onClick={onClick}>
+    <button type={type} className={className} onClick={onClick} {...rest}>
       {iconRight}
       {title}
       {iconLeft}
