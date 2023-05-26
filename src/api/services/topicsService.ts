@@ -1,5 +1,4 @@
 import { CreateTopicModel } from '~/models/topic'
-import { CommentUpdateModel } from '~/models/comments'
 import api from '../api'
 
 export const createTopic = async (
@@ -13,7 +12,12 @@ export const createTopic = async (
   }
 }
 
-export async function getTopics(startTopic: string) {
+export async function getTopics(startTopic: number) {
   const response = await api.get(`/topics/?startTopic=${startTopic}`)
+  return response.data
+}
+
+export async function getTopicById(id: number) {
+  const response = await api.get(`/topics/${id}`)
   return response.data
 }
