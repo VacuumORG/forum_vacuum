@@ -24,6 +24,10 @@ export default async function handler(
       response = await getTopicById(_req, id)
       break
 
+    case 'DELETE':
+      response = await deleteTopicById(_req, id)
+      break
+
     default:
       return res
         .status(CodeClientError.MethodNotAllowed)
@@ -39,6 +43,12 @@ export default async function handler(
 
 async function getTopicById(req: NextApiRequest, id: UUID) {
   const { data, error } = await supabase.from('topics').select().eq('id', id)
+
+  return { data, error }
+}
+
+async function deleteTopicById(req: NextApiRequest, id: UUID) {
+  const { data, error } = await supabase.from('topics').delete().eq('id', id)
 
   return { data, error }
 }
