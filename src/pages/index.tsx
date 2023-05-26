@@ -40,7 +40,6 @@ export default function Home() {
     async function fetchData() {
       const data = await getAllTags()
       setTags(data)
-      console.log(data)
     }
 
     fetchData()
