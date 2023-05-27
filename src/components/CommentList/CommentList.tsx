@@ -1,8 +1,11 @@
 import { FunctionComponent } from 'react'
 import CommentsSessions from '../CommentsSessions'
+import { UUID } from 'crypto'
 
 interface CommentData {
-  id: string
+  userId: UUID
+  id: number
+  topicId: UUID
   author: string
   hora: string
   content: string
@@ -34,6 +37,8 @@ const CommentList: FunctionComponent<CommentListProps> = ({ comments }) => {
         <CommentsSessions
           key={comment.id}
           id={comment.id}
+          topicId={comment.topicId}
+          userId={comment.userId}
           author={comment.author}
           hora={comment.hora}
           content={comment.content}

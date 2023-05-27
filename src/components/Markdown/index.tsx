@@ -1,4 +1,7 @@
 import React, { useState, FunctionComponent } from 'react'
+import { createComment } from '@/api/services/commentsService'
+import { CommentCreateModel } from '~/models/comments'
+import { UUID } from 'crypto'
 import Button from '../Button'
 import {
   Paperclip,
@@ -11,14 +14,18 @@ import {
 import UserAvatar from '../UserAvatar'
 
 interface MarkdownProps {
+  userId: UUID
   userName: string
   userAvatar: string
   response: boolean
+  topicId: UUID
 }
 
 const Markdown: FunctionComponent<MarkdownProps> = ({
+  userId,
   userName,
   userAvatar,
+  topicId,
   response,
 }) => {
   const [comment, setComment] = useState('')
@@ -77,6 +84,21 @@ const Markdown: FunctionComponent<MarkdownProps> = ({
       default:
         setFontFamily('')
         break
+    }
+  }
+
+  const handleCreateComment = async () => {
+    try {
+      const newComment: CommentCreateModel = {
+        content: comment,
+        topic_id: topicId,
+        user_id: userId,
+      }
+
+      await createComment(newComment)
+      alert('Comentário criado com sucesso!')
+    } catch (error) {
+      throw new Error('Não foi possível criar o comentário')
     }
   }
 
@@ -179,6 +201,7 @@ const Markdown: FunctionComponent<MarkdownProps> = ({
           />
           <Button
             title="COMENTAR"
+            onClick={handleCreateComment}
             className="rounded bg-[var(--default)] transition-all cursor-pointer py-3 px-6 font-semibold text-xs hover:bg-purple-500"
           />
         </article>
