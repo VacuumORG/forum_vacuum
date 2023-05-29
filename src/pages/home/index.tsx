@@ -6,8 +6,24 @@ import UserArea from '@/components/UserArea'
 import UserAvatar from '@/components/UserAvatar'
 import Head from 'next/head'
 import { Spinner, Star } from '@phosphor-icons/react'
+import { getTopics } from '@/api/services/topicsService'
+import { useEffect, useState } from 'react'
+import { TopicModel } from '~/models/topic'
 
 export default function Home() {
+  const [topics, setTopics] = useState<TopicModel[]>([])
+
+  useEffect(() => {
+    const fetchTopicData = async () => {
+      try {
+        const topicResponse = await getTopics()
+        setTopics(topicResponse)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchTopicData()
+  }, [])
   return (
     <>
       <Head>
@@ -67,48 +83,7 @@ export default function Home() {
 
         <section className="flex flex-col gap-8">
           <NewTopic username="rickchaves29" avatar="/user_avatar.png" />
-          <ul className="flex flex-col gap-8">
-            <li>
-              <Topic
-                autor="henrique"
-                commentsAmount={4}
-                likesAmount={5}
-                viewsAmount={10}
-                title="pão de batata"
-                datetime="29/07/1999"
-              />
-            </li>
-            <li>
-              <Topic
-                autor="henrique"
-                commentsAmount={4}
-                likesAmount={5}
-                viewsAmount={10}
-                title="pão de batata"
-                datetime="29/07/1999"
-              />
-            </li>
-            <li>
-              <Topic
-                autor="henrique"
-                commentsAmount={4}
-                likesAmount={5}
-                viewsAmount={10}
-                title="pão de batata"
-                datetime="29/07/1999"
-              />
-            </li>
-            <li>
-              <Topic
-                autor="henrique"
-                commentsAmount={4}
-                likesAmount={5}
-                viewsAmount={10}
-                title="pão de batata"
-                datetime="29/07/1999"
-              />
-            </li>
-          </ul>
+          <Topic topics={topics} />
         </section>
       </main>
     </>
