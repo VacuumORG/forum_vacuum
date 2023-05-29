@@ -120,10 +120,14 @@ input[type='number'] {
 .theme-bg-content-grey-08 {
   background-color: var(--grey06);
 }
+.tag-main {
+  background-color: var(--grey06);
+}
 .tag > svg {
   fill: var(--whiteOnPrimary);
   background-color: var(--grey08);
   padding: 4px;
+  border-radius: 4px;
 }
 .tag:hover {
   background-color: var(--grey08);
