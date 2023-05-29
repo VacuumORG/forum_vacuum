@@ -4,6 +4,7 @@ import UserAvatar from '../UserAvatar'
 import TipsTag from '../TipsTag'
 
 export interface TopicProps {
+  id: number
   title: string
   datetime?: string
   viewsAmount: number
@@ -13,6 +14,7 @@ export interface TopicProps {
 }
 
 const Topic: FunctionComponent<TopicProps> = ({
+  id,
   title,
   datetime,
   viewsAmount,
