@@ -12,7 +12,12 @@ import { Spinner, Star } from '@phosphor-icons/react'
 import { useEffect, useRef, useState } from 'react'
 import { getAllTags } from '@/api/services/tagsInHighService'
 
-import { getTopics } from '@/api/services/topicsService'
+import {
+  createTopic,
+  getTopics,
+  getTopicById,
+  deleteTopic,
+} from '@/api/services/topicsService'
 import { TopicProps } from '@/components/Topic'
 
 interface TagsInHighProps {
@@ -26,8 +31,10 @@ interface TagsInHighProps {
 export default function Home() {
   const loginRef = useRef<HTMLDialogElement>(null)
   const signUpRef = useRef<HTMLDialogElement>(null)
+  const [topic, setTopic] = useState(null)
 
   const [step, setStep] = useState<number>(1)
+  const [tags, setTags] = useState<TagsInHighProps[]>([])
   const [topics, setTopics] = useState<TopicProps[]>([])
 
   const nextStep = () => {
@@ -37,7 +44,7 @@ export default function Home() {
     setStep((c) => (c === 1 ? 1 : c - 1))
   }
 
-  const fetchTopics = async () => {
+  const fetchGetTopics = async () => {
     try {
       const topicsData = await getTopics(0)
       setTopics(topicsData)
@@ -46,7 +53,23 @@ export default function Home() {
     }
   }
 
-  const [tags, setTags] = useState<TagsInHighProps[]>([])
+  const fetchGetTopicById = async (topicId: number) => {
+    try {
+      const topicData = await getTopicById(topicId)
+      setTopic(topicData)
+    } catch (error) {
+      console.error('Erro ao achar o tópico:', error)
+    }
+  }
+
+  const handleDeleteTopic = async (topicId: number) => {
+    try {
+      await deleteTopic(topicId)
+      alert('Tópico deletado com sucesso!')
+    } catch (error) {
+      console.error('Erro ao deletar o tópico:', error)
+    }
+  }
 
   useEffect(() => {
     async function fetchData() {
@@ -56,7 +79,7 @@ export default function Home() {
 
     fetchData()
 
-    fetchTopics()
+    fetchGetTopics()
   }, [])
 
   return (
@@ -126,12 +149,13 @@ export default function Home() {
               para postar
             </span>
           </div>
-          
+
           <ul className="flex flex-col gap-8">
             <li>
               {topics.map((topic) => (
-                <li key={topic.datetime}>
+                <li key={topic.id}>
                   <Topic
+                    id={topic.id}
                     autor={topic.autor}
                     commentsAmount={topic.commentsAmount}
                     likesAmount={topic.likesAmount}
@@ -143,7 +167,6 @@ export default function Home() {
               ))}
             </li>
           </ul>
-
         </section>
       </main>
       <Modal ref={loginRef}>
