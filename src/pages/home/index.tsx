@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Forum Vacuum - Home Page</title>
+        <title>Forum Vacuum - Home Pageee</title>
         <meta name="description" content="Comunidade de desenvolvimento" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
@@ -24,7 +24,7 @@ export default function Home() {
       </Menu>
       <main className="flex my-8 gap-5 justify-center">
         <section className="flex flex-col gap-12">
-          <ul className="flex flex-col py-3 px-2 gap-5 rounded-md  bg-g08">
+          <ul className="flex flex-col py-5 px-3 gap-5 rounded-md tag-main">
             <li>
               <TagsInHigh
                 lengthPostWithTag={0}
@@ -54,10 +54,10 @@ export default function Home() {
               />
             </li>
           </ul>
-          <ul className="flex flex-col py-3 px-2 gap-5 rounded-md  bg-g08">
+          <ul className="flex flex-col py-5 px-3 gap-5 rounded-md tag-main">
             <h1 className="font-bold">tags populares</h1>
             <li>
-              <TagsInHigh titleTag="mais recentes" />
+              <TagsInHigh lengthPostWithTag={8} titleTag="mais recentes" />
             </li>
             <li>
               <TagsInHigh titleTag="populares" />
