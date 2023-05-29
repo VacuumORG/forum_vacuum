@@ -3,7 +3,7 @@ import { FunctionComponent } from 'react'
 import UserAvatar from '../UserAvatar'
 import TipsTag from '../TipsTag'
 
-interface TopicProps {
+export interface TopicProps {
   title: string
   datetime?: string
   viewsAmount: number

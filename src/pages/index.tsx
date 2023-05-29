@@ -12,6 +12,9 @@ import { Spinner, Star } from '@phosphor-icons/react'
 import { useEffect, useRef, useState } from 'react'
 import { getAllTags } from '@/api/services/tagsInHighService'
 
+import { getTopics } from '@/api/services/topicsService'
+import { TopicProps } from '@/components/Topic'
+
 interface TagsInHighProps {
   id?: string
   name?: string
@@ -25,12 +28,22 @@ export default function Home() {
   const signUpRef = useRef<HTMLDialogElement>(null)
 
   const [step, setStep] = useState<number>(1)
+  const [topics, setTopics] = useState<TopicProps[]>([])
 
   const nextStep = () => {
     setStep((c) => (c === 3 ? 3 : c + 1))
   }
   const backStep = () => {
     setStep((c) => (c === 1 ? 1 : c - 1))
+  }
+
+  const fetchTopics = async () => {
+    try {
+      const topicsData = await getTopics(0)
+      setTopics(topicsData)
+    } catch (error) {
+      console.error('Erro ao buscar os tópicos:', error)
+    }
   }
 
   const [tags, setTags] = useState<TagsInHighProps[]>([])
@@ -42,6 +55,8 @@ export default function Home() {
     }
 
     fetchData()
+
+    fetchTopics()
   }, [])
 
   return (
@@ -111,48 +126,24 @@ export default function Home() {
               para postar
             </span>
           </div>
+          
           <ul className="flex flex-col gap-8">
             <li>
-              <Topic
-                autor="henrique"
-                commentsAmount={4}
-                likesAmount={5}
-                viewsAmount={10}
-                title="pão de batata"
-                datetime="29/07/1999"
-              />
-            </li>
-            <li>
-              <Topic
-                autor="henrique"
-                commentsAmount={4}
-                likesAmount={5}
-                viewsAmount={10}
-                title="pão de batata"
-                datetime="29/07/1999"
-              />
-            </li>
-            <li>
-              <Topic
-                autor="henrique"
-                commentsAmount={4}
-                likesAmount={5}
-                viewsAmount={10}
-                title="pão de batata"
-                datetime="29/07/1999"
-              />
-            </li>
-            <li>
-              <Topic
-                autor="henrique"
-                commentsAmount={4}
-                likesAmount={5}
-                viewsAmount={10}
-                title="pão de batata"
-                datetime="29/07/1999"
-              />
+              {topics.map((topic) => (
+                <li key={topic.datetime}>
+                  <Topic
+                    autor={topic.autor}
+                    commentsAmount={topic.commentsAmount}
+                    likesAmount={topic.likesAmount}
+                    viewsAmount={topic.viewsAmount}
+                    title={topic.title}
+                    datetime={topic.datetime}
+                  />
+                </li>
+              ))}
             </li>
           </ul>
+
         </section>
       </main>
       <Modal ref={loginRef}>
