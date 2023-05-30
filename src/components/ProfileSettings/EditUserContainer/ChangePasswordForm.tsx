@@ -3,7 +3,6 @@ import Button from '@/components/Button'
 import ProfileSettingsTextField from '@/components/TextField/ProfileSettingsTextField'
 
 const ChangePasswordForm: FunctionComponent = () => {
-  
   const handleUploadName = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
   }
