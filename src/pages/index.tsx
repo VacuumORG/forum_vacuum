@@ -19,6 +19,7 @@ import {
   deleteTopic,
 } from '@/api/services/topicsService'
 import { TopicProps } from '@/components/Topic'
+import { CreateTopicModel } from '~/models/topic'
 
 interface TagsInHighProps {
   id?: string
@@ -31,7 +32,7 @@ interface TagsInHighProps {
 export default function Home() {
   const loginRef = useRef<HTMLDialogElement>(null)
   const signUpRef = useRef<HTMLDialogElement>(null)
-  const [topic, setTopic] = useState(null)
+  const [topicById, setTopicById] = useState(null)
 
   const [step, setStep] = useState<number>(1)
   const [tags, setTags] = useState<TagsInHighProps[]>([])
@@ -56,9 +57,18 @@ export default function Home() {
   const fetchGetTopicById = async (topicId: number) => {
     try {
       const topicData = await getTopicById(topicId)
-      setTopic(topicData)
+      setTopicById(topicData)
     } catch (error) {
       console.error('Erro ao achar o tópico:', error)
+    }
+  }
+
+  const handleCreateTopic = async (topicData: CreateTopicModel) => {
+    try {
+      await createTopic(topicData)
+      alert('Tópico criado com sucesso!')
+    } catch (error) {
+      console.error('Erro ao criar o tópico:', error)
     }
   }
 
