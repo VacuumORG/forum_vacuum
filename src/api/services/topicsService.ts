@@ -12,7 +12,7 @@ export const createTopic = async (
   }
 }
 
-export async function getTopics(startTopic: number) {
+export async function getTopics(startTopic: number = 1) {
   const response = await api.get(`/topics/?startTopic=${startTopic}`)
   return response.data
 }
@@ -29,4 +29,9 @@ export async function deleteTopic(id: number) {
   } catch (error) {
     throw new Error('Não foi possível deletar o tópico')
   }
+}
+
+export async function getCommentsTopicById(id: number) {
+  const response = await api.get(`/topics/${id}/comments`)
+  return response.data
 }
