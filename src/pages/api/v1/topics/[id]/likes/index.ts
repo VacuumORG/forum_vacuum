@@ -18,7 +18,7 @@ export default async function handler(
       break
     case 'GET':
       response = await getCountLikes(id)
-    break
+      break
     default:
       return res
         .status(CodeClientError.MethodNotAllowed)
