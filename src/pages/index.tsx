@@ -14,6 +14,13 @@ import { getAllTags } from '@/api/services/tagsInHighService'
 import { getTopics } from '@/api/services/topicsService'
 import { TopicModel } from '~/models/topic'
 
+import {
+  createTopic,
+  getTopicById,
+  deleteTopic,
+} from '@/api/services/topicsService'
+import { CreateTopicModel } from '~/models/topic'
+
 interface TagsInHighProps {
   id?: string
   name?: string
@@ -25,9 +32,11 @@ interface TagsInHighProps {
 export default function Home() {
   const loginRef = useRef<HTMLDialogElement>(null)
   const signUpRef = useRef<HTMLDialogElement>(null)
+  const [topicById, setTopicById] = useState(null)
   const [topics, setTopics] = useState<TopicModel[]>([])
 
   const [step, setStep] = useState<number>(1)
+  const [tags, setTags] = useState<TagsInHighProps[]>([])
 
   const nextStep = () => {
     setStep((c) => (c === 3 ? 3 : c + 1))
@@ -36,7 +45,32 @@ export default function Home() {
     setStep((c) => (c === 1 ? 1 : c - 1))
   }
 
-  const [tags, setTags] = useState<TagsInHighProps[]>([])
+  const fetchGetTopicById = async (topicId: number) => {
+    try {
+      const topicData = await getTopicById(topicId)
+      setTopicById(topicData)
+    } catch (error) {
+      console.error('Erro ao achar o tópico:', error)
+    }
+  }
+
+  const handleCreateTopic = async (topicData: CreateTopicModel) => {
+    try {
+      await createTopic(topicData)
+      alert('Tópico criado com sucesso!')
+    } catch (error) {
+      console.error('Erro ao criar o tópico:', error)
+    }
+  }
+
+  const handleDeleteTopic = async (topicId: number) => {
+    try {
+      await deleteTopic(topicId)
+      alert('Tópico deletado com sucesso!')
+    } catch (error) {
+      console.error('Erro ao deletar o tópico:', error)
+    }
+  }
 
   useEffect(() => {
     async function fetchData() {
