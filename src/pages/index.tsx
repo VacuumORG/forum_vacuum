@@ -11,6 +11,15 @@ import Head from 'next/head'
 import { Spinner, Star } from '@phosphor-icons/react'
 import { useEffect, useRef, useState } from 'react'
 import { getAllTags } from '@/api/services/tagsInHighService'
+import { getTopics } from '@/api/services/topicsService'
+import { TopicModel } from '~/models/topic'
+
+import {
+  createTopic,
+  getTopicById,
+  deleteTopic,
+} from '@/api/services/topicsService'
+import { CreateTopicModel } from '~/models/topic'
 
 interface TagsInHighProps {
   id?: string
@@ -23,8 +32,11 @@ interface TagsInHighProps {
 export default function Home() {
   const loginRef = useRef<HTMLDialogElement>(null)
   const signUpRef = useRef<HTMLDialogElement>(null)
+  const [topicById, setTopicById] = useState(null)
+  const [topics, setTopics] = useState<TopicModel[]>([])
 
   const [step, setStep] = useState<number>(1)
+  const [tags, setTags] = useState<TagsInHighProps[]>([])
 
   const nextStep = () => {
     setStep((c) => (c === 3 ? 3 : c + 1))
@@ -33,14 +45,47 @@ export default function Home() {
     setStep((c) => (c === 1 ? 1 : c - 1))
   }
 
-  const [tags, setTags] = useState<TagsInHighProps[]>([])
+  const fetchGetTopicById = async (topicId: number) => {
+    try {
+      const topicData = await getTopicById(topicId)
+      setTopicById(topicData)
+    } catch (error) {
+      console.error('Erro ao achar o tópico:', error)
+    }
+  }
+
+  const handleCreateTopic = async (topicData: CreateTopicModel) => {
+    try {
+      await createTopic(topicData)
+      alert('Tópico criado com sucesso!')
+    } catch (error) {
+      console.error('Erro ao criar o tópico:', error)
+    }
+  }
+
+  const handleDeleteTopic = async (topicId: number) => {
+    try {
+      await deleteTopic(topicId)
+      alert('Tópico deletado com sucesso!')
+    } catch (error) {
+      console.error('Erro ao deletar o tópico:', error)
+    }
+  }
 
   useEffect(() => {
     async function fetchData() {
       const data = await getAllTags()
       setTags(data)
     }
-
+    const fetchTopicData = async () => {
+      try {
+        const topicResponse = await getTopics()
+        setTopics(topicResponse)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchTopicData()
     fetchData()
   }, [])
 
@@ -111,48 +156,7 @@ export default function Home() {
               para postar
             </span>
           </div>
-          <ul className="flex flex-col gap-8">
-            <li>
-              <Topic
-                autor="henrique"
-                commentsAmount={4}
-                likesAmount={5}
-                viewsAmount={10}
-                title="pão de batata"
-                datetime="29/07/1999"
-              />
-            </li>
-            <li>
-              <Topic
-                autor="henrique"
-                commentsAmount={4}
-                likesAmount={5}
-                viewsAmount={10}
-                title="pão de batata"
-                datetime="29/07/1999"
-              />
-            </li>
-            <li>
-              <Topic
-                autor="henrique"
-                commentsAmount={4}
-                likesAmount={5}
-                viewsAmount={10}
-                title="pão de batata"
-                datetime="29/07/1999"
-              />
-            </li>
-            <li>
-              <Topic
-                autor="henrique"
-                commentsAmount={4}
-                likesAmount={5}
-                viewsAmount={10}
-                title="pão de batata"
-                datetime="29/07/1999"
-              />
-            </li>
-          </ul>
+          <Topic topics={topics} />
         </section>
       </main>
       <Modal ref={loginRef}>
