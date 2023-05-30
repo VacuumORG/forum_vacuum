@@ -14,11 +14,9 @@ import { getAllTags } from '@/api/services/tagsInHighService'
 
 import {
   createTopic,
-  getTopics,
   getTopicById,
   deleteTopic,
 } from '@/api/services/topicsService'
-import { TopicProps } from '@/components/Topic'
 import { CreateTopicModel } from '~/models/topic'
 
 interface TagsInHighProps {
@@ -36,22 +34,12 @@ export default function Home() {
 
   const [step, setStep] = useState<number>(1)
   const [tags, setTags] = useState<TagsInHighProps[]>([])
-  const [topics, setTopics] = useState<TopicProps[]>([])
 
   const nextStep = () => {
     setStep((c) => (c === 3 ? 3 : c + 1))
   }
   const backStep = () => {
     setStep((c) => (c === 1 ? 1 : c - 1))
-  }
-
-  const fetchGetTopics = async () => {
-    try {
-      const topicsData = await getTopics(0)
-      setTopics(topicsData)
-    } catch (error) {
-      console.error('Erro ao buscar os tópicos:', error)
-    }
   }
 
   const fetchGetTopicById = async (topicId: number) => {
@@ -88,8 +76,6 @@ export default function Home() {
     }
 
     fetchData()
-
-    fetchGetTopics()
   }, [])
 
   return (
@@ -162,19 +148,44 @@ export default function Home() {
 
           <ul className="flex flex-col gap-8">
             <li>
-              {topics.map((topic) => (
-                <li key={topic.id}>
-                  <Topic
-                    id={topic.id}
-                    autor={topic.autor}
-                    commentsAmount={topic.commentsAmount}
-                    likesAmount={topic.likesAmount}
-                    viewsAmount={topic.viewsAmount}
-                    title={topic.title}
-                    datetime={topic.datetime}
-                  />
-                </li>
-              ))}
+              <Topic
+                autor="henrique"
+                commentsAmount={4}
+                likesAmount={5}
+                viewsAmount={10}
+                title="pão de batata"
+                datetime="29/07/1999"
+              />
+            </li>
+            <li>
+              <Topic
+                autor="henrique"
+                commentsAmount={4}
+                likesAmount={5}
+                viewsAmount={10}
+                title="pão de batata"
+                datetime="29/07/1999"
+              />
+            </li>
+            <li>
+              <Topic
+                autor="henrique"
+                commentsAmount={4}
+                likesAmount={5}
+                viewsAmount={10}
+                title="pão de batata"
+                datetime="29/07/1999"
+              />
+            </li>
+            <li>
+              <Topic
+                autor="henrique"
+                commentsAmount={4}
+                likesAmount={5}
+                viewsAmount={10}
+                title="pão de batata"
+                datetime="29/07/1999"
+              />
             </li>
           </ul>
         </section>
