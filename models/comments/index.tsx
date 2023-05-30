@@ -9,3 +9,12 @@ export interface CommentCreateModel {
 export interface CommentUpdateModel {
   content: string
 }
+
+export interface CommentModel {
+  id: UUID
+  created_at: string
+  updated_at: string
+  topic_id: UUID
+  content: string
+  likes: number
+}
