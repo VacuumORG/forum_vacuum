@@ -1,16 +1,25 @@
 import { FunctionComponent } from 'react'
 import Sidebar from './Sidebar'
-import UploadAvatar from './UploadAvatar'
+import ChangeAvatarForm from './ChangeAvatarForm'
+import { UUID } from 'crypto'
 
-const ProfileSettings: FunctionComponent = () => {
+interface ProfilesSettingsProps {
+  user: {
+    id: UUID
+    name: string
+    avatarUrl?: string
+  }
+}
+
+const ProfileSettings: FunctionComponent<ProfilesSettingsProps> = ({
+  user,
+}) => {
   return (
     <div className="flex flex-col w-full gap-8">
       <div className="flex items-center justify-center gap-6 w-[75%]">
-        <UploadAvatar />
+        <ChangeAvatarForm />
 
-        <h2 className="font-bold text-2xl whitespace-nowrap">
-          John Silvio Santos Costa Doe
-        </h2>
+        <h2 className="font-bold text-2xl whitespace-nowrap">{user.name}</h2>
       </div>
       <Sidebar />
     </div>

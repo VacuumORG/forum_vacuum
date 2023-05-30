@@ -1,4 +1,4 @@
-import { FunctionComponent, RefObject, useState } from 'react'
+import { FormEvent, FunctionComponent, RefObject, useState } from 'react'
 import TextField from '../TextField'
 import MaskedTelField from '../TextField/MaskedTelField'
 import Button from '../Button'
@@ -32,7 +32,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({ modalRef, nextStep }) => {
       setEyeOpen(false)
     }
   }
-  async function handlerSignUp(e: any) {
+  async function handlerSignUp(e: FormEvent) {
     e.preventDefault()
     try {
       await createProfile({
@@ -75,7 +75,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({ modalRef, nextStep }) => {
       <form onSubmit={handlerSignUp} className="flex flex-col gap-4 mt-8">
         <div className="flex justify-between gap-4">
           <TextField
-            id="name"
+            id="sign-up-name"
             type="text"
             label="nome de usuário"
             placeholder="Seu nome de usuário"
@@ -92,7 +92,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({ modalRef, nextStep }) => {
           />
         </div>
         <TextField
-          id="email"
+          id="sign-up-email"
           type="email"
           icon={
             <EnvelopeSimple
@@ -108,7 +108,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({ modalRef, nextStep }) => {
           onChange={(event) => setEmail(event.target.value)}
         />
         <TextField
-          id="password"
+          id="sign-up-password"
           type={inputType}
           icon={
             <LockSimple
