@@ -39,7 +39,6 @@ const ProfileSettingsTextField: FunctionComponent<TextFieldProps> = ({
       >
         {icon}
         <input
-          name="input"
           id={id}
           className="focus:outline-none bg-g08 items-stretch w-full h-full px-2 text-[13px]"
           onFocus={() => {
