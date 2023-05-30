@@ -11,6 +11,8 @@ import Head from 'next/head'
 import { Spinner, Star } from '@phosphor-icons/react'
 import { useEffect, useRef, useState } from 'react'
 import { getAllTags } from '@/api/services/tagsInHighService'
+import { getTopics } from '@/api/services/topicsService'
+import { TopicModel } from '~/models/topic'
 
 import {
   createTopic,
@@ -31,6 +33,7 @@ export default function Home() {
   const loginRef = useRef<HTMLDialogElement>(null)
   const signUpRef = useRef<HTMLDialogElement>(null)
   const [topicById, setTopicById] = useState(null)
+  const [topics, setTopics] = useState<TopicModel[]>([])
 
   const [step, setStep] = useState<number>(1)
   const [tags, setTags] = useState<TagsInHighProps[]>([])
@@ -74,7 +77,15 @@ export default function Home() {
       const data = await getAllTags()
       setTags(data)
     }
-
+    const fetchTopicData = async () => {
+      try {
+        const topicResponse = await getTopics()
+        setTopics(topicResponse)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchTopicData()
     fetchData()
   }, [])
 
@@ -145,49 +156,7 @@ export default function Home() {
               para postar
             </span>
           </div>
-
-          <ul className="flex flex-col gap-8">
-            <li>
-              <Topic
-                autor="henrique"
-                commentsAmount={4}
-                likesAmount={5}
-                viewsAmount={10}
-                title="pão de batata"
-                datetime="29/07/1999"
-              />
-            </li>
-            <li>
-              <Topic
-                autor="henrique"
-                commentsAmount={4}
-                likesAmount={5}
-                viewsAmount={10}
-                title="pão de batata"
-                datetime="29/07/1999"
-              />
-            </li>
-            <li>
-              <Topic
-                autor="henrique"
-                commentsAmount={4}
-                likesAmount={5}
-                viewsAmount={10}
-                title="pão de batata"
-                datetime="29/07/1999"
-              />
-            </li>
-            <li>
-              <Topic
-                autor="henrique"
-                commentsAmount={4}
-                likesAmount={5}
-                viewsAmount={10}
-                title="pão de batata"
-                datetime="29/07/1999"
-              />
-            </li>
-          </ul>
+          <Topic topics={topics} />
         </section>
       </main>
       <Modal ref={loginRef}>
