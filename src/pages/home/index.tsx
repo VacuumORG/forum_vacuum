@@ -70,6 +70,7 @@ export default function Home() {
           <ul className="flex flex-col gap-8">
             <li>
               <Topic
+                id={7}
                 autor="henrique"
                 commentsAmount={4}
                 likesAmount={5}
@@ -80,6 +81,7 @@ export default function Home() {
             </li>
             <li>
               <Topic
+                id={5}
                 autor="henrique"
                 commentsAmount={4}
                 likesAmount={5}
@@ -90,6 +92,7 @@ export default function Home() {
             </li>
             <li>
               <Topic
+                id={9}
                 autor="henrique"
                 commentsAmount={4}
                 likesAmount={5}
@@ -100,6 +103,7 @@ export default function Home() {
             </li>
             <li>
               <Topic
+                id={3}
                 autor="henrique"
                 commentsAmount={4}
                 likesAmount={5}
