@@ -10,8 +10,7 @@ const UserProfile: FunctionComponent = () => {
   const user = {
     id: 'dd01e76a-9c5c-472f-8316-b20614193d00' as UUID,
     name: 'John Silvio Santos Costa Doe',
-    avatarUrl: '/unsplashAvatar.jpg'
-
+    avatarUrl: '/unsplashAvatar.jpg',
   }
 
   return (

@@ -3,7 +3,6 @@ import Button from '@/components/Button'
 import ProfileSettingsTextField from '@/components/TextField/ProfileSettingsTextField'
 
 const ChangeNameForm: FunctionComponent = () => {
-
   const handleUploadName = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
   }
@@ -19,10 +18,7 @@ const ChangeNameForm: FunctionComponent = () => {
             John Silvio Santos Costa Doe
           </label>
         </div>
-        <ProfileSettingsTextField
-          label="Novo nome"
-          name="newName"
-        />
+        <ProfileSettingsTextField label="Novo nome" name="newName" />
       </div>
       <Button
         className="theme-btn py-1 text-[13px] px-[1.625rem] mt-5 rounded font-semibold opacity-75 hover:opacity-100 duration-300 transition-all"
