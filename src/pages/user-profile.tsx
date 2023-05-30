@@ -4,8 +4,16 @@ import ProfileSettings from '@/components/ProfileSettings'
 import Menu from '@/components/Menu'
 import Banner from '@/components/ProfileSettings/BannerProfile'
 import UserLogged from '@/components/UserLogged'
+import { UUID } from 'crypto'
 
 const UserProfile: FunctionComponent = () => {
+  const user = {
+    id: 'dd01e76a-9c5c-472f-8316-b20614193d00' as UUID,
+    name: 'John Silvio Santos Costa Doe',
+    avatarUrl: '/unsplashAvatar.jpg'
+
+  }
+
   return (
     <>
       <Head>
@@ -18,7 +26,7 @@ const UserProfile: FunctionComponent = () => {
       </Menu>
       <Banner />
       <main className="flex gap-5 justify-center">
-        <ProfileSettings />
+        <ProfileSettings user={user} />
       </main>
     </>
   )

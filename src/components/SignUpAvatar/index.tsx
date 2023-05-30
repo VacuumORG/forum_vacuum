@@ -1,4 +1,4 @@
-import { FunctionComponent, RefObject, useState } from 'react'
+import { ChangeEvent, FunctionComponent, RefObject, useState } from 'react'
 import Button from '../Button'
 import Image from 'next/image'
 import { User, CaretLeft } from '@phosphor-icons/react'
@@ -17,7 +17,21 @@ const SignUpAvatar: FunctionComponent<SignUpAvatarProps> = ({
 
   function handlerSignUpAvatar(e: any) {
     e.preventDefault()
+    console.log(selectedFile)
     modalRef?.current?.close()
+  }
+
+  const handleUploadAvatar = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    if (target.files && target.files.length > 0) {
+      const file = target.files[0]
+
+      if (file.type.includes('image/')) {
+        setSelectedImage(URL.createObjectURL(file))
+        setSelectedFile(file)
+      } else {
+        window.alert('Please select an image file.')
+      }
+    }
   }
 
   return (
@@ -47,14 +61,10 @@ const SignUpAvatar: FunctionComponent<SignUpAvatarProps> = ({
       <label className="w-160 h-160">
         <input
           type="file"
+          accept="image/*"
+          name="uploadFirstImage"
           hidden
-          onChange={({ target }) => {
-            if (target.files) {
-              const file = target.files[0]
-              setSelectedImage(URL.createObjectURL(file))
-              setSelectedFile(file)
-            }
-          }}
+          onChange={handleUploadAvatar}
         />
         <div
           className="flex 
@@ -65,7 +75,14 @@ const SignUpAvatar: FunctionComponent<SignUpAvatarProps> = ({
  justify-center items-center cursor-pointer border-1 border-solid border-purple-600 shadow"
           >
             {selectedImage ? (
-              <Image src={selectedImage} alt="" className="object-cover" />
+              <Image
+                src={selectedImage}
+                alt={'Avatar'}
+                width={100}
+                height={100}
+                className="rounded-full w-auto h-auto"
+                priority
+              />
             ) : (
               <User
                 alt="User Avatar"
