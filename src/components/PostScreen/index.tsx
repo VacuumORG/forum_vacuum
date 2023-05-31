@@ -109,4 +109,3 @@ const PostScreen: FunctionComponent<PostScreenProps> = ({
 }
 
 export default PostScreen
-
