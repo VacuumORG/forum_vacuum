@@ -54,7 +54,7 @@ const MaskedTelField: FunctionComponent<Props> = ({
           onChange={handleChange}
           value={phone}
           name="input"
-          className="focus:outline-none items-stretch w-full h-full px-2 text-[100%]"
+          className="focus:outline-none items-stretch w-full h-full px-2 text-[100%] focus:outline-0 focus:ring-0 focus:border-none border-none outline-none ring-0"
           onFocus={() => {
             setBorder('1px solid var(--default)')
           }}

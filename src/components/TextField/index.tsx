@@ -33,7 +33,7 @@ const TextField: FunctionComponent<TextFieldProps> = ({
         {label}
       </label>
       <div
-        className="flex p-1 rounded theme-textfield-icon-box"
+        className="flex p-1 rounded theme-textfield-icon-box items-center"
         style={{
           border: border,
         }}
@@ -42,7 +42,7 @@ const TextField: FunctionComponent<TextFieldProps> = ({
         <input
           name="input"
           id={id}
-          className="focus:outline-none items-stretch w-full h-full px-2 text-[100%]"
+          className="focus:outline-0 focus:ring-0 focus:border-none border-none outline-none ring-0 items-stretch w-full h-full px-2 text-[100%]"
           onFocus={() => {
             setBorder('1px solid var(--default)')
           }}
