@@ -18,7 +18,7 @@ interface SignUpProps {
 
 const SignUp: FunctionComponent<SignUpProps> = ({ modalRef, nextStep }) => {
   const [inputType, setInputType] = useState('password')
-  const [eyeOpen, setEyeOpen] = useState(true)
+  const [eyeOpen, setEyeOpen] = useState(false)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -55,7 +55,7 @@ const SignUp: FunctionComponent<SignUpProps> = ({ modalRef, nextStep }) => {
             className="mr-1 fill-white cursor-pointer align-text-top"
           />
           <a
-            className="theme-text text-xs"
+            className="theme-text text-xs cursor-pointer"
             onClick={() => modalRef?.current?.close()}
           >
             voltar
