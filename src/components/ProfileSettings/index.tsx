@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react'
-import Sidebar from './Sidebar'
+import Container from './Container'
 import ChangeAvatarForm from './ChangeAvatarForm'
 import { UUID } from 'crypto'
 
@@ -18,10 +18,9 @@ const ProfileSettings: FunctionComponent<ProfilesSettingsProps> = ({
     <div className="flex flex-col w-full gap-8">
       <div className="flex items-center justify-center gap-6 w-[75%]">
         <ChangeAvatarForm />
-
         <h2 className="font-bold text-2xl whitespace-nowrap">{user.name}</h2>
       </div>
-      <Sidebar />
+      <Container />
     </div>
   )
 }
