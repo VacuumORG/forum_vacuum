@@ -18,7 +18,7 @@ interface SignUpProps {
 
 const SignUp: FunctionComponent<SignUpProps> = ({ modalRef, nextStep }) => {
   const [inputType, setInputType] = useState('password')
-  const [eyeOpen, setEyeOpen] = useState(true)
+  const [eyeOpen, setEyeOpen] = useState(false)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')

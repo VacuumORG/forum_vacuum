@@ -25,6 +25,7 @@
 body {
   background-color: var(--grey07);
   color: var(--grey01);
+  -webkit-font-smoothing: antialiased;
   list-style: none;
 }
 input[type='number']::-webkit-inner-spin-button {
