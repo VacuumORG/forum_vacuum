@@ -53,9 +53,10 @@ const SignUp: FunctionComponent<SignUpProps> = ({ modalRef, nextStep }) => {
             width={16}
             height={16}
             className="mr-1 fill-white cursor-pointer align-text-top"
+            onClick={() => modalRef?.current?.close()}
           />
           <a
-            className="theme-text text-xs"
+            className="theme-text text-xs cursor-pointer"
             onClick={() => modalRef?.current?.close()}
           >
             voltar
