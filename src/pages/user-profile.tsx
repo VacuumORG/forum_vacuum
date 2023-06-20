@@ -1,9 +1,11 @@
 import { FunctionComponent } from 'react'
 import Head from 'next/head'
+
 import ProfileSettings from '@/components/ProfileSettings'
 import Menu from '@/components/Menu'
 import Banner from '@/components/ProfileSettings/BannerProfile'
 import UserLogged from '@/components/UserLogged'
+
 import { UUID } from 'crypto'
 
 const UserProfile: FunctionComponent = () => {
@@ -23,8 +25,9 @@ const UserProfile: FunctionComponent = () => {
       <Menu className="flex items-center justify-between flex-wrap px-20 bg-g06">
         <UserLogged />
       </Menu>
-      <Banner />
-      <main className="flex gap-5 justify-center">
+
+      <main className="flex flex-col gap-5">
+        <Banner />
         <ProfileSettings user={user} />
       </main>
     </>
