@@ -11,7 +11,7 @@ interface TopicsPageProps {
 const Topics: FunctionComponent<TopicsPageProps> = ({
   topics,
 }: TopicsPageProps) => {
-  console.log(JSON.stringify(topics, null, 2))
+
   return (
     <ul className="flex flex-col gap-8">
       {topics.map((topic) => (
