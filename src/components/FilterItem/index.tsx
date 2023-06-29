@@ -1,24 +1,24 @@
 import { FunctionComponent } from 'react'
 
-interface TagsInHighProps {
+interface FilterItemProps {
   titleTag?: string
   descriptionTag?: string
   icon?: JSX.Element
   lengthPostWithTag?: number
 }
 
-const TagsInHigh: FunctionComponent<TagsInHighProps> = ({
+const FilterItem: FunctionComponent<FilterItemProps> = ({
   titleTag,
   descriptionTag,
   icon,
   lengthPostWithTag,
-}: TagsInHighProps) => {
+}: FilterItemProps) => {
   lengthPostWithTag = lengthPostWithTag ?? 0
   return (
     <div className="flex gap-[13px] rounded-md p-2 items-center justify-start cursor-pointer tag hover:bg-g08">
       {icon}
       <div className="flex flex-col gap-[0.2rem]">
-        <h1 className="leading-[15.85px] font-bold text-[13px] tracking-wider">#{titleTag}</h1>
+        <h1 className="leading-[15.85px] font-bold text-[13px] tracking-wider">{titleTag}</h1>
         <p className="font-normal text-[9px] leading-[12px] text-g09 tracking-tight">
           {descriptionTag
             ? `${descriptionTag}`
@@ -29,4 +29,4 @@ const TagsInHigh: FunctionComponent<TagsInHighProps> = ({
   )
 }
 
-export default TagsInHigh
+export default FilterItem

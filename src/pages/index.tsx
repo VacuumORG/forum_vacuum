@@ -20,6 +20,15 @@ import {
   deleteTopic,
 } from '@/api/services/topicsService'
 import { CreateTopicModel } from '~/models/topic'
+import FilterItem from '@/components/FilterItem'
+import {
+  CSharp,
+  Java,
+  Javascript,
+  Python,
+  Ruby,
+  Typescript,
+} from '@/components/Icons'
 
 interface TagsInHighProps {
   id?: string
@@ -104,9 +113,9 @@ export default function Home() {
       </Menu>
       <main className="flex my-8 gap-5 justify-center">
         <section className="flex flex-col gap-12">
-          <ul className="flex flex-col py-3 px-2 gap-5 rounded-md bg-g08">
+          <ul className="flex flex-col py-3 px-2 gap-5 rounded-md bg-g06">
             <li>
-              <TagsInHigh
+              <FilterItem
                 titleTag="mais recentes"
                 descriptionTag="veja as últimas postagens"
                 icon={
@@ -119,7 +128,7 @@ export default function Home() {
               />
             </li>
             <li>
-              <TagsInHigh
+              <FilterItem
                 titleTag="populares"
                 descriptionTag="postagens mais acessadas hoje"
                 icon={
@@ -132,12 +141,21 @@ export default function Home() {
               />
             </li>
           </ul>
-          <ul className="flex flex-col py-3 px-2 gap-5 rounded-md  bg-g08">
-            <h1 className="font-bold">tags populares</h1>
+          <ul className="flex flex-col gap-5 bg-g06 py-3 px-2 rounded-md">
+            <li className='mt-1 ml-3'>
+              <h1 className="font-bold leading-4 text-sm tracking-wider">
+                tags populares
+              </h1>
+            </li>
             {tags.map((tag) => {
               return (
                 <li key={tag.id}>
-                  <TagsInHigh titleTag={tag.name} />
+                  <TagsInHigh
+                    icon={
+                      <Python className="exception fill-g08 bg-g08 p-1 rounded" />
+                    }
+                    titleTag={tag.name}
+                  />
                 </li>
               )
             })}

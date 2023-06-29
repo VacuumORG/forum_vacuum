@@ -100,9 +100,7 @@ input[type='number'] {
   color: var(--default);
   fill: var(--default);
 }
-.theme-icon-and-container-selected-tags-in-high:hover {
-  background-color: var(--gray08);
-}
+
 .theme-color-title-tags-in-high {
   color: var(--whiteOnPrimary);
 }
@@ -124,7 +122,7 @@ input[type='number'] {
 .tag-main {
   background-color: var(--gray06);
 }
-.tag > svg {
+.tag > svg:not(.exception) {
   fill: var(--whiteOnPrimary);
   background-color: var(--gray08);
   padding: 4px;
@@ -158,9 +156,6 @@ input[type='number'] {
 }
 .theme-color-input {
   color: black;
-}
-.theme-color-description-tag-high {
-  color: var(--gray09);
 }
 .response-active {
   color: var(--default);
