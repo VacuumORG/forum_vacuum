@@ -8,21 +8,22 @@ interface TopicsPageProps {
   topics: TopicModel[]
 }
 
-const Topic: FunctionComponent<TopicsPageProps> = ({
+const Topics: FunctionComponent<TopicsPageProps> = ({
   topics,
 }: TopicsPageProps) => {
   return (
     <ul className="flex flex-col gap-8">
-      {topics.map((topic, index) => (
-        <li key={index}>
-          <div className="flex rounded gap-6 max-w-screen-sm py-6 px-5 theme-topic-container">
+      {topics.map((topic) => (
+        <li key={topic.id}>
+          <div className="flex rounded gap-6 max-w-screen-sm py-6 px-5 bg-g06">
             <Image
               src="/vacuum_logo.png"
               alt="imagem principal do tipico"
               width={100}
-              height={100}
+              height={120}
+              className="block w-[100px] h-[120px]"
             />
-            <section className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3">
               <h1 className="font-bold">{topic.title}</h1>
               <div className="flex flex-wrap gap-3 justify-start items-center">
                 <TipsTag content="seo" />
@@ -50,7 +51,7 @@ const Topic: FunctionComponent<TopicsPageProps> = ({
                   <span className="text-xs">{'0'} comentários</span>
                 </div>
               </div>
-            </section>
+            </div>
           </div>
         </li>
       ))}
@@ -58,4 +59,4 @@ const Topic: FunctionComponent<TopicsPageProps> = ({
   )
 }
 
-export default Topic
+export default Topics

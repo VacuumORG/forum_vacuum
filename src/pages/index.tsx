@@ -5,7 +5,7 @@ import Modal from '@/components/Modal'
 import SignUp from '@/components/SignUp'
 import SignUpAvatar from '@/components/SignUpAvatar'
 import TagsInHigh from '@/components/TagsInHigh'
-import Topic from '@/components/Topic'
+import Topics from '@/components/Topic'
 import UserArea from '@/components/UserArea'
 import Head from 'next/head'
 import { Spinner, Star } from '@phosphor-icons/react'
@@ -156,7 +156,7 @@ export default function Home() {
               para postar
             </span>
           </div>
-          <Topic topics={topics} />
+          <Topics topics={topics} />
         </section>
       </main>
       <Modal ref={loginRef}>
