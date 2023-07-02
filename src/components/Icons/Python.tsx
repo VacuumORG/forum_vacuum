@@ -10,6 +10,7 @@ export const Python: FunctionComponent<PythonProps> = ({ ...rest }) => {
       viewBox="0 0 35 35"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className="exception fill-g08 bg-g08 p-1 rounded"
       {...rest}
     >
       <path
