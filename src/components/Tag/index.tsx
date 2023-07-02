@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react'
-import TagsInHigh from '../TagsInHigh'
+import TagsInHigh from '@/components/FilterByTagInHigh/TagsInHigh'
 
 interface TagProps {
   nameTag: string
@@ -8,7 +8,7 @@ interface TagProps {
 const Tag: FunctionComponent<TagProps> = ({ nameTag }) => {
   return (
     <>
-      <TagsInHigh titleTag={`#${nameTag}`} />
+      <TagsInHigh titleTag={`#${nameTag}`} selected={false} />
     </>
   )
 }
