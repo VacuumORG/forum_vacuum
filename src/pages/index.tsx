@@ -4,7 +4,6 @@ import Menu from '@/components/Menu'
 import Modal from '@/components/Modal'
 import SignUp from '@/components/SignUp'
 import SignUpAvatar from '@/components/SignUpAvatar'
-import TagsInHigh from '@/components/TagsInHigh'
 import Topics from '@/components/Topic'
 import UserArea from '@/components/UserArea'
 import Head from 'next/head'
@@ -21,14 +20,8 @@ import {
 } from '@/api/services/topicsService'
 import { CreateTopicModel } from '~/models/topic'
 import FilterItem from '@/components/FilterItem'
-import {
-  CSharp,
-  Java,
-  Javascript,
-  Python,
-  Ruby,
-  Typescript,
-} from '@/components/Icons'
+
+import FilterByTagInHigh from '@/components/FilterByTagInHigh'
 
 interface TagsInHighProps {
   id?: string
@@ -123,6 +116,7 @@ export default function Home() {
                     width={35}
                     height={35}
                     alt="icones da tag de topics mais recentes"
+                    className="fill-white bg-g08 p-1 rounded"
                   />
                 }
               />
@@ -136,30 +130,13 @@ export default function Home() {
                     width={35}
                     height={35}
                     alt="icones da tag de topics mais recentes"
+                    className="fill-white bg-g08 p-1 rounded"
                   />
                 }
               />
             </li>
           </ul>
-          <ul className="flex flex-col gap-5 bg-g06 py-3 px-2 rounded-md">
-            <li className='mt-1 ml-3'>
-              <h1 className="font-bold leading-4 text-sm tracking-wider">
-                tags populares
-              </h1>
-            </li>
-            {tags.map((tag) => {
-              return (
-                <li key={tag.id}>
-                  <TagsInHigh
-                    icon={
-                      <Python className="exception fill-g08 bg-g08 p-1 rounded" />
-                    }
-                    titleTag={tag.name}
-                  />
-                </li>
-              )
-            })}
-          </ul>
+          <FilterByTagInHigh tags={tags} />
         </section>
         <section className="flex flex-col gap-8">
           <div>
