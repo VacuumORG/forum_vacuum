@@ -11,19 +11,19 @@ import {
 
 export function getIconByName(iconName: string) {
   switch (iconName) {
-    case 'C#':
+    case 'C#' || 'c#' || 'CSharp' || 'csharp' || 'cSharp':
       return <CSharp />
-    case 'Java':
+    case 'Java' || 'java':
       return <Java />
-    case 'Javascript':
+    case 'Javascript' || 'javascript' || 'js' || 'JS' || 'Js':
       return <Javascript />
-    case 'Python':
+    case 'Python' || 'python':
       return <Python />
-    case 'Ruby':
+    case 'Ruby' || 'ruby':
       return <Ruby />
-    case 'Typescript':
+    case 'Typescript' || 'typescript' || 'ts' || 'TS':
       return <Typescript />
-    case 'Seo':
+    case 'Seo' || 'seo' || 'SEO':
       return <Seo />
     default:
       return <DefaultIcon />
