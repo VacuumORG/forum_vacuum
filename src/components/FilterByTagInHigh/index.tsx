@@ -27,9 +27,9 @@ const FilterByPopularTag: FunctionComponent<FilterByPopularTagProps> = ({
   return (
     <ul className="flex flex-col gap-5 bg-g06 py-3 px-2 rounded-md">
       <li className="mt-1 ml-3">
-        <h1 className="font-bold leading-4 text-sm tracking-wider">
+        <h2 className="font-bold leading-4 text-sm tracking-wider">
           tags populares
-        </h1>
+        </h2>
       </li>
 
       {tags?.map((tag) => {
