@@ -1,5 +1,8 @@
 import type { AppProps } from 'next/app'
 import { Montserrat } from 'next/font/google'
+
+import { FilterContextProvider } from '@/contexts/Filter'
+
 import '@/styles/global.css'
 import '@/styles/theme.css'
 import '@/styles/dark.css'
@@ -16,7 +19,9 @@ export default function App({ Component, pageProps }: AppProps) {
           font-family: ${montserrat.style.fontFamily};
         }
       `}</style>
-      <Component {...pageProps} />
+      <FilterContextProvider>
+        <Component {...pageProps} />
+      </FilterContextProvider>
     </>
   )
 }
