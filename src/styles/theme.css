@@ -62,30 +62,11 @@ input[type='number'] {
   color: var(--whiteOnPrimary);
   border: solid 1px var(--default);
 }
-.theme-event-warning {
-  background-color: var(--gray06);
-}
-.theme-event-warning:hover {
-  background: var(--gray08);
-}
-.theme-event-warning-title-and-date {
-  color: var(--gray01);
-}
-.theme-event-warning-author {
-  color: var(--default);
-}
-.theme-event-warning-description {
-  color: var(--gray09);
-}
-.theme-event-warning-date {
-  background-color: var(--gray08);
-}
+
 .theme-menu {
   background-color: var(--gray06);
 }
-.theme-event-warning:hover {
-  background: var(--gray08);
-}
+
 .theme-topic-container {
   background-color: var(--gray06);
 }
