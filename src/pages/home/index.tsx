@@ -1,6 +1,5 @@
 import Menu from '@/components/Menu'
 import NewTopic from '@/components/NewTopic'
-import TagsInHigh from '@/components/TagsInHigh'
 import Topic from '@/components/Topic'
 import UserArea from '@/components/UserArea'
 import UserAvatar from '@/components/UserAvatar'
@@ -9,6 +8,7 @@ import { Spinner, Star } from '@phosphor-icons/react'
 import { getTopics } from '@/api/services/topicsService'
 import { useEffect, useState } from 'react'
 import { TopicModel } from '~/models/topic'
+import TagsInHigh from '@/components/FilterByTagInHigh/TagsInHigh'
 
 export default function Home() {
   const [topics, setTopics] = useState<TopicModel[]>([])
@@ -43,6 +43,7 @@ export default function Home() {
           <ul className="flex flex-col py-5 px-3 gap-5 rounded-md tag-main">
             <li>
               <TagsInHigh
+                selected={false}
                 lengthPostWithTag={0}
                 titleTag="mais recentes"
                 descriptionTag="veja as últimas postagens"
@@ -57,6 +58,7 @@ export default function Home() {
             </li>
             <li>
               <TagsInHigh
+                selected={false}
                 lengthPostWithTag={8}
                 titleTag="populares"
                 descriptionTag="postagens mais acessadas hoje"
@@ -73,10 +75,14 @@ export default function Home() {
           <ul className="flex flex-col py-5 px-3 gap-5 rounded-md tag-main">
             <h1 className="font-bold">tags populares</h1>
             <li>
-              <TagsInHigh lengthPostWithTag={8} titleTag="mais recentes" />
+              <TagsInHigh
+                selected={false}
+                lengthPostWithTag={8}
+                titleTag="mais recentes"
+              />
             </li>
             <li>
-              <TagsInHigh titleTag="populares" />
+              <TagsInHigh selected={false} titleTag="populares" />
             </li>
           </ul>
         </section>

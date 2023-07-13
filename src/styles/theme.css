@@ -62,30 +62,11 @@ input[type='number'] {
   color: var(--whiteOnPrimary);
   border: solid 1px var(--default);
 }
-.theme-event-warning {
-  background-color: var(--gray06);
-}
-.theme-event-warning:hover {
-  background: var(--gray08);
-}
-.theme-event-warning-title-and-date {
-  color: var(--gray01);
-}
-.theme-event-warning-author {
-  color: var(--default);
-}
-.theme-event-warning-description {
-  color: var(--gray09);
-}
-.theme-event-warning-date {
-  background-color: var(--gray08);
-}
+
 .theme-menu {
   background-color: var(--gray06);
 }
-.theme-event-warning:hover {
-  background: var(--gray08);
-}
+
 .theme-topic-container {
   background-color: var(--gray06);
 }
@@ -100,9 +81,7 @@ input[type='number'] {
   color: var(--default);
   fill: var(--default);
 }
-.theme-icon-and-container-selected-tags-in-high:hover {
-  background-color: var(--gray08);
-}
+
 .theme-color-title-tags-in-high {
   color: var(--whiteOnPrimary);
 }
@@ -124,12 +103,13 @@ input[type='number'] {
 .tag-main {
   background-color: var(--gray06);
 }
-.tag > svg {
+.tag > svg:not(.exception) {
   fill: var(--whiteOnPrimary);
   background-color: var(--gray08);
   padding: 4px;
   border-radius: 4px;
 }
+
 .tag:hover {
   background-color: var(--gray08);
 }
@@ -144,6 +124,29 @@ input[type='number'] {
 .tag:hover > div > :first-child {
   color: var(--default);
 }
+.tagActive {
+  display: flex;
+  gap: 13px;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+}
+.tagActive > div > :first-child {
+  color: var(--default);
+}
+
+.tagActive > svg {
+  fill: var(--default);
+  background-color: transparent;
+  padding: 4px;
+}
+
+.tagActive:hover {
+  background-color: var(--gray08);
+}
+
 .theme-btn-color-code-auth-box {
   background-color: var(--default);
 }
@@ -158,9 +161,6 @@ input[type='number'] {
 }
 .theme-color-input {
   color: black;
-}
-.theme-color-description-tag-high {
-  color: var(--gray09);
 }
 .response-active {
   color: var(--default);

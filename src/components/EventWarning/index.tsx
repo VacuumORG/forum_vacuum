@@ -18,32 +18,25 @@ const EventWarning: FunctionComponent<EventWarningProps> = ({
   datetime,
 }: EventWarningProps) => {
   return (
-    <div className="flex items-center justify-center gap-4 p-2 rounded-lg cursor-pointer theme-event-warning">
-      <div className="text-xl flex flex-col items-center p-3 rounded-md theme-event-warning-date">
+    <div className="flex items-start gap-4 p-2 rounded-lg cursor-pointer bg-g06 hover:bg-g08">
+      <div className="text-xl flex flex-col items-center p-3 rounded-md bg-g08">
         <time
           dateTime={datetime}
-          className="mb-2 text-lg font-bold h-full theme-event-warning-title-and-date"
+          className="mb-2 text-lg font-bold h-full text-g01"
         >
           {month}
         </time>
-        <time
-          dateTime={datetime}
-          className="text-2xl font-bold theme-event-warning-author"
-        >
+        <time dateTime={datetime} className="text-2xl font-bold text-default">
           {day}
         </time>
       </div>
 
       <div>
-        <span className="font-bold text-xs theme-event-warning-title-and-date">
-          {title}
-        </span>
-        <p className="text-xs mb-4 theme-event-warning-description">
-          {description}
-        </p>
+        <span className="font-bold text-xs text-g01">{title}</span>
+        <p className="text-xs mb-4 text-g09">{description}</p>
 
-        <span className="text-xs theme-event-warning-description">
-          by <strong className="theme-event-warning-author">{author}</strong>{' '}
+        <span className="text-xs text-g09">
+          by <strong className="text-default">{author}</strong>{' '}
         </span>
       </div>
     </div>

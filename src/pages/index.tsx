@@ -4,7 +4,6 @@ import Menu from '@/components/Menu'
 import Modal from '@/components/Modal'
 import SignUp from '@/components/SignUp'
 import SignUpAvatar from '@/components/SignUpAvatar'
-import TagsInHigh from '@/components/TagsInHigh'
 import Topics from '@/components/Topic'
 import UserArea from '@/components/UserArea'
 import Head from 'next/head'
@@ -20,6 +19,11 @@ import {
   deleteTopic,
 } from '@/api/services/topicsService'
 import { CreateTopicModel } from '~/models/topic'
+
+import EventWarning from '@/components/EventWarning'
+import FilterItem from '@/components/FilterItem'
+
+import FilterByTagInHigh from '@/components/FilterByTagInHigh'
 
 interface TagsInHighProps {
   id?: string
@@ -104,9 +108,9 @@ export default function Home() {
       </Menu>
       <main className="flex my-8 gap-5 justify-center">
         <section className="flex flex-col gap-12">
-          <ul className="flex flex-col py-3 px-2 gap-5 rounded-md bg-g08">
+          <ul className="flex flex-col py-3 px-2 gap-5 rounded-md bg-g06">
             <li>
-              <TagsInHigh
+              <FilterItem
                 titleTag="mais recentes"
                 descriptionTag="veja as últimas postagens"
                 icon={
@@ -114,12 +118,13 @@ export default function Home() {
                     width={35}
                     height={35}
                     alt="icones da tag de topics mais recentes"
+                    className="fill-white bg-g08 p-1 rounded"
                   />
                 }
               />
             </li>
             <li>
-              <TagsInHigh
+              <FilterItem
                 titleTag="populares"
                 descriptionTag="postagens mais acessadas hoje"
                 icon={
@@ -127,21 +132,13 @@ export default function Home() {
                     width={35}
                     height={35}
                     alt="icones da tag de topics mais recentes"
+                    className="fill-white bg-g08 p-1 rounded"
                   />
                 }
               />
             </li>
           </ul>
-          <ul className="flex flex-col py-3 px-2 gap-5 rounded-md  bg-g08">
-            <h1 className="font-bold">tags populares</h1>
-            {tags.map((tag) => {
-              return (
-                <li key={tag.id}>
-                  <TagsInHigh titleTag={tag.name} />
-                </li>
-              )
-            })}
-          </ul>
+          <FilterByTagInHigh tags={tags} />
         </section>
         <section className="flex flex-col gap-8">
           <div>
@@ -157,6 +154,40 @@ export default function Home() {
             </span>
           </div>
           <Topics topics={topics} />
+        </section>
+        <section className="flex flex-col">
+          <div className="bg-g06 gap-5 py-3 px-2 rounded-md w-56">
+            <h2 className="font-bold leading-4 text-sm tracking-wider mt-1 ml-3">
+              eventos
+            </h2>
+            <EventWarning
+              author="John Doe"
+              day={10}
+              month={10}
+              key={'idaleatorio'}
+              datetime="2007-05-08 12:35:29"
+              description="Evento no Discord aula de postman com varios detalhesde como testar suas rotas independente da linguagem em que vc esta desenvolvendo."
+              title="Evento de Postman Criando um titulo imenso para ver se o layout vai quebrar"
+            />
+            <EventWarning
+              author="John Doe"
+              day={10}
+              month={10}
+              key={'idaleatorios'}
+              datetime="2007-05-08 12:35:29"
+              description="Evento no Discord aula de postman com varios detalhesde como testar suas rotas independente da linguagem em que vc esta desenvolvendo."
+              title="Evento de Postman Criando um titulo imenso para ver se o layout vai quebrar"
+            />
+            <EventWarning
+              author="John Doe"
+              day={10}
+              month={10}
+              key={'idaleatorioa'}
+              datetime="2007-05-08 12:35:29"
+              description="Evento no Discord aula de postman com varios detalhesde como testar suas rotas independente da linguagem em que vc esta desenvolvendo."
+              title="Evento de Postman Criando um titulo imenso para ver se o layout vai quebrar"
+            />
+          </div>
         </section>
       </main>
       <Modal ref={loginRef}>
