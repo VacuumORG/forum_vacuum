@@ -3,6 +3,9 @@ import UserAvatar from '../UserAvatar'
 import TipsTag from '../TipsTag'
 import { TopicModel } from '~/models/topic'
 import Image from 'next/image'
+import { formatDistanceToNow, format } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
+import React, { useState } from 'react'
 
 interface TopicsPageProps {
   topics: TopicModel[]
@@ -11,6 +14,15 @@ interface TopicsPageProps {
 const Topics: FunctionComponent<TopicsPageProps> = ({
   topics,
 }: TopicsPageProps) => {
+  const [hoveredDateTime, setHoveredDateTime] = useState<string>('')
+
+  const handleMouseOver = (dateTime: string) => {
+    setHoveredDateTime(dateTime)
+  }
+
+  const handleMouseLeave = () => {
+    setHoveredDateTime('')
+  }
   return (
     <ul className="flex flex-col gap-8">
       {topics.map((topic) => (
@@ -40,8 +52,16 @@ const Topics: FunctionComponent<TopicsPageProps> = ({
                     <time
                       dateTime={topic.created_at}
                       className="text-xs theme-topic-datetime"
+                      title={format(
+                        new Date(topic.created_at),
+                        "dd MMMM yyyy 'às' HH:mm",
+                        { locale: ptBR }
+                      )}
                     >
-                      {topic.created_at}
+                      {formatDistanceToNow(new Date(topic.created_at), {
+                        addSuffix: true,
+                        locale: ptBR,
+                      })}
                     </time>
                   </div>
                 </div>
