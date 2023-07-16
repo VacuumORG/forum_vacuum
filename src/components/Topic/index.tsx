@@ -14,15 +14,6 @@ interface TopicsPageProps {
 const Topics: FunctionComponent<TopicsPageProps> = ({
   topics,
 }: TopicsPageProps) => {
-  const [hoveredDateTime, setHoveredDateTime] = useState<string>('')
-
-  const handleMouseOver = (dateTime: string) => {
-    setHoveredDateTime(dateTime)
-  }
-
-  const handleMouseLeave = () => {
-    setHoveredDateTime('')
-  }
   return (
     <ul className="flex flex-col gap-8">
       {topics.map((topic) => (
