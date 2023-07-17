@@ -21,7 +21,11 @@ const FilterByPopularTag: FunctionComponent<FilterByPopularTagProps> = ({
   const { popularTag, setPopularTag } = useFilter()
 
   const handleChangeTag = (value: string) => {
-    setPopularTag(value)
+    if (popularTag === value) {
+      setPopularTag('')
+    } else {
+      setPopularTag(value)
+    }
   }
 
   return (
