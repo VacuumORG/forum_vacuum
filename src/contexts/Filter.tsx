@@ -31,7 +31,7 @@ export const FilterContextProvider: FunctionComponent<
   const [currentPage, setCurrentPage] = useState(1)
   const [popularTag, setPopularTag] = useState('')
   const [filter, setFilter] = useState(FilterType.RECENT)
-  const [mainFilter, setMainFilter] = useState('');
+  const [mainFilter, setMainFilter] = useState('')
 
   return (
     <FilterContext.Provider
@@ -45,7 +45,7 @@ export const FilterContextProvider: FunctionComponent<
         setCurrentPage,
         setPopularTag,
         setFilter,
-        setMainFilter
+        setMainFilter,
       }}
     >
       {children}
