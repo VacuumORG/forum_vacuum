@@ -1,4 +1,5 @@
 import { FunctionComponent } from 'react'
+import { useFilter } from '@/hooks/useFilter'
 
 interface FilterItemProps {
   titleTag?: string
@@ -14,8 +15,23 @@ const FilterItem: FunctionComponent<FilterItemProps> = ({
   lengthPostWithTag,
 }: FilterItemProps) => {
   lengthPostWithTag = lengthPostWithTag ?? 0
+  const { mainFilter, setMainFilter } = useFilter()
+
+  const handleChange = (value: string) => {
+    if (mainFilter === value) {
+      setMainFilter('')
+    } else {
+      setMainFilter(value)
+    }
+  }
+
   return (
-    <div className="flex gap-[13px] rounded-md p-2 items-center justify-start cursor-pointer tag hover:bg-g08">
+    <div
+      onClick={() => handleChange(titleTag || '')}
+      className={`flex gap-[13px] rounded-md p-2 items-center justify-start cursor-pointer ${
+        titleTag === mainFilter ? 'tagActive' : 'tag'
+      } hover:bg-g08`}
+    >
       {icon}
       <div className="flex flex-col gap-[0.2rem]">
         <h1 className="leading-[15.85px] font-bold text-[13px] tracking-wider">
