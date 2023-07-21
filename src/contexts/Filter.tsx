@@ -1,10 +1,4 @@
-import {
-  FunctionComponent,
-  ReactNode,
-  createContext,
-  useEffect,
-  useState,
-} from 'react'
+import { FunctionComponent, ReactNode, createContext, useState } from 'react'
 import { FilterType } from './types'
 
 export const FilterContext = createContext({
@@ -12,12 +6,10 @@ export const FilterContext = createContext({
   currentPage: 1,
   filter: FilterType.RECENT,
   popularTag: '',
-  mainFilter: '',
   setSearch: (value: string) => {},
   setCurrentPage: (value: number) => {},
-  setPopularTag: (value: string) => {},
   setFilter: (value: FilterType) => {},
-  setMainFilter: (value: string) => {},
+  setPopularTag: (value: string) => {},
 })
 
 interface FilterContextProviderProps {
@@ -31,12 +23,10 @@ export const FilterContextProvider: FunctionComponent<
   const [currentPage, setCurrentPage] = useState(1)
   const [popularTag, setPopularTag] = useState('')
   const [filter, setFilter] = useState(FilterType.RECENT)
-  const [mainFilter, setMainFilter] = useState('')
 
   return (
     <FilterContext.Provider
       value={{
-        mainFilter,
         search,
         currentPage,
         popularTag,
@@ -45,7 +35,6 @@ export const FilterContextProvider: FunctionComponent<
         setCurrentPage,
         setPopularTag,
         setFilter,
-        setMainFilter,
       }}
     >
       {children}
