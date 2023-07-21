@@ -4,6 +4,8 @@ export interface ListAllTopicsModel {
   startTopic?: number
   qtdTopics?: number
   orderBy?: string
+  tag?: string
+  keyword?: string
 }
 
 export interface GetTopicModel {

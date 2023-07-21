@@ -1,10 +1,4 @@
-import {
-  FunctionComponent,
-  ReactNode,
-  createContext,
-  useEffect,
-  useState,
-} from 'react'
+import { FunctionComponent, ReactNode, createContext, useState } from 'react'
 import { FilterType } from './types'
 
 export const FilterContext = createContext({
@@ -14,8 +8,8 @@ export const FilterContext = createContext({
   popularTag: '',
   setSearch: (value: string) => {},
   setCurrentPage: (value: number) => {},
-  setPopularTag: (value: string) => {},
   setFilter: (value: FilterType) => {},
+  setPopularTag: (value: string) => {},
 })
 
 interface FilterContextProviderProps {

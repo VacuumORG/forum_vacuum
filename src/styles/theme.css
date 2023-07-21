@@ -114,16 +114,13 @@ input[type='number'] {
   background-color: var(--gray08);
 }
 .tag:hover > svg {
-  fill: var(--default);
   background-color: transparent;
   padding: 4px;
 }
 .tag > div > :first-child {
   color: var(--whiteOnPrimary);
 }
-.tag:hover > div > :first-child {
-  color: var(--default);
-}
+
 .tagActive {
   display: flex;
   gap: 13px;
